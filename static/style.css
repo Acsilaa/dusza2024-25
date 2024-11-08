@@ -1,0 +1,31 @@
+body{
+    background-color: #ffffff;
+    color: #0E1116;
+    
+}
+nav{
+    box-shadow: 50px 50px rgba(#86626E, 100%);
+}
+
+.container{
+    margin: auto;
+    width: 50%;
+    box-shadow: 5px 5px 5px rgb(136, 136, 136);
+}
+
+h1{
+    font-size: 2em;
+    text-align: center;
+}
+
+.log{
+    width: 50%;
+    height: 600px;
+    background-color: #DBAFC1;
+}
+
+.who{
+    width: 50%;
+    height: 600px;
+    background-color: #E2E4F6;
+}
