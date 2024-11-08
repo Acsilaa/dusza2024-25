@@ -19,11 +19,11 @@ from re import template
 from . import controller
 from django.contrib import admin
 from django.urls import path
-from team import controller as team
+from User import controller as user
 from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('register', controller.registerUser,name='register'),
+    path('register', user.registerUser,name='register'),
     path('logout', LogoutView.as_view(),name='logout'),
     path('login', LoginView.as_view(template_name="login.html"),name='login'),
 
