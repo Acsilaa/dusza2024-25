@@ -7,8 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 class CustomUserLoginForm(AuthenticationForm):
     username = forms.CharField(label='username', min_length=5, max_length=150)
     password = forms.CharField(label='password', widget=forms.PasswordInput)
-    def is_valid(self):
-        return True
+
     def username_clean(self):
         username = self.data.get("username")
         new = User.objects.filter(username=username)

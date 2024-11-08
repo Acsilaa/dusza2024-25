@@ -27,8 +27,10 @@ def loginUser(request):
     if request.method == "POST":
         form = CustomUserLoginForm(request.POST)
         if form.is_valid():
-            print("form.cleaned_data")
+            print("///////////////////////////////////////////////")
+            #login(request, form.login())
             login(request, form.login())
+            print("----------------------------------------------")
             return redirect("index")
         else:
             print(form.errors)
