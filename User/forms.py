@@ -31,7 +31,7 @@ class CustomUserLoginForm(AuthenticationForm):
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Felhasználónév', min_length=5, max_length=150)
     password1 = forms.CharField(label='Jelszó', min_length=5,widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Megerősítő jelszó', min_length=5,widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Jelszó megerősítése', min_length=5,widget=forms.PasswordInput)
 
     def username_clean(self):
         username = self.cleaned_data['username']
