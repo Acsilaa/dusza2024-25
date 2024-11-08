@@ -23,15 +23,12 @@ def registerUser(request):
     return render(request, f'register.html', context)
 
 def loginUser(request):
-    form = CustomUserLoginForm()
+    form = CustomUserLoginForm(request.POST or None)
     if request.method == "POST":
-        form = CustomUserLoginForm(request.POST)
+        form = CustomUserLoginForm(request.POST,{"username":request.POST["username"],"password":request.POST["password"]})
         if form.is_valid():
-            print("form.cleaned_data")
             login(request, form.login())
             return redirect("index")
-        else:
-            print(form.errors)
     context = {'form': form}
     return render(request, f'login.html', context)
 
