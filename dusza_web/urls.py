@@ -29,6 +29,5 @@ urlpatterns = [
     path('login', user.loginUser,name='login'),
     path('team/register', team.registerTeam,name='team'),
 
-    path('<str:path>', controller.view),
-    path('', controller.view,name='index'),
+    path('', controller.render_view,name='index'),
 ]
