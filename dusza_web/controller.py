@@ -18,7 +18,7 @@ def contestantPanel(request):
     context = {}
     team = list(Team.objects.filter(user=request.user))
     context['hasTeam'] = team != []
-    context['team'] = team[0]
+    context['team'] = team[0] if team != [] else None
 
     return render(request, 'contestant/home.html', context)
 

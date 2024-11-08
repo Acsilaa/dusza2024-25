@@ -27,7 +27,7 @@ class TeamCreationForm(forms.Form):
         name = self.cleaned_data['name']
         new = Team.objects.filter(name=name)
         if new.count():
-            self.add_error("name", "Name Already Exist")
+            self.add_error("name", "Ez a név már létezik.")
             return False
         if self.cleaned_data['contestant4_name'] and self.cleaned_data['contestant4_grade'] is None:
             self.add_error("contestant4_grade", "Póttag évfolyama hiányzik")
