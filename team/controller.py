@@ -14,6 +14,7 @@ def showForm(request): #GET
     # get options (category, schools, languages)
     categories = list(Category.objects.values())
     data["categories"] = categories
+    print(categories)
     return render(request, f'register.html', data)
 
 def processRequest(request): #POST

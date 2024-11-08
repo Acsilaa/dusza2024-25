@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from team import controller as team
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('register', team.register),
 
     path('<str:path>', controller.view),
