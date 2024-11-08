@@ -37,27 +37,7 @@ table td:nth-child(1){
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
-#submitbtn {
-    width: max(30%,9em);
-    min-width: 9em;
-    padding: 10px;
-    background-color: #86626E;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 20px;
-    font-size: 1em;
-    padding: 10px;
-    box-shadow: 1px 1px 1px rgb(41, 41, 41);
-    border: #ffffff;
-}
 p.error{
     margin-top: 0;
     font-size: 13px;
-}
-/* Hover effect for the button */
-#submitbtn:hover {
-    background-color: #826983;
 }

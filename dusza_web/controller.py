@@ -1,6 +1,7 @@
 from urllib.request import Request
 from django.shortcuts import render, redirect
 from team.models import Team
+from contest.models import Contest
 
 def render_view(request):
     if(request.user.username):
@@ -19,6 +20,7 @@ def contestantPanel(request):
     team = list(Team.objects.filter(user=request.user))
     context['hasTeam'] = team != []
     context['team'] = team[0] if team != [] else None
+    context['in_deadline'] = Contest.isOpen()
 
     return render(request, 'contestant/home.html', context)
 

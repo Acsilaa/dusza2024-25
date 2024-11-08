@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block content %}
-contestant home site <br>
 
 {% if not hasTeam %}
 <!-- has no team yet -->
-<!-- give the option to create team -->
- <br>
-<p>Még nincs csapatod. Csinálj egyet itt:</p>
-<a href="/team/create">Csapat regisztrálása</a>
+<div class="cont">
+    <h2>Még nincs csapatod. Jelentkeznél a versenyre?</h2>
+    <!-- if statementtel ha a deadline okés -->
+    <button class="submitbtn" type="submit">Jelentkezz!</button>
+</div>
+
 {% endif %}
 
 
