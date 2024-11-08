@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'language',
     'category',
     'school',
+    'contest',
 ]
 
 MIDDLEWARE = [

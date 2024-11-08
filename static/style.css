@@ -8,6 +8,15 @@ body{
 nav{
     box-shadow: 50px 50px rgba(#86626E, 100%);
 }
+nav ul{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+nav ul li:last-child{
+    margin-left: auto;
+    justify-self: end;
+}
 
 .container{
     margin: auto;

@@ -1,15 +1,18 @@
 {% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'contestantpanel.css' %}">
+{% endblock %}
+
 {% block content %}
-contestant home site
+contestant home site <br>
 
-
-
-
-
-
-
-
-
+{% if not hasTeam %}
+<!-- has no team yet -->
+<!-- give the option to create team -->
+<h1>Még nincs csapatod. Csinálj egyet itt:</h1>
+<a href="createTeam">Csapat regisztrálása</a>
+{% endif %}
 
 
 {% endblock %}
