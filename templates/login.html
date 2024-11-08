@@ -3,6 +3,11 @@
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
+    {% for error in form.errors.as_data.values %}
+        {% for data in error.0 %}
+             <p class="error">{{ data }}</p>
+        {% endfor %}
+    {% endfor %}
     {% for field in form %}
         <div class="fieldWrapper">
             {{ field.errors }}
