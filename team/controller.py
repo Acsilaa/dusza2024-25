@@ -24,7 +24,8 @@ def showForm(request): #GET
 def processRequest(request): #POST
     form = RawTeamForm(request.POST)
     if form.is_valid():
-        print(form.cleaned_data)
+        print("asd"+form.cleaned_data)
     else:
         print(form.errors)
-    return showForm(request)
+    context = {'form': form}
+    return render(request,'register.html',context)
