@@ -1,7 +1,7 @@
 from urllib.request import Request
 
 from django.shortcuts import render
-
+from django.contrib.auth.forms import UserCreationForm
 from category.models import Category
 from .forms import RawTeamForm
 from django.contrib.auth.forms import UserCreationForm
@@ -11,6 +11,7 @@ def register(request):
         return showForm(request)
     elif request.method == "POST":
         return processRequest(request)
+
 def showForm(request): #GET
     form = RawTeamForm(request.GET)
     context = {'form': form}
