@@ -8,6 +8,7 @@ body{
 nav{
     box-shadow: 50px 50px rgba(#86626E, 100%);
     padding-left: 10px;
+    padding-right: 10px;
     box-sizing: border-box;
 }
 nav ul{
