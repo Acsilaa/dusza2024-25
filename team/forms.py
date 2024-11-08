@@ -25,7 +25,7 @@ class TeamCreationForm(forms.Form):
     language =  forms.ModelChoiceField(queryset=Language.objects.all(),initial=Category.objects.first())
 
     def name_clean(self):
-        name = self.cleaned_data['name'].lower()
+        name = self.cleaned_data['name']
         new = User.objects.filter(name=name)
         if new.count():
             raise ValidationError("Name Already Exist")

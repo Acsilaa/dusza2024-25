@@ -14,7 +14,7 @@ class CustomUserLoginForm(AuthenticationForm):
     password = forms.CharField(label='Jelszó', widget=forms.PasswordInput)
 
     def username_clean(self):
-        username = self.cleaned_data['username'].lower()
+        username = self.cleaned_data['username']
         new = User.objects.filter(username=username)
         if new.count() < 1:
             self.add_error("username","User Does Not Exist")
