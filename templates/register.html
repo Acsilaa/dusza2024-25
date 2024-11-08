@@ -1,6 +1,15 @@
-<!-- IDE JÖN A TEAM REGISTER FORM -->
-<a href="/">Főoldal</a>
-<form method="POST">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+{% extends "layouts/main.html" %}
+{% block content %}
+ 
+  <form id="login" method="post">
+    <h2><b>Login</b></h2>
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+
+        </div>
+    {% endfor %}
+    <button id="submitbtn" type="submit">Regisztráció</button>
+  </form>
+{% endblock %}
+
