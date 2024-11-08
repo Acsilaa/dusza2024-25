@@ -19,8 +19,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from team import controller as team
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/<str:path>', controller.view),
+    path('registerpost', team.registerTeam),
+
+    path('<str:path>', controller.view),
     path('', controller.view),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
