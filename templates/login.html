@@ -1,10 +1,15 @@
 {% extends "layouts/main.html" %}
 {% block content %}
-<a href="/">Főoldal</a>
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
     <button type="submit">Login</button>
+
   </form>
 {% endblock %}
