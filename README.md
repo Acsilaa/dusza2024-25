@@ -11,7 +11,7 @@
 │   ├── models.py
 │   ├── tests.py
 │   └── views.py
-├── guest
+├── templates
 │   └── index.html
 ├── .gitignore
 ├── README.md

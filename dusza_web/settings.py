@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #third party
+    'bootstrap5',
     #own apps (django-admin startapp <name>)
-    'guest'
+    'team',
+    'language',
+    'category',
+    'school',
+    'organiser',
 ]
 
 MIDDLEWARE = [
