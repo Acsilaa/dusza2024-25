@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from team import controller as team
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registerpost', team.registerTeam),
+    path('register', team.register),
 
     path('<str:path>', controller.view),
     path('', controller.view),
