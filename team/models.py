@@ -1,11 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 from language.models import Language
 from school.models import School
 from category.models import Category
 # Create your models here.
 class Team(models.Model):
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=128)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100, unique=True)
     school = models.ForeignKey(to=School ,on_delete=models.CASCADE)
     contestant1_name = models.CharField(max_length=100)
@@ -22,4 +22,4 @@ class Team(models.Model):
 
 
     def __str__(self) -> str:
-        return self.name
+        return self.user
