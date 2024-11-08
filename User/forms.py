@@ -1,10 +1,13 @@
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.forms import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login, logout
+
 class CustomUserLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserLoginForm, self).__init__(*args, **kwargs)
+        self.error_messages["invalid_login"] = "Kérlek írj be egy jó felhasználónév, jelszó kombinációt. Note that both fields may be case-sensitive."
     username = forms.CharField(label='username', min_length=5, max_length=150)
     password = forms.CharField(label='password', widget=forms.PasswordInput)
     def username_clean(self):
