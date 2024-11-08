@@ -18,9 +18,15 @@ def render_view(request):
 def contestantPanel(request):
     context = {}
     team = list(Team.objects.filter(user=request.user))
-    context['hasTeam'] = team != []
-    context['team'] = team[0] if team != [] else None
+    context['hasTeam'] = Team.hasTeam(request.user)
     context['in_deadline'] = Contest.isOpen()
+
+    team = team[0] if team != [] else None
+    if(team != None):
+        team.id = None
+        team.user = None
+    context['team'] = team
+
 
     return render(request, 'contestant/home.html', context)
 
