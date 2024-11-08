@@ -1,15 +1,16 @@
 {% extends "layouts/main.html" %}
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
+ 
+  <form id="login" method="post">
+    <h2><b>Bejelentkezés</b></h2>
     {% csrf_token %}
     {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
-        </div>
-    {% endfor %}
-    <button type="submit">Login</button>
+    <div class="fieldWrapper">
+        {{field.label_tag}}
+        {{field}}
+    </div>
 
+    {% endfor %}
+    <button id="submitbtn" type="submit">Bejelentkezés</button>
   </form>
 {% endblock %}
