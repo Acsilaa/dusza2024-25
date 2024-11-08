@@ -19,3 +19,7 @@ class Team(models.Model):
     teachers = models.TextField()
     category = models.ForeignKey(to=Category ,on_delete=models.CASCADE)
     language = models.ForeignKey(to=Language, on_delete=models.CASCADE)
+
+
+    def __str__(self) -> str:
+        return self.name
