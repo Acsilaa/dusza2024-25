@@ -7,7 +7,7 @@ def registerTeam(request):
     if request.method == "POST":
         form = TeamCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save(request)
             return redirect("index") #TODO
     context = {'form': form}
     return render(request, f'register.html', context)

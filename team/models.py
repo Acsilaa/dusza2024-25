@@ -23,3 +23,4 @@ class Team(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
+
