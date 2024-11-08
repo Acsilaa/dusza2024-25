@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
-def view(request):
-    print("asd")
-    return render(request, 'index.html', {})
+def view(request, path="index"):
+
+    return render(request, f'{path}.html', {})

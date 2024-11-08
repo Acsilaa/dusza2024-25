@@ -17,7 +17,9 @@ Including another URLconf
 from . import controller
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', controller.view)
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
