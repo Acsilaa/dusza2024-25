@@ -9,8 +9,9 @@ def registerUser(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
-            print("asd" + form.cleaned_data)
-            return redirect("")
+            print(form.cleaned_data)
+            form.save()
+            return redirect("index")
         else:
             print(form.errors)
     context = {'form': form}
