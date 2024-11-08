@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'language',
     'category',
     'school',
-    'organiser',
 ]
 
 MIDDLEWARE = [
