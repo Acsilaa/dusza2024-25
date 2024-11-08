@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from category.models import Category
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserLoginForm
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 def registerUser(request):
@@ -22,20 +23,18 @@ def registerUser(request):
     return render(request, f'register.html', context)
 
 def loginUser(request):
-    form = UserCreationForm(request.GET)
+    form = CustomUserLoginForm()
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustomUserLoginForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
+            print("form.cleaned_data")
+            login(request, form.login())
             return redirect("index")
         else:
             print(form.errors)
     context = {'form': form}
-    data = {}
-    # get options (category, schools, languages)
-    categories = list(Category.objects.values())
-    data["categories"] = categories
-    print(categories)
-    return render(request, f'register.html', context)
+    return render(request, f'login.html', context)
 
+def logoutUser(request):
+    logout(request)
+    return redirect("index")
