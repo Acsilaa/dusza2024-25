@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #third party
-    "bootstrap5",
+    "django-bootstrap",
     #own apps (django-admin startapp <name>)
     'team',
     'language',
