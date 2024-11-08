@@ -6,7 +6,8 @@
             {%  for error in field.errors %}
                 <p class="error text-danger fw-bold mb-0 mt-2">{{ error }}</p>
             {% endfor %}
-            {{ field.label_tag }} {{ field }}
+            {{ field.label_tag }}
+            <p>{{ field }}</p>
         </div>
     {% endfor %}
     <input type="submit"  value="Regisztráció">
