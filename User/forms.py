@@ -34,7 +34,7 @@ class CustomUserCreationForm(UserCreationForm):
     password2 = forms.CharField(label='Megerősítő jelszó', widget=forms.PasswordInput)
 
     def username_clean(self):
-        username = self.cleaned_data['username'].lower()
+        username = self.cleaned_data['username']
         new = User.objects.filter(username=username)
         if new.count():
             raise ValidationError("User Already Exist")
