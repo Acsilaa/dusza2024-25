@@ -1,4 +1,23 @@
-from django.shortcuts import render
+from urllib.request import Request
 
-def registerTeam():
-    print("hey")
+from django.shortcuts import render, redirect
+from category.models import Category
+from .forms import UserForm
+
+def registerUser(request):
+    form = UserForm(request.GET)
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            print("asd" + form.cleaned_data)
+            return redirect("")
+        else:
+            print(form.errors)
+    context = {'form': form}
+    data = {}
+    # get options (category, schools, languages)
+    categories = list(Category.objects.values())
+    data["categories"] = categories
+    print(categories)
+    return render(request, f'register.html', context)
+
