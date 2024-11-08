@@ -3,13 +3,15 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.forms import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import Group
+
 
 class CustomUserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserLoginForm, self).__init__(*args, **kwargs)
         self.error_messages["invalid_login"] = "Kérlek írj be egy jó felhasználónév, jelszó kombinációt. Note that both fields may be case-sensitive."
-    username = forms.CharField(label='username', min_length=5, max_length=150)
-    password = forms.CharField(label='password', widget=forms.PasswordInput)
+    username = forms.CharField(label='Felhasználónév', min_length=5, max_length=150)
+    password = forms.CharField(label='Jelszó', widget=forms.PasswordInput)
 
     def username_clean(self):
         username = self.cleaned_data['username'].lower()
@@ -27,9 +29,9 @@ class CustomUserLoginForm(AuthenticationForm):
         return password
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='username', min_length=5, max_length=150)
-    password1 = forms.CharField(label='password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+    username = forms.CharField(label='Felhasználónév', min_length=5, max_length=150)
+    password1 = forms.CharField(label='Jelszó', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Megerősítő jelszó', widget=forms.PasswordInput)
 
     def username_clean(self):
         username = self.cleaned_data['username'].lower()
@@ -52,4 +54,6 @@ class CustomUserCreationForm(UserCreationForm):
             username=self.cleaned_data['username'],
             password=self.cleaned_data['password1'],
         )
+        my_group = Group.objects.get(name='contestant')
+        my_group.user_set.add(user)
         return user
