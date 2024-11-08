@@ -11,9 +11,10 @@
 
     </title>
     {% load static %}
-    <script src="{% static '/test.js' %}" defer></script>
+    <script src="{% static 'test.js' %}" defer></script>
 </head>
 <body>
+    <img class="w-25" src="{% static '1.jpg' %}">
     <main>
         {% block content %}
         {% endblock %}
