@@ -1,9 +1,11 @@
 {% extends "layouts/main.html" %}
 {% block content %}
-<form method="POST">{% csrf_token %}
+<form id="login" method="POST">{% csrf_token %}
     {% for field in form %}
         <div class="fieldWrapper">
-            {{ field.errors }}
+            {%  for error in field.errors %}
+                <p class="error text-danger fw-bold">{{ error }}</p>
+            {% endfor %}
             {{ field.label_tag }} {{ field }}
         </div>
     {% endfor %}
