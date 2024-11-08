@@ -10,6 +10,7 @@ class CustomUserLoginForm(AuthenticationForm):
         self.error_messages["invalid_login"] = "Kérlek írj be egy jó felhasználónév, jelszó kombinációt. Note that both fields may be case-sensitive."
     username = forms.CharField(label='username', min_length=5, max_length=150)
     password = forms.CharField(label='password', widget=forms.PasswordInput)
+
     def username_clean(self):
         username = self.cleaned_data['username'].lower()
         new = User.objects.filter(username=username)

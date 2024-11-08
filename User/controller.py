@@ -20,6 +20,7 @@ def loginUser(request):
         form = CustomUserLoginForm(request.POST,{"username":request.POST["username"],"password":request.POST["password"]})
         if form.is_valid():
             login(request, form.login())
+
             return redirect("index")
     context = {'form': form}
     return render(request, f'login.html', context)
