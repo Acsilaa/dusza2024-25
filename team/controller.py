@@ -1,19 +1,18 @@
 from urllib.request import Request
 
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from category.models import Category
-from .forms import RawTeamForm
-from django.contrib.auth.forms import UserCreationForm
+from .forms import UserForm
 
-def register(request):
-    if request.method == "GET":
-        return showForm(request)
-    elif request.method == "POST":
-        return processRequest(request)
-
-def showForm(request): #GET
-    form = RawTeamForm(request.GET)
+def registerUser(request):
+    form = UserForm(request.GET)
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            print("asd" + form.cleaned_data)
+            return redirect("")
+        else:
+            print(form.errors)
     context = {'form': form}
     data = {}
     # get options (category, schools, languages)
@@ -22,11 +21,3 @@ def showForm(request): #GET
     print(categories)
     return render(request, f'register.html', context)
 
-def processRequest(request): #POST
-    form = RawTeamForm(request.POST)
-    if form.is_valid():
-        print("asd"+form.cleaned_data)
-    else:
-        print(form.errors)
-    context = {'form': form}
-    return render(request,'register.html',context)

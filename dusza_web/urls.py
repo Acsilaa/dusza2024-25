@@ -17,12 +17,10 @@ Including another URLconf
 from . import controller
 from django.contrib import admin
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 from team import controller as team
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('register', team.register),
+    path('register', team.registerUser,name='register'),
 
     path('<str:path>', controller.view),
     path('', controller.view),
