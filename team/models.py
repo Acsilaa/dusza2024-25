@@ -25,3 +25,5 @@ class Team(models.Model):
     def __str__(self) -> str:
         return self.user.username
 
+    def hasTeam(user):
+        return list(Team.objects.filter(user=user).all()) != []
