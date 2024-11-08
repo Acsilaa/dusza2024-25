@@ -18,7 +18,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
         <a class="navbar-brand" href="/">Dusza</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,22 +28,15 @@
               <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
             </li>
             {% if user.is_authenticated %}
-                <li class="nav-item">
+            
               <a class="nav-link" href="/logout">Kijelentkezés</a>
-            </li>
-                <li class="nav-item">
-              {{ user }}
-            </li>
+              <a class="nav-link" href="/team/register">Csapat nevezése</a>
             {% else %}
-                <li class="nav-item">
-              <a class="nav-link" href="/login">Bejelentkezés</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/register">Regisztráció</a>
-            </li>
+            <a class="nav-link" href="/login">Bejelentkezés</a>
+            <a class="nav-link" href="/register">Regisztráció</a>
+            
+            <h2 id="udvozlet">Üdv {{ user }}!</h2>
             {% endif %}
-          </ul>
-        </div>
       </div>
     </nav>
     <main>
