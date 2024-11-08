@@ -1,6 +1,7 @@
 <!-- IDE JÖN A TEAM REGISTER FORM -->
 <a href="/">Főoldal</a>
-<form action="/registerpost">
-    
+<form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
 </form>
 {{categories}}
