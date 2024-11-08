@@ -4,12 +4,12 @@
     {% for field in form %}
         <div class="fieldWrapper">
             {%  for error in field.errors %}
-                <p class="error text-danger fw-bold">{{ error }}</p>
+                <p class="error text-danger fw-bold mb-0 mt-2">{{ error }}</p>
             {% endfor %}
             {{ field.label_tag }}
             <p>{{ field }}</p>
         </div>
     {% endfor %}
-    <input type="submit" value="Regisztráció">
+    <input type="submit"  value="Regisztráció">
 </form>
 {% endblock %}
