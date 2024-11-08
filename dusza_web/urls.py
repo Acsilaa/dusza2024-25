@@ -23,10 +23,10 @@ from User import controller as user
 from team import controller as team
 from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
-    path('admin', admin.site.urls),
-    path('register', user.registerUser,name='register'),
-    path('logout', user.logoutUser,name='logout'),
-    path('login', user.loginUser,name='login'),
+    path('admin/', admin.site.urls),
+    path('register/', user.registerUser,name='register'),
+    path('logout/', user.logoutUser,name='logout'),
+    path('login/', user.loginUser,name='login'),
     path('team/register', team.registerTeam,name='team'),
 
     path('', controller.render_view,name='index'),
