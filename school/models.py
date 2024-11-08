@@ -8,3 +8,6 @@ class School(models.Model):
     address = models.CharField(max_length=300, unique=True)
     contact_name = models.CharField(max_length=100)
     contact_email = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
