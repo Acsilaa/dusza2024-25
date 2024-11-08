@@ -76,8 +76,7 @@ h1{
     cursor: pointer;
 }
 
-/* Hover effect for the button */
 #submitbtn:hover {
-    background-color: #0056b3;
+    background-color: #d3d3d3;
 }
 

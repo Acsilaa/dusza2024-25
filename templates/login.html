@@ -4,11 +4,10 @@
   <form id="login" method="post">
     <h2><b>Bejelentkezés</b></h2>
     {% csrf_token %}
-    {% for error in form.errors.as_data.values %}
+
         {% for data in error.0 %}
              <p class="error">{{ data }}</p>
         {% endfor %}
-    {% endfor %}
     {% for field in form %}
     <div class="fieldWrapper">
         {{field.label_tag}}
