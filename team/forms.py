@@ -10,7 +10,7 @@ from school.models import School
 from .models import Team
 
 class TeamCreationForm(forms.Form):
-    name = forms.CharField(label='name', min_length=5, max_length=150)
+    name = forms.CharField(label='name', min_length=5, max_length=150)#unique
     contestant1_name = forms.CharField(label='1. versenyző neve',min_length=5, max_length=150 )
     contestant1_grade = forms.DecimalField(label='1. versenyző évfolyama', decimal_places=0,max_digits=2,min_value=1)
     contestant2_name = forms.CharField(label='2. versenyző neve',min_length=5, max_length=150 )
@@ -23,10 +23,16 @@ class TeamCreationForm(forms.Form):
     teachers = forms.CharField(label='Felkészítő tanár neve',min_length=5, max_length=150 )
     category =  forms.ModelChoiceField(label="Kategória",queryset=Category.objects.all(),initial=Category.objects.first())
     language =  forms.ModelChoiceField(label="Nyelv",queryset=Language.objects.all(),initial=Category.objects.first())
-
+    def check(self):
+        name = self.cleaned_data['name']
+        new = Team.objects.filter(name=name)
+        if new.count():
+            self.add_error("name", "Name Already Exist")
+            return False
+        return True
     def name_clean(self):
         name = self.cleaned_data['name']
-        new = User.objects.filter(name=name)
+        new = Team.objects.filter(name=name)
         if new.count():
             raise ValidationError("Name Already Exist")
         return name

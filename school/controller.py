@@ -1,11 +1,10 @@
-from urllib.request import Request
 from django.shortcuts import render,redirect
-from .forms import TeamCreationForm
+from .forms import SchoolCreationForm
 
-def registerTeam(request):
-    form = TeamCreationForm(request.GET)
+def registerSchool(request):
+    form = SchoolCreationForm(request.GET)
     if request.method == "POST":
-        form = TeamCreationForm(request.POST)
+        form = SchoolCreationForm(request.POST)
         if form.is_valid() and form.check():
             form.save(request)
             return redirect("index") #TODO
