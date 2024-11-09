@@ -6,7 +6,9 @@
 
 
 {% block content %}
+
 <!-- {% if not hasTeam %} -->
+
 <div class="cont">
     <h1>Iskola adatai</h1>
     <p>Neve : {{ name }}</p>
@@ -14,8 +16,10 @@
     <p>Kapcsolattartó neve : {{ contact_name }}</p>
     <p>Kapcsolattartó email címe : {{ contact_email }}</p>
     <button class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url 'school.modify' %}">Módosítás</a></button>
+
 </div> 
 <!-- {% endif %} -->
+
 
 
 
@@ -47,9 +51,6 @@
       </div>
     </section>
 {%endblock%}
-
-
-
 
    {% if hasTeam %}
     <div class="grid-container">
