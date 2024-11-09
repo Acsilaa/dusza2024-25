@@ -16,7 +16,7 @@ def registerTeam(request):
     form = TeamCreationForm(request.GET)
     if request.method == "POST":
         form = TeamCreationForm(request.POST)
-        if form.is_valid() and form.check():
+        if form.is_valid() and form.check(name=True,contestant4=True):
             form.save(request)
             messages.success(request, 'Sikeresen regisztrálva!')
             return redirect("index")
@@ -48,7 +48,7 @@ def modifyTeam(request):
     })
     if request.method == "POST":
         form = TeamCreationForm(request.POST)
-        if form.is_valid() and form.checkForModify():
+        if form.is_valid() and form.check(contestant4=True):
             form.update(request)
             messages.success(request, 'Sikeresen módosítva!')
             return redirect("index")
