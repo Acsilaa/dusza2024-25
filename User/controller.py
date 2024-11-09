@@ -23,6 +23,8 @@ def loginUser(request):
             login(request, form.login())
             return redirect("index")
     context = {'form': form}
+    isError = form.errors
+    context['formerror'] = "Rossz felhasználónév vagy jelszó." if isError else None
     return render(request, f'login.html', context)
 
 def logoutUser(request):

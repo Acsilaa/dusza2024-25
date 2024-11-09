@@ -6,6 +6,9 @@
 {% block content %}
   <form id="login" method="post">
     <h2><b>Bejelentkezés</b></h2>
+    {% if formerror != None %}
+    {{formerror}}
+    {%endif%}
     {% csrf_token %}
     <table>
 
