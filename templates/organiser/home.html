@@ -8,6 +8,14 @@
 <script src="{% static 'organiser/categories.js' %}" defer></script>
 <script src="{% static 'organiser/deadline.js' %}" defer></script>
 {% endblock %}
+{% block nav_extended %}
+    <li>
+        <a class="nav-link" href="{% url 'team.index' %}">Jelentkezések megtekintése</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'school.index' %}">Iskolák megtekintése</a>
+    </li>
+{% endblock %}
 {% block content %}
 <form action="{% url 'organiser.change_dl' %}" method="post" id="dlform">
     {% csrf_token %}
