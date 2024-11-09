@@ -216,3 +216,8 @@ form{
     position: relative;
     z-index: 10;
 }
+
+
+section.footer p{
+    color: rgb(153, 153, 153);
+}
