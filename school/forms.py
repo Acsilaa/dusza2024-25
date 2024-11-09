@@ -35,14 +35,15 @@ class SchoolCreationForm(forms.Form):
     def check(self,request):
         name = self.cleaned_data['name']
         new = School.objects.filter(name=name).first()
-        if new and new.id != School.objects.filter(user=request.user).first().id:
-            self.add_error("name", "Ilyen iskola névvel már létezik iskola!")
-            return False
-        address = self.cleaned_data['address']
-        new = School.objects.filter(address=address).first()
-        if new and new.id != School.objects.filter(user=request.user).first().id:
-            self.add_error("address", "Ilyen iskola címmel már létezik iskola!")
-            return False
+        if School.objects.filter(user=request.user).first() is not None:
+            if new and new.id != School.objects.filter(user=request.user).first().id:
+                self.add_error("name", "Ilyen iskola névvel már létezik iskola!")
+                return False
+            address = self.cleaned_data['address']
+            new = School.objects.filter(address=address).first()
+            if new and new.id != School.objects.filter(user=request.user).first().id:
+                self.add_error("address", "Ilyen iskola címmel már létezik iskola!")
+                return False
         username = self.cleaned_data['username']
         new = User.objects.filter(username=username).first()
         if new:
