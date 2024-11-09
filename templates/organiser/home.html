@@ -27,7 +27,7 @@
     <label for="iClosed"></label>
     <button class="btn">Mentés</button>
 </form>
-<a href="{% url 'organiser.toggle_dl_close' %}"><button class="btn">
+<a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn" >
         {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
     </button></a>
 {% endblock %}
@@ -42,38 +42,35 @@
                 class="shape-fill"></path>
         </svg>
     </div>
-
+    
 
     <div class="ajaxforms">
         <div class="languages ajaxform">
-            {% for lang in languages %}     
-            <div class="ajaxitem">
-                <span>{{lang}}</span>
-                <button class="delete">Törlés</button>
-            </div>
-            {%endfor%}
             <div class="adder">
                 <input type="text">
                 <button class="add">Hozzáadás</button>
             </div>
+            
         </div>
 
 
         <div class="categories ajaxform">
-            {% for category in categories %}
-            <div class="ajaxitem">
-                <span>{{category}}</span>
-                <button class="delete">Törlés</button>
-            </div>
-            {%endfor%}
             <div class="adder">
                 <input type="text">
                 <button class="add">Hozzáadás</button>
             </div>
-
         </div>
     </div>
-
-
+    <script>
+        langs = [];
+        cats = [];
+        {% for l in languages %}
+            langs.push("{{l}}")
+        {%endfor%}
+        {% for c in categories %}
+            cats.push("{{c}}")
+        {%endfor%}
+    </script>
+    
 </section>
 {% endblock %}

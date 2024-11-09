@@ -13,7 +13,7 @@ def addLanguage(request):
     if request.method == "POST" and request.POST.get("language") is not None:
         if request.POST.get("language")!="":
             Language.objects.create(name=request.POST.get("language"))
-            return JsonResponse({"result": "success"})
+            return JsonResponse({"result": "success", "lang": request.POST.get("language")})
     return JsonResponse({"result":"failed"})
 
 def removeLanguage(request):
@@ -22,6 +22,7 @@ def removeLanguage(request):
         return redirect('login')
     if request.method == "POST" and request.POST.get("language") is not None:
         if request.POST.get("language")!="":
-            Language.objects.get(name=request.POST.get("language")).delete()
+            l = Language.objects.filter(name=request.POST.get("language")).first().delete()
+
             return JsonResponse({"result": "success"})
     return JsonResponse({"result": "failed"})
