@@ -44,9 +44,11 @@ def contestantPanel(request):
     team = list(Team.objects.filter(user=request.user))
     context['hasTeam'] = Team.hasTeam(request.user)
     context['in_deadline'] = Contest.isOpen()
+    context["hasMissing"] = False
 
     team = team[0] if team != [] else None
     if(team != None):
+        context["hasMissing"] = team.missing != "" or team.missing is not None
         team.id = None
         team.user = None
         context['team'] = [
@@ -69,7 +71,6 @@ def contestantPanel(request):
             context["state"] = "Iskola által jóváhagyva"
         if(team.joined):
             context["state"] = "Szervezők által jóváhagyva"
-
     return render(request, 'contestant/home.html', context)
 
 

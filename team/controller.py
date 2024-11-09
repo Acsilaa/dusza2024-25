@@ -81,18 +81,19 @@ def missingIndex(request):
         return redirect('login')
     team = Team.objects.get(user=request.user)
     # if team already has a missing
+    print(team.missing)
     if team.missing == "" or team.missing is None:
         return redirect('index')
     context = {'message': team.missing}
     #TODO html
-    return render(request, f'organiser/team_missing.html', context)
+    return render(request, f'contestant/missing.html', context)
 def missing(request,id):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     team = Team.objects.get(pk=id)
-    # if team already has a missing
-    if team.missing != "" or team.missing is not None:
+    # if team already has a missing or already joined
+    if (team.missing != "" or team.missing is not None) or team.joined:
         return redirect('index')
     form = TeamMissingForm()
     if request.method == "POST":

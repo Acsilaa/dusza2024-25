@@ -64,13 +64,14 @@
         <li>
           <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
         </li>
-        <li class="user_name">
-          {{user}}
+
+        <li class="user_name d-flex">
+        {% block missing %}
+        {% endblock %}
+          <p class="m-auto">{{user}}</p>
         </li>
-        {% else %}
-
-
         {% endif %}
+      </ul>
     </div>
   </nav>
 

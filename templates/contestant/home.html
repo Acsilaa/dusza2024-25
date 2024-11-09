@@ -4,9 +4,13 @@
 <link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
 {% endblock %}
 
+{% block missing %}
+    {% if hasMissing %}
+        <a class="nav-link text-danger"  href="{% url 'team.missingIndex' %}"><b>Hiánypótlás</b></a>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-
-
 {% if not hasTeam %}
 <div class="cont">
 <!-- has no team yet -->

@@ -44,7 +44,7 @@ class SchoolCreationForm(forms.Form):
             self.add_error("address", "Ilyen iskola címmel már létezik iskola!")
             return False
         username = self.cleaned_data['username']
-        new = School.objects.filter(username=username).first()
+        new = User.objects.filter(username=username).first()
         if new:
             self.add_error("username", "Ilyen felhasználó már létezik!")
             return False

@@ -24,8 +24,11 @@ class TeamMissingForm(forms.Form):
     missing = forms.CharField(label='Üzenet',max_length=UNIFIED_MAX_LENGTH,min_length=UNIFIED_MIN_LENGTH)
 
     def save(self, request, team_id):
+        #TODO: visszavonja a jóváhagyást a sulitól
         team = Team.objects.get(pk=team_id)
         team.missing = self.cleaned_data['missing']
+        team.approved = False
+        team.approval_file = None
         team.save()
 class TeamApprovalForm(forms.Form):
     def __init__(self,*args,**kwargs):
