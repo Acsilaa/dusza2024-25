@@ -11,7 +11,7 @@ def registerSchool(request):
     form = SchoolCreationForm(request.GET)
     if request.method == "POST":
         form = SchoolCreationForm(request.POST)
-        if form.is_valid() and form.check(True,True,True,True):
+        if form.is_valid() and form.check(request):
             form.save(request)
             messages.success(request, 'Sikeresen regisztrálva!')
             return redirect("index")
@@ -32,7 +32,7 @@ def modifySchool(request):
     if request.method == "POST":
         form = SchoolCreationForm(request.POST)
         form.prepare()
-        if form.is_valid() and form.check(name=False,address=False):
+        if form.is_valid() and form.check(request):
             form.update(request)
             messages.success(request, 'Sikeresen módosítva!')
             return redirect("index")
