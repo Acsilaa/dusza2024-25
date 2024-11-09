@@ -7,16 +7,15 @@
   <form id="login" method="post">
     <h2><b>Bejelentkezés</b></h2>
     {% csrf_token %}
-
-        {% for data in error %}
-             <p class="error">{{ data }}</p>
-        {% endfor %}
     <table>
 
     {% for field in form %}
       <tr class="fieldWrapper">
           <td>{{field.label_tag}}</td>
           <td>{{field}}</td>
+            {%  for error in field.errors %}
+                <p class="error text-danger fw-bold mb-2 mt-1">{{ error }}</p>
+            {% endfor %}
       </tr>
     {% endfor %}
     </table>

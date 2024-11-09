@@ -39,14 +39,13 @@ class TeamCreationForm(forms.Form):
     teachers = forms.CharField(label='Felkészítő tanár neve',min_length=UNIFIED_MIN_LENGTH, max_length=UNIFIED_MAX_LENGTH )
     category =  forms.ModelChoiceField(label="Kategória",queryset=Category.objects.all(),initial=Category.objects.first())
     language =  forms.ModelChoiceField(label="Nyelv",queryset=Language.objects.all(),initial=Category.objects.first())
-    def check(self,name=False,contestant4=False):
-        if name:
-            name = self.cleaned_data['name']
-            new = Team.objects.filter(name=name)
-            if new.count():
-                self.add_error("name", "Ilyen csapatnév már létezik.")
-                return False
-        if contestant4 and(self.cleaned_data['contestant4_name'] != "" and self.cleaned_data['contestant4_grade'] is None) or (
+    def check(self,request):
+        name = self.cleaned_data['name']
+        new = Team.objects.filter(name=name).first()
+        if new and new.id != Team.objects.filter(user=request.user).first().id:
+            self.add_error("name", "Ilyen csapatnév már létezik.")
+            return False
+        if (self.cleaned_data['contestant4_name'] != "" and self.cleaned_data['contestant4_grade'] is None) or (
                 self.cleaned_data['contestant4_name'] == "" and self.cleaned_data['contestant4_grade']):
             self.add_error("contestant4_grade", "Póttag évfolyama vagy neve hiányzik")
             return False
