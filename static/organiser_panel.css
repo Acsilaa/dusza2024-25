@@ -2,4 +2,27 @@
     margin: 1em;
 }
 
-.ajaxform
+.ajaxforms{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.ajaxform{
+    border: 1px solid black;
+}
+.adder{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.adder .add{
+    height: 2em;
+    box-sizing: border-box;
+}
+.adder input{
+    width: 100%;
+    box-sizing: border-box;
+    height: 2em;
+}
