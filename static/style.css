@@ -79,7 +79,6 @@ h1 {
     min-width: 9em;
     padding: 10px;
     background-color: #86626E;
-    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -91,6 +90,12 @@ h1 {
 
 .submitbtn:hover {
     background-color: #826983;
+    
+}
+
+.btn:hover{
+    background-color: #ffffff;
+    color: #86626E;
 }
 
 
