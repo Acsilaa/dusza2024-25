@@ -38,13 +38,7 @@ urlpatterns = [
     path('team/approve/', team.modifyTeam,name='team.approve'),
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
-    path('contest/update/', lambda x: x,name='contest.update'),
-    path('contest/close/', lambda x: x,name='contest.close'),
-
-    path('category/add/', lambda x: x,name='category.add'),
-    path('category/remove/', lambda x: x,name='category.remove'),
-    path('language/add/',lambda x: x,name='language.add'),
-    path('language/remove/',lambda x: x,name='language.remove'),
+    
 
 
 
@@ -57,4 +51,12 @@ path('team/', school.registerSchool,name='team.index'),
 
     path('school/', school.registerSchool,name='school.register'),
     path('school/register', school.registerSchool,name='school.register'),
+
+    path('contest/update/', lambda x: x,name='contest.update'),
+    path('contest/close/', lambda x: x,name='contest.close'),
+
+    path('category/add/', lambda x: x,name='category.add'),
+    path('category/remove/', lambda x: x,name='category.remove'),
+    path('language/add/',lambda x: x,name='language.add'),
+    path('language/remove/',lambda x: x,name='language.remove'),
 """
