@@ -35,10 +35,12 @@
                 <td>{{ team.name }}</td>
                 <td>{{ team.category }}</td>
                 <td>{{ team.language }}</td>
-                {% if team.approved %}
-                    <td>✅</td>
+                {% if team.approved and team.joined %}
+                    <td>szervezők által jóváhagyva</td>
+                {% elif team.approved and not team.joined %}
+                    <td>iskola által jóváhagyva</td>
                 {% else %}
-                    <td>❌</td>
+                    <td>regisztrált</td>
                 {% endif %}
                 {% if not team.approved %}
                     <td>

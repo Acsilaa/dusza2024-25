@@ -95,7 +95,6 @@ def more(request,id):
     if (team is None):
         return redirect('index')
     context={}
-    team.id = None
     team.user = None
     context['team'] = [
         team.name,
@@ -111,6 +110,7 @@ def more(request,id):
         team.teachers,
         team.category.name,
         team.language.name,
+        team.id
     ]
     context["state"] = "Regisztrált"
     if (team.approved):
@@ -131,9 +131,25 @@ def index(request):
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     teams = Team.objects.all()
+    #TODO: limit
     context = {'teams': teams}
     return render(request, f'organiser/teams.html', context)
 def download(request,id):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    team = Team.objects.get(pk=id)
+    if (team is None):
+        return redirect('index')
+    #TODO
     return ""
 def approveJoin(request,id):
-    return ""
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    team = Team.objects.get(pk=id)
+    if (team is None):
+        return redirect('index')
+    team.joined = True
+    team.save()
+    return redirect('team.index')

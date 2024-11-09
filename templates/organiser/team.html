@@ -55,8 +55,8 @@
     </div>
 </div>
     <div class="d-flex">
-        <p><a href="{% url 'index' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
-        <p><a href="{% url 'index' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        <p><a href="{% url 'team.download' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
+        <p><a href="{% url 'team.approveJoin' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
         <div>
             <h1>Hiányos</h1>
             <form method="POST">
