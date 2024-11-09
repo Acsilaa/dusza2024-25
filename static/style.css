@@ -10,7 +10,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
-
+    font-family: "Rubik";
 }
 
 nav {
@@ -72,8 +72,10 @@ h1 {
     color: white;
     box-shadow: 1px 1px 1px rgb(41, 41, 41);
     border: #ffffff;
+    transition: 0.2s;
 }
 .btn:hover{
+    transform: scale(1.1);
     color: #0E1116 !important;
     background-color: white ;
 }
@@ -96,10 +98,12 @@ h1 {
     padding: 10px;
     box-shadow: 1px 1px 1px rgb(41, 41, 41);
     border: #ffffff;
+    transition: 0.2s;
 }
 .submitbtn:hover{
     color: #ffffff !important;
     background-color: #86626E ;
+    transform: scale(1.1);
 }
 
 .submitbtn:hover>*{

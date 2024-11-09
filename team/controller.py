@@ -5,6 +5,7 @@ from team.models import Team
 from .forms import TeamCreationForm,TeamApprovalForm,TeamMissingForm
 from django.contrib import messages
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 import csv
@@ -133,9 +134,11 @@ def index(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
-    teams = Team.objects.all()
-    #TODO: limit
-    context = {'teams': teams}
+    teams = Team.objects.all().order_by('name')
+    p = Paginator(teams, 1)
+    page_number = request.GET.get("page")
+    page_obj = p.get_page(page_number)
+    context = {'teams': page_obj}
     return render(request, f'organiser/teams.html', context)
 def download(request):
     # check for login

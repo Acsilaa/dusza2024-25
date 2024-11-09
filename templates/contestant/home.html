@@ -48,8 +48,12 @@
     </div>
     <div class="card  col-lg-1 col-md-6 col-sm-12 ">
         <b>Póttag</b>
+        {% if team.8 == "" %}
+        <p>Nincs</p>
+        {% else %}
         <p><i>Neve: </i>{{team.8}}</p>
         <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
+        {% endif %}
     </div>
     <div class="card col-lg-1 col-md-6 col-sm-12 ">
         <b>Felkészítő tanárok</b>

@@ -48,7 +48,7 @@ def contestantPanel(request):
 
     team = team[0] if team != [] else None
     if(team != None):
-        context["hasMissing"] = team.missing != "" or team.missing is not None
+        context["hasMissing"] = team.missing != ""
         team.id = None
         team.user = None
         context['team'] = [
