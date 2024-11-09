@@ -25,9 +25,9 @@
     <label for="deadline">Jelentkezési határidő</label>
     <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
     <label for="iClosed"></label>
-    <button class="btn">Mentés</button>
+    <button class="btn text-white">Mentés</button>
 </form>
-<a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn" >
+<a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn text-white" >
         {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
     </button></a>
 {% endblock %}
