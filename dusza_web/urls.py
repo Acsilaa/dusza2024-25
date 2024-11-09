@@ -28,13 +28,33 @@ controller.initDB()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user.registerUser,name='register'),
-    path('logout/', user.logoutUser,name='logout'),
     path('login/', user.loginUser,name='login'),
-    path('team/register', team.registerTeam,name='team.register'),
-    path('team/edit', team.modifyTeam,name='team.modify'),
-    path('team/edit', team.modifyTeam,name='team.approve'),
-    path('school/register', school.registerSchool,name='school.register'),
-    path('school/edit', school.modifySchool,name='school.modify'),
+    #logined
+    path('logout/', user.logoutUser,name='logout'),
+    #contestant
+    path('team/register/', team.registerTeam,name='team.register'),
+    path('team/edit/', team.modifyTeam,name='team.modify'),
+    #principal
+    path('team/approve/', team.modifyTeam,name='team.approve'),
+    path('school/edit/', school.modifySchool,name='school.modify'),
+    #organiser
+    path('contest/update/', lambda x: x,name='contest.update'),
+    path('contest/close/', lambda x: x,name='contest.close'),
+
+    path('category/add/', lambda x: x,name='category.add'),
+    path('category/remove/', lambda x: x,name='category.remove'),
+    path('language/add/',lambda x: x,name='language.add'),
+    path('language/remove/',lambda x: x,name='language.remove'),
+
+
 
     path('', controller.render_view,name='index'),
 ]
+"""
+path('team/', school.registerSchool,name='team.index'),
+    path('team/download', school.registerSchool,name='school.register'),
+    path('team/missing', school.registerSchool,name='school.register'),
+
+    path('school/', school.registerSchool,name='school.register'),
+    path('school/register', school.registerSchool,name='school.register'),
+"""
