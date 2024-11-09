@@ -26,7 +26,6 @@ from contest import controller as contest
 from category import controller as category
 from language import controller as language
 from django.contrib.auth.views import LoginView, LogoutView
-controller.initDB()
 
 urlpatterns = [
     path('admin/', admin.site.urls),

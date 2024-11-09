@@ -45,10 +45,10 @@ INSTALLED_APPS = [
     #third party
     #"bootstrap5",
     #own apps (django-admin startapp <name>)
-    'team',
-    'language',
     'category',
+    'language',
     'school',
+    'team',
     'contest',
 ]
 

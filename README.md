@@ -1,5 +1,19 @@
 ## A StillNincsenCsapatnév nevű csapat munkája
 
+## Előr elétrehozott felhasználók
+### szervezők:
+- szervezo1 (jelszó: organiser1)
+- szervezo2 (jelszó: organiser2)
+
+### iskolák:
+- MechwartIgazgato (jelszó: school1)
+- PeldaIgazgato (jelszó: example1)
+
+### versenyzők:
+- versenyzo1 (jelszó: contestant1)
+- versenyzo2 (jelszó: contestant2)
+- versenyzo3 (jelszó: contestant3)
+
 # A webapplikáció használata
 A főoldalt az ip címen érjük el.
 

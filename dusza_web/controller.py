@@ -20,7 +20,6 @@ def render_view(request):
 
 
 def initDB():
-    #TODO: debug-ra
     groups=["Organiser","Principal","Contestant"]
     for i in groups:
         if not Group.objects.filter(name=i).exists():
