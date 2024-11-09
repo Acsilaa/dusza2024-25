@@ -4,14 +4,14 @@
 <link rel="stylesheet" href="{% static 'organiser_panel.css' %}">
 {% endblock %}
 {% block script %}
-<script src="organiser/languages.js" defer></script>
-<script src="organiser/categories.js" defer></script>
-<script src="organiser/deadline.js" defer></script>
+<script src="{% static 'organiser/languages.js' %}" defer></script>
+<script src="{% static 'organiser/categories.js' %}" defer></script>
+<script src="{% static 'organiser/deadline.js' %}" defer></script>
 {% endblock %}
 {% block content %}
 <form action="{% url 'organiser.change_dl' %}" method="post">
     <label for="deadline">Jelentkezési határidő</label>
-    <input type="datetime" value="{{ deadline }}"><br>
+    <input type="datetime-local" value="{{ deadline }}" id="deadline"><br>
     <label for="iClosed"></label>
     <input type="radio" name="is_closed" id="isClosed"
     {% if is_closed %} checked {%endif%}>

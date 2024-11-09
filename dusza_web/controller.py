@@ -74,8 +74,17 @@ def contestantPanel(request):
 def organiserPanel(request):
     deadline = Contest.objects.first().join_deadline
     isClosed = Contest.objects.first().joining_closed
+    d = deadline
+    d = str(deadline)
+    year = d[0:4]
+    month =d[5:7]
+    day = d[8:10]
+    hour = d[11:13]
+    minute = d[14:16]
+    second = d[17:19]
+    dl = f"{year}-{month}-{day}T{hour}:{minute}"
     context = {
-        "deadline": deadline,
+        "deadline": dl,
         "is_closed": isClosed
     }
     return render(request, 'organiser/home.html', context)
