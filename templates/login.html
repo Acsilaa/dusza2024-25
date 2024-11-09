@@ -8,7 +8,7 @@
     <h2><b>Bejelentkezés</b></h2>
     {% csrf_token %}
 
-        {% for data in error.0 %}
+        {% for data in error %}
              <p class="error">{{ data }}</p>
         {% endfor %}
     <table>
