@@ -10,7 +10,7 @@ def registerUser(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index") #TODO
+            return redirect("index")
     context = {'form': form}
     return render(request, f'register.html', context)
 

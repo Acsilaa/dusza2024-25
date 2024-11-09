@@ -11,7 +11,7 @@
 <div class="cont">
     <h2>Még nincs csapatod. Jelentkeznél a versenyre?</h2>
     {% if in_deadline %}
-        <a href="/team/register"><button class="btn" type="submit">Jelentkezz!</button></a>
+        <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></a>
     {% else %}
         <p>Jelenleg nem tudsz jelentkezni. Várd meg a következő versenyt, ennek a jelentkezési határideje lejárt.</p>
     {% endif %}
