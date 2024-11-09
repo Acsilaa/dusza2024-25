@@ -168,6 +168,7 @@ def download(request):
             team.category,
             team.language,
         ])
+
     return response
 def approveJoin(request,id):
     # check for login
@@ -177,5 +178,6 @@ def approveJoin(request,id):
     if (team is None):
         return redirect('index')
     team.joined = True
+    messages.success(request,"Sikeresen jóváhagyva!")
     team.save()
     return redirect('team.index')

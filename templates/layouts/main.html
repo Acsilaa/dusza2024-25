@@ -24,21 +24,19 @@
   {% endblock %}
   {% block script %}
   {% endblock %}
-  <script src="{% static 'test.js' %}" defer></script>
+  <script src="{% static 'message.js' %}" defer></script>
 </head>
 
 <body>
-    <!--
-
-
+    <ul class="messages position-fixed w-100 row h-100 justify-content-center z-3" style="z-index: 100" id="messages">
     {% if messages %}
-    <ul class="messages">
         {% for message in messages %}
-        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        <li style="height: fit-content;"  {% if message.tags %} class="rounded border-2 border-black col-lg-3 col-sm-12 bg-white text-black {{ message.tags }} " {% endif %}>
+           <h1 class="p-3 px-5"> {{ message }} </h1>
+        </li>
         {% endfor %}
-    </ul>
     {% endif %}
-    -->
+    </ul>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'index' %}">Dusza</a>
 
