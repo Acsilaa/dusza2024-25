@@ -3,7 +3,7 @@
     width: min(95%, 50em);
     min-height: 7em;
     border-radius: var(--var-br);
-    margin: auto;
+    
     margin-top: 6em;
     display: flex;
     flex-direction: column;
@@ -14,4 +14,20 @@
 }
 h2{
     margin-bottom: 1em;
+}
+.table{
+    width: max(30em, 90%);
+}
+.table th{
+    font-size: 12px;
+}
+.table td{
+    font-size: 12px;
+}
+section{
+    box-sizing: border-box;
+}
+.cont1{
+    width: 100%;
+    display: flex;
 }

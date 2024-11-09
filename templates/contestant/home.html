@@ -6,18 +6,44 @@
 
 {% block content %}
 
+
 {% if not hasTeam %}
-<!-- has no team yet -->
 <div class="cont">
+<!-- has no team yet -->
     <h2>Még nincs csapatod. Jelentkeznél a versenyre?</h2>
     {% if in_deadline %}
-        <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></a>
+    <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></a>
     {% else %}
-        <p>Jelenleg nem tudsz jelentkezni. Várd meg a következő versenyt, ennek a jelentkezési határideje lejárt.</p>
-    {% endif %}
-    {% else %}
-        <!-- display team and data, then somehow give option to delete and edit -->
+    <p>Jelenleg nem tudsz jelentkezni. Várd meg a következő versenyt, ennek a jelentkezési határideje lejárt.</p>
     {% endif %}
 </div>
+{% else %}
+<div class="cont1">
+    <!-- display team and data, then somehow give option to delete and edit -->
+    <table>
+        <tr>
+            <th>Csapatnév</th>
+            <th>Iskola</th>
+            <th>1. csapattag neve</th>
+            <th>1. csapattag évfolyama</th>
+            <th>2. csapattag neve</th>
+            <th>2. csapattag évfolyama</th>
+            <th>3. csapattag neve</th>
+            <th>3. csapattag évfolyama</th>
+            <th>Póttag neve</th>
+            <th>Póttag évfolyama</th>
+            <th>Felkészítő tanárok</th>
+            <th>Kategória</th>
+            <th>Programnyelv</th>
+            <th>Jóváhagyva</th>
+            <th>Benevezve</th>
+        </tr>
+        {% for data in team %}
+        <td>{{data}}</td> <!--not working-->
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
 
 {% endblock %}
