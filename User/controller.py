@@ -5,6 +5,9 @@ from django.contrib import messages
 
 
 def registerUser(request):
+    # if already logged in
+    if request.user.username:
+        return redirect("index")
     form = CustomUserCreationForm(request.GET)
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -16,6 +19,9 @@ def registerUser(request):
     return render(request, f'register.html', context)
 
 def loginUser(request):
+    #if already logged in
+    if request.user.username:
+        return redirect("index")
     form = CustomUserLoginForm(request.POST or None)
     if request.method == "POST":
         form = CustomUserLoginForm(request.POST,{"username":request.POST["username"],"password":request.POST["password"]})
