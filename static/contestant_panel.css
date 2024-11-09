@@ -62,6 +62,8 @@ section{
 }
 
 .grid-container {
+    justify-content: center;
+    
     display: grid;
     flex-wrap: wrap;
     width: 100%; 
