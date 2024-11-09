@@ -53,4 +53,4 @@ def modifyTeam(request):
             messages.success(request, 'Sikeresen módosítva!')
             return redirect("index")
     context = {'form': form}
-    return render(request, f'team_register.html', context)
+    return render(request, f'team_edit.html', context)
