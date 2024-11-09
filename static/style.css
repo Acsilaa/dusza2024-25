@@ -110,7 +110,7 @@ section {
     align-items: center;
     padding: 100px 30vh;
     height: 25vh;
-
+}
 .up {
 
     background-color: #E2E4F6;
@@ -205,5 +205,5 @@ main *:not(.wave){
 
 form{
     position: relative;
-    z-index: 100000;
+    z-index: 10;
 }
