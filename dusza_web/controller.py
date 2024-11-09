@@ -83,10 +83,23 @@ def organiserPanel(request):
     minute = d[14:16]
     second = d[17:19]
     dl = f"{year}-{month}-{day}T{hour}:{minute}"
+    langs = []
+    cats = []
+    for l in list(Language.objects.all()):
+        langs.append(l.name)
+    for c in list(Category.objects.all()):
+        cats.append(c.name)
     context = {
+        'languages': langs,
+        'categories': cats,
         "deadline": dl,
-        "is_closed": isClosed
+        "is_closed": isClosed,
     }
+    try:
+        context['dl_form_error'] = request.session['dl_form_error']
+    except:
+        context['dl_form_error'] = None
+
     return render(request, 'organiser/home.html', context)
 
 
