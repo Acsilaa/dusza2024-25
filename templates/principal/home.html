@@ -1,4 +1,77 @@
 {% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
+{% endblock %}
+
 {% block content %}
-principal home site
+    <div class="cont">
+        <h1>Iskola adatai</h1>
+        <p>Neve : {{ name }}</p>
+        <p>Címe : {{ address }}</p>
+        <p>Kapcsolattartó neve : {{ contact_name }}</p>
+        <p>Kapcsolattartó email címe : {{ contact_email }}</p>
+        <button class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url 'school.modify' %}">Módosítás</a></button>
+    </div>
+    {% if hasTeam %}
+        <table>
+            <tr>
+                <th>Csapatnév</th>
+                <th>1. csapattag neve</th>
+                <th>1. csapattag évfolyama</th>
+                <th>2. csapattag neve</th>
+                <th>2. csapattag évfolyama</th>
+                <th>3. csapattag neve</th>
+                <th>3. csapattag évfolyama</th>
+                <th>Póttag neve</th>
+                <th>Póttag évfolyama</th>
+                <th>Felkészítő tanárok</th>
+                <th>Kategória</th>
+                <th>Programnyelv</th>
+                <th>Jóváhagyva</th>
+                <th>Benevezve</th>
+            </tr>
+            {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.contestant1_name }}</td>
+                <td>{{ team.contestant1_grade }}</td>
+                <td>{{ team.contestant2_name }}</td>
+                <td>{{ team.contestant2_grade }}</td>
+                <td>{{ team.contestant3_name }}</td>
+                <td>{{ team.contestant3_grade }}</td>
+                {% if team.contestant4_name !=  "" %}
+                    <td>{{ team.contestant4_name }}</td>
+                    <td>{{ team.contestant4_grade }}</td>
+                {% else %}
+                    <td>Nincs</td>
+                    <td>Nincs</td>
+                {% endif %}
+                <td>{{ team.teachers }}</td>
+                <td>{{ team.category }}</td>
+                <td>{{ team.language }}</td>
+                {% if team.approved %}
+                    <td>✅</td>
+                {% else %}
+                    <td>❌</td>
+                {% endif %}
+                {% if team.joined %}
+                    <td>✅</td>
+                {% else %}
+                    <td>❌</td>
+                {% endif %}
+                {% if not team.approved %}
+                    <td>
+                        <button class="btn btn-primary">
+                            <a class="text-decoration-none text-white" href="{% url 'team.approve' %}">Jóváhagyás
+                            </a>
+                        </button>
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Az iskolának még nincs csapata!</h2>
+    {% endif %}
 {% endblock %}

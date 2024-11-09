@@ -4,6 +4,7 @@ from xmlrpc.client import DateTime
 from django.shortcuts import render, redirect
 from category.models import Category
 from language.models import Language
+from school.models import School
 from team.models import Team
 from contest.models import Contest
 from django.contrib.auth.models import Group
@@ -75,4 +76,13 @@ def organiserPanel(request):
 
 
 def principalPanel(request):
-    return render(request, 'principal/home.html')
+    context = {}
+    school = School.objects.filter(user=request.user).first()
+    teams = list(Team.objects.filter(school=school))
+    context["teams"]=teams
+    context["contact_name"]=school.contact_name
+    context["contact_email"]=school.contact_email
+    context["address"]=school.address
+    context["name"]=school.name
+    context["hasTeam"] = teams != []
+    return render(request, 'principal/home.html',context)
