@@ -1,4 +1,8 @@
 {% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
 {% block content %}
  
   <form id="login" method="post">
@@ -8,13 +12,15 @@
         {% for data in error.0 %}
              <p class="error">{{ data }}</p>
         {% endfor %}
-    {% for field in form %}
-    <div class="fieldWrapper">
-        {{field.label_tag}}
-        {{field}}
-    </div>
+    <table>
 
+    {% for field in form %}
+      <tr class="fieldWrapper">
+          <td>{{field.label_tag}}</td>
+          <td>{{field}}</td>
+      </tr>
     {% endfor %}
-    <button id="submitbtn" type="submit">Bejelentkezés</button>
+    </table>
+    <button class="submitbtn" type="submit">Bejelentkezés</button>
   </form>
 {% endblock %}

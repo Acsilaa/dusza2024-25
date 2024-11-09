@@ -20,13 +20,18 @@ from . import controller
 from django.contrib import admin
 from django.urls import path
 from User import controller as user
+from team import controller as team
+from school import controller as school
 from django.contrib.auth.views import LoginView, LogoutView
-urlpatterns = [
-    path('admin', admin.site.urls),
-    path('register', user.registerUser,name='register'),
-    path('logout', user.logoutUser,name='logout'),
-    path('login', user.loginUser,name='login'),
+controller.initDB()
 
-    path('<str:path>', controller.view),
-    path('', controller.view,name='index'),
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('register/', user.registerUser,name='register'),
+    path('logout/', user.logoutUser,name='logout'),
+    path('login/', user.loginUser,name='login'),
+    path('team/register', team.registerTeam,name='team.register'),
+    path('school/register', school.registerSchool,name='school.register'),
+
+    path('', controller.render_view,name='index'),
 ]

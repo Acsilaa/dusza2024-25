@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-0z8ed1fct0b_-v^=!#%x9o)21c+801tg(d=#@l)%9ov*a&r$=n
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+UNIFIED_MIN_LENGTH = 4 #for passwords, names, usernames
+UNIFIED_MAX_LENGTH = 128 #for passwords, names, usernames
 
 # Application definition
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'language',
     'category',
     'school',
+    'contest',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +64,9 @@ ROOT_URLCONF = 'dusza_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR,'templates'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

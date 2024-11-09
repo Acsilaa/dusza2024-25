@@ -19,7 +19,11 @@ class Team(models.Model):
     teachers = models.TextField()
     category = models.ForeignKey(to=Category ,on_delete=models.CASCADE)
     language = models.ForeignKey(to=Language, on_delete=models.CASCADE)
-
+    approved = models.BooleanField(default=False)
+    joined = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.user
+        return self.user.username
+
+    def hasTeam(user):
+        return list(Team.objects.filter(user=user).all()) != []

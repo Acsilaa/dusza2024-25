@@ -1,0 +1,84 @@
+#login{
+    background-color: #DBAFC1;
+    margin: auto;
+    margin-top: 30px;
+    width: min(90%, 30em);
+    min-width: 40%;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(136, 136, 136);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+h2{
+    margin-bottom: 1em;
+}
+.fieldWrapper{
+    width: min(90%, 30em);
+}
+table{
+    width: 100%;
+}
+tr{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+table td input{
+    width: 100%;
+}
+table td{
+    width: min(15em, 70vw);
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+table td:nth-child(1){
+    padding-right: 1em;
+    box-sizing: border-box;
+}
+.fieldWrapper label {
+    font-weight: bold;
+}
+
+.fieldWrapper input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Hover effect for the button */
+
+
+@media only screen and (max-width:500px){
+    .fieldWrapper{
+        width: 100%;
+    }
+    table{
+        justify-content: center;
+    }
+    tr{
+      flex-direction: column;  
+      text-align: center;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    table td{
+        padding-right: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    table td:nth-child(1){
+        padding-right: 0;
+        box-sizing: border-box;
+    }
+}

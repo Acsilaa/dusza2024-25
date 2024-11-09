@@ -1,14 +1,19 @@
-<!-- IDE JÖN A TEAM REGISTER FORM -->
 {% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'register.css' %}">
+{% endblock %}
 {% block content %}
-<a href="/">Főoldal</a>
-<form method="POST">{% csrf_token %}
+<form id="register" method="POST">{% csrf_token %}
     {% for field in form %}
         <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+            {{ field.label_tag }}
+            {{ field }}
+            {%  for error in field.errors %}
+                <p class="error text-danger fw-bold mb-2 mt-1">{{ error }}</p>
+            {% endfor %}
         </div>
     {% endfor %}
-    <input type="submit" value="Submit">
+    <input class="submitbtn" type="submit" value="Regisztráció">
 </form>
 {% endblock %}
