@@ -41,6 +41,7 @@ urlpatterns = [
     #organiser
     
     path('organiser/change_dl', contest.change_dl, name='organiser.change_dl'),
+    path('organiser/toggle_dl_close', contest.toggle_close, name='organiser.toggle_dl_close'),
 
 
     path('', controller.render_view,name='index'),
