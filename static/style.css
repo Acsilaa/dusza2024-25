@@ -83,6 +83,9 @@ h1 {
 .btn:hover>*{
     color: #0E1116 !important
 }
+.adder{
+    border: 0px;
+}
 .messages{
     transition: ease-in-out 2s;
 }

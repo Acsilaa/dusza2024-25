@@ -26,10 +26,11 @@
     <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
     <label for="iClosed"></label>
     <button class="btn text-white">Mentés</button>
-</form>
-<a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn text-white" >
+    <a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn text-white" >
         {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
     </button></a>
+</form>
+
 {% endblock %}
 
 {% block content1 %}
@@ -43,28 +44,31 @@
         </svg>
     </div>
     
-
-    <div class="ajaxforms">
-        <div>
-            <p>Programnyelvek</p>
-            <div class="languages ajaxform">
-                <div class="adder">
-                    <input type="text">
-                    <button class="add">Hozzáadás</button>
+    <div class="container">
+        <div class="ajaxforms row">
+                
+                <div class="prog col-lg-6">
+                    <p>Programnyelvek</p>
+                    <div class="languages ajaxform">
+                        <div class="adder">
+                            <input type="text">
+                            <button class="add">Hozzáadás</button>
+                        </div>
+                    </div>
                 </div>
+        
+                <div class="cat col-lg-6">        
+                    <p>Kategóriák</p>
+                    <div class="categories ajaxform">
+                        <div class="adder">
+                            <input type="text">
+                            <button class="add">Hozzáadás</button>
+                        </div>
+                    </div>
             </div>
         </div>
-
-        <div>        
-            <p>Kategóriák</p>
-            <div class="categories ajaxform">
-                <div class="adder">
-                    <input type="text">
-                    <button class="add">Hozzáadás</button>
-                </div>
-            </div>
-        </div>  
     </div>
+
     <script>
         langs = [];
         cats = [];
