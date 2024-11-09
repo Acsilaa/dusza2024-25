@@ -108,8 +108,9 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 600px;
-    padding: 100px 20vw;
+    padding: 100px 30vh;
+    height: 25vh;
+
 }
 
 .up {
@@ -127,6 +128,7 @@ section {
 
 .footer {
     background-color: #0E1116;
+    overflow-y: hidden;
 }
 
 
@@ -139,27 +141,25 @@ section {
     line-height: 0;
 }
 main *:not(.wave){
-    z-index: 2;
+    z-index: 1;
 }
 
 .wave svg {
     position: relative;
     display: block;
     width: calc(134% + 1.3px);
-    height: 214px;
+    height: 114px;
 }
 
 .wave .shape-fill {
     fill: #f8f9fa;
 }
 
-
-
 .wave2 svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 150px;
+
 }
 
 .wave2 .shape-fill {
@@ -170,7 +170,7 @@ main *:not(.wave){
     position: relative;
     display: block;
     width: calc(206% + 1.3px);
-    height: 380px;
+
 }
 
 .wave3 .shape-fill {
@@ -190,9 +190,22 @@ main *:not(.wave){
     position: relative;
     display: block;
     width: calc(300% + 1.3px);
-    height: 260px;
 }
 
 .wave4 .shape-fill {
-    fill: #E2E4F6;
+    fill: #86626E;
+}
+
+.middle{
+    position: relative;
+    z-index: -1;
+}
+.lower{
+    position: relative;
+    z-index: -1;
+}
+
+form{
+    position: relative;
+    z-index: 100000;
 }
