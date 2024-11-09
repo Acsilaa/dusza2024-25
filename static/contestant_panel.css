@@ -3,7 +3,7 @@
     width: min(95%, 50em);
     min-height: 7em;
     border-radius: var(--var-br);
-    margin: auto;
+    
     margin-top: 6em;
     display: flex;
     flex-direction: column;
