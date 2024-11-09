@@ -6,14 +6,12 @@
 }
 
 body {
-
     color: #0E1116;
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
 
 }
-
 nav {
     background-color: white;
     box-shadow: 50px 50px rgba(#86626E, 100%);
@@ -139,6 +137,9 @@ section {
     width: 100%;
     overflow: hidden;
     line-height: 0;
+}
+main *:not(.wave){
+    z-index: 2;
 }
 
 .wave svg {
