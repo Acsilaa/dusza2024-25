@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 {% block style %}
-<link rel="stylesheet" href="organiser_panel.css">
+{%load static %}
+<link rel="stylesheet" href="{% static 'organiser_panel.css' %}">
 {% endblock %}
 {% block script %}
 <script src="organiser/languages.js" defer></script>
@@ -8,5 +9,10 @@
 <script src="organiser/deadline.js" defer></script>
 {% endblock %}
 {% block content %}
-organiser home site
+<form action="{% url 'organiser.changedl' %}" method="post">
+    <label for="deadline">Jelentkezési határidő</label>
+    <input type="datetime" value="{{ deadline }}"><br>
+    <label for="iClosed"></label>
+    <input type="radio" name="" id="isClosed">
+</form>
 {% endblock %}

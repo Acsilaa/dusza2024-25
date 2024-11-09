@@ -6,7 +6,7 @@ class Contest(models.Model):
     joining_closed = models.BooleanField(default=False)
 
     def isOpen() -> bool:
-        c = Contest.objects.get(pk=1)
+        c = Contest.objects.first()
         closed = c.joining_closed
         deadline = c.join_deadline
         d = str(deadline)

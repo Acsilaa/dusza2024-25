@@ -72,7 +72,13 @@ def contestantPanel(request):
 
 
 def organiserPanel(request):
-    return render(request, 'organiser/home.html')
+    deadline = Contest.objects.first().join_deadline
+    isClosed = Contest.objects.first().joining_closed
+    context = {
+        "deadline": deadline,
+        "is_closed": isClosed
+    }
+    return render(request, 'organiser/home.html', context)
 
 
 def principalPanel(request):
