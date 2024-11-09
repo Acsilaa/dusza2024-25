@@ -17,6 +17,8 @@ h2{
 }
 .table{
     width: max(30em, 90%);
+    border: 6px solid lightblue;
+    padding: 10px;
 }
 .table th{
     font-size: 12px;
