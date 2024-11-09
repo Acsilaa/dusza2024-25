@@ -7,8 +7,6 @@
 
 {% block content %}
 
-<!-- {% if not hasTeam %} -->
-
 <div class="cont">
     <h1>Iskola adatai</h1>
     <p>Neve : {{ name }}</p>
@@ -17,10 +15,52 @@
     <p>Kapcsolattartó email címe : {{ contact_email }}</p>
     <button class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url 'school.modify' %}">Módosítás</a></button>
 
-</div> 
-<!-- {% endif %} -->
+</div>
 
 
+
+   {% if hasTeam %}
+    <table>
+            <tr>
+                <th>Csapatnév</th>
+                <th>Kategória</th>
+                <th>Programnyelv</th>
+                <th>Állapot</th>
+            </tr>
+            {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.contestant1_name }}</td>
+                <td>{{ team.contestant1_grade }}</td>
+                <td>{{ team.contestant2_name }}</td>
+                <td>{{ team.contestant2_grade }}</td>
+                <td>{{ team.contestant3_name }}</td>
+                <td>{{ team.contestant3_grade }}</td>
+                <td>{{ team.contestant4_name }} Nincs</td>
+                <td>{{ team.contestant4_grade }} Nincs</td>
+                <td>{{ team.teachers }}</td>
+                <td>{{ team.category }}</td>
+                <td>{{ team.language }}</td>
+                {% if team.approved and team.joined %}
+                    <td>szervezők által jóváhagyva</td>
+                {% elif team.approved and not team.joined %}
+                    <td>iskola által jóváhagyva</td>
+                {% else %}
+                    <td>regisztrált</td>
+                {% endif %}
+                {% if not team.approved %}
+                    <td>
+                    <a class="text-decoration-none text-white btn btn-primary" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
+                    </a>
+                    </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+{% else %}
+    <h2>Az iskolának még nincs csapata!</h2>
+{% endif %}
 
 
 {% endblock %}
@@ -51,73 +91,3 @@
       </div>
     </section>
 {%endblock%}
-
-   {% if hasTeam %}
-    <div class="grid-container">
-        <div class="card">
-            <b>Csapatnév</b>
-            <p>{{team.0}}</p>
-        </div>
-        <div class="card">
-            <b>Iskola</b>
-            <p>{{team.1}}</p>
-        </div>
-        <div class="card">
-            <b>1. csapattag</b>
-            <p><i>neve:</i> {{team.2}}</p>
-            <p><i>évfolyama:</i> {{team.3}}. osztály</p>
-        </div>
-        <div class="card">
-            <b>2. csapattag</b>
-            <p><i>neve:</i> {{team.4}}</p>
-            <p><i>évfolyama:</i> {{team.5}}. osztály</p>
-        </div>
-        <div class="card">
-            <b>3. csapattag</b>
-            <p><i>neve:</i>  {{team.6}}</p>
-            <p><i>évfolyama:</i>  {{team.7}}</p>
-        </div>
-        <div class="card">
-            <b>Póttag</b>
-            <p><i>Neve: </i>{{team.8}}</p>
-            <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
-        </div>
-        <div class="card">
-            <b>Felkészítő tanárok</b>
-            <p>{{team.10}}</p>
-        </div>
-        <div class="card">
-            <b>Versenyformátum</b>
-            <p><i>Nyelv:</i> {{team.12}}</p>
-            <p><i>Kategória:</i> {{team.11}}</p>
-        </div>
-
-        <div class="card">
-            <b>Jóváhagyva</b>
-            {% if team.approved %}
-                ✅
-            {% else %}
-                ❌
-                {% endif %}
-        </div>
-        <div class="card">
-            <b>Benevezve</b>
-            {% if team.joined %}
-            ✅
-            {% else %}
-            ❌
-            {% endif %}
-        </div>
-        
-        {% if not team.approved %}
-
-                <button class="btn btn-primary">
-                    <h1>Jóváhagyva</h1>
-                </button>
-
-        {% endif %}
-    </div>
-
-    {% else %}
-        <h2>Az iskolának még nincs csapata!</h2>
-    {% endif %}
