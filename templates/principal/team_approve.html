@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<link rel="stylesheet" href="{% static 'register.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="cont">
+  <form id="register" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <h2><b>Jóváhagyás</b></h2>
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.label_tag }}
+            {{ field }}
+            {%  for error in field.errors %}
+                <p class="error text-danger fw-bold mb-2 mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <input class="submitbtn" type="submit" value="Regisztráció">
+  </form>
+  </div>
+{% endblock %}

@@ -69,14 +69,9 @@ def approveTeam(request,id):
     form = TeamApprovalForm()
     if request.method == "POST":
         form = TeamApprovalForm(request.POST,request.FILES)
-        print("megfogom magam ölni")
-        print(request.FILES,request.POST.get("file"))
-        print(f"a{form.data.get('file')}")
-        print(f"errors:{form.errors}")
-        if form.is_valid():
-            print("file valid")
+        if form.is_valid() and form.check():
             form.save(request,id)
             messages.success(request, 'Sikeresen jóváhagyva!')
             return redirect("index")
     context = {'form': form}
-    return render(request, f'register.html', context)
+    return render(request, f'principal/team_approve.html', context)
