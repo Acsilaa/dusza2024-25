@@ -58,15 +58,14 @@
           <a class="nav-link" href="{% url 'register' %}">Regisztráció</a>
         </li>
         {%endif%}
-        {% if user.is_authenticated %}
-        <li>
-          <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
-        </li>
+
         {% block nav_extended %}
         {% endblock %}
+      {% if user.is_authenticated %}
         <li class="user_name d-flex">
         {% block missing %}
         {% endblock %}
+            <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
           <p class="m-auto">{{user}}</p>
         </li>
         {% endif %}
