@@ -6,7 +6,8 @@ section.middle, section.lower{
     text-align: left;
 }
 a{
-    color: rgb(0, 255, 0);
+    color: rgb(255, 213, 253);
+    text-decoration: none;  
 }
 section.middle h2, section.lower h2{
     text-align: center;
