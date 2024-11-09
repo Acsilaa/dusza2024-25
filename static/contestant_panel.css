@@ -75,10 +75,9 @@ section{
     
   }
   .card {
-    padding: 10px;
-    height: 200px;
-    width: 200px;
-    margin: auto;
+    padding: 5px;
+    margin: 5px;
+    
     border-radius: 4px;
     text-align: justify;
     font-size: 1.1em;
