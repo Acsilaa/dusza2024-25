@@ -63,9 +63,12 @@ def contestantPanel(request):
             team.teachers,
             team.category.name,
             team.language.name,
-            team.approved,
-            team.joined
         ]
+        context["state"] = "Regisztrált"
+        if(team.approved):
+            context["state"] = "Iskola által jóváhagyva"
+        if(team.joined):
+            context["state"] = "Szervezők által jóváhagyva"
 
     return render(request, 'contestant/home.html', context)
 
