@@ -40,7 +40,7 @@ urlpatterns = [
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
     
-    path('organiser/changedl', contest.changedl, name='organiser.changedl'),
+    path('organiser/change_dl', contest.change_dl, name='organiser.change_dl'),
 
 
     path('', controller.render_view,name='index'),

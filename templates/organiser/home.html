@@ -9,10 +9,11 @@
 <script src="organiser/deadline.js" defer></script>
 {% endblock %}
 {% block content %}
-<form action="{% url 'organiser.changedl' %}" method="post">
+<form action="{% url 'organiser.change_dl' %}" method="post">
     <label for="deadline">Jelentkezési határidő</label>
     <input type="datetime" value="{{ deadline }}"><br>
     <label for="iClosed"></label>
-    <input type="radio" name="" id="isClosed">
+    <input type="radio" name="is_closed" id="isClosed"
+    {% if is_closed %} checked {%endif%}>
 </form>
 {% endblock %}
