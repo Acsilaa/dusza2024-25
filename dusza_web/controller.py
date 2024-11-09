@@ -1,6 +1,3 @@
-from urllib.request import Request
-from xmlrpc.client import DateTime
-
 from django.shortcuts import render, redirect
 from category.models import Category
 from language.models import Language
@@ -8,6 +5,7 @@ from school.models import School
 from team.models import Team
 from contest.models import Contest
 from django.contrib.auth.models import Group
+from django.core.paginator import Paginator
 
 def render_view(request):
 
@@ -112,7 +110,10 @@ def principalPanel(request):
     context = {}
     school = School.objects.filter(user=request.user).first()
     teams = list(Team.objects.filter(school=school))
-    context["teams"]=teams
+    p = Paginator(teams, 15)
+    page_number = request.GET.get("page")
+    page_obj = p.get_page(page_number)
+    context["teams"]=page_obj
     context["contact_name"]=school.contact_name
     context["contact_email"]=school.contact_email
     context["address"]=school.address

@@ -135,7 +135,7 @@ def index(request):
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     teams = Team.objects.all().order_by('name')
-    p = Paginator(teams, 1)
+    p = Paginator(teams, 15)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)
     context = {'teams': page_obj}

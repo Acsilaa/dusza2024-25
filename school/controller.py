@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from school.models import School
-
+from django.core.paginator import Paginator
 from .forms import SchoolCreationForm
 from django.contrib import messages
 
@@ -43,5 +43,8 @@ def index(request):
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     schools = School.objects.all()
-    context = {'schools': schools}
+    p = Paginator(schools, 15)
+    page_number = request.GET.get("page")
+    page_obj = p.get_page(page_number)
+    context = {'schools': page_obj}
     return render(request, f'organiser/schools.html', context)
