@@ -4,7 +4,10 @@ from school.models import School
 from team.models import Team
 from .forms import TeamCreationForm,TeamApprovalForm,TeamMissingForm
 from django.contrib import messages
+from django.http import HttpResponse
+
 from django.core.files.uploadedfile import SimpleUploadedFile
+import csv
 
 def registerTeam(request):
     # check for login
@@ -87,20 +90,92 @@ def missingIndex(request):
     context = {'message': team.missing}
     #TODO html
     return render(request, f'contestant/missing.html', context)
-def missing(request,id):
+def more(request,id):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     team = Team.objects.get(pk=id)
-    # if team already has a missing or already joined
-    if (team.missing != "" or team.missing is not None) or team.joined:
+    if (team is None):
         return redirect('index')
+    context={}
+    team.user = None
+    context['team'] = [
+        team.name,
+        team.school.name,
+        team.contestant1_name,
+        team.contestant1_grade,
+        team.contestant2_name,
+        team.contestant2_grade,
+        team.contestant3_name,
+        team.contestant3_grade,
+        team.contestant4_name,
+        team.contestant4_grade,
+        team.teachers,
+        team.category.name,
+        team.language.name,
+        team.id
+    ]
+    context["state"] = "Regisztrált"
+    if (team.approved):
+        context["state"] = "Iskola által jóváhagyva"
+    if (team.joined):
+        context["state"] = "Szervezők által jóváhagyva"
     form = TeamMissingForm()
     if request.method == "POST":
         form = TeamMissingForm(request.POST)
         if form.is_valid():
-            form.save(request, id)
-            messages.success(request, 'Sikeresen elküldve!')
-            return redirect("index")
-    context = {'form': form}
-    return render(request, f'organiser/team_missing.html', context)
+            if form.save(request, id):
+                messages.success(request, 'Sikeresen elküldve!')
+                return redirect("index")
+    context["form"] = form
+    return render(request, f'organiser/team.html', context)
+def index(request):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    teams = Team.objects.all()
+    #TODO: limit
+    context = {'teams': teams}
+    return render(request, f'organiser/teams.html', context)
+def download(request):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    teams = Team.objects.all()
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="csapatok.csv"'},
+    )
+
+    writer = csv.writer(response)
+    for team in teams:
+        if team.contestant4_name == "":
+            team.contestant4_name = "Nincs"
+            team.contestant4_grade = "Nincs"
+        writer.writerow([
+            team.name,
+            team.school,
+            team.contestant1_name,
+            team.contestant1_grade,
+            team.contestant2_name,
+            team.contestant2_grade,
+            team.contestant3_name,
+            team.contestant3_grade,
+            team.contestant4_name,
+            team.contestant4_grade,
+            team.teachers,
+            team.category,
+            team.language,
+        ])
+    return response
+def approveJoin(request,id):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    team = Team.objects.get(pk=id)
+    if (team is None):
+        return redirect('index')
+    team.joined = True
+    team.save()
+    return redirect('team.index')

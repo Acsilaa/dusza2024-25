@@ -26,10 +26,14 @@ class TeamMissingForm(forms.Form):
     def save(self, request, team_id):
         #TODO: visszavonja a jóváhagyást a sulitól
         team = Team.objects.get(pk=team_id)
+        if team.joined:
+            self.add_error("missing","A csapat már csatlakozott!")
+            return False
         team.missing = self.cleaned_data['missing']
         team.approved = False
         team.approval_file = None
         team.save()
+        return team
 class TeamApprovalForm(forms.Form):
     def __init__(self,*args,**kwargs):
         super(TeamApprovalForm,self).__init__(*args,**kwargs)

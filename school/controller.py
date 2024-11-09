@@ -38,3 +38,10 @@ def modifySchool(request):
             return redirect("index")
     context = {'form': form}
     return render(request, f'principal/edit.html', context)
+def index(request):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    schools = School.objects.all()
+    context = {'schools': schools}
+    return render(request, f'organiser/schools.html', context)
