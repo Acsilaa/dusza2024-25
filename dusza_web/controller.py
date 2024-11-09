@@ -6,6 +6,7 @@ from team.models import Team
 from contest.models import Contest
 from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
+from django.utils import timezone as date
 
 def render_view(request):
 
@@ -120,3 +121,20 @@ def principalPanel(request):
     context["name"]=school.name
     context["hasTeam"] = teams != []
     return render(request, 'principal/home.html',context)
+
+def newContest(request):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+
+    Team.objects.all().delete()
+    contest = Contest.objects.first()
+    contest.joining_closed = False
+    year=date.today().year
+    month=date.today().month+2
+    if month>12:
+        year+=1
+        month=month-12
+    contest.join_deadline = f"{year}-{month}-{date.today().day} 23:59"
+    contest.save()
+    return redirect("index")
