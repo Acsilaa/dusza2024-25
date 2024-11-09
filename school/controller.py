@@ -7,6 +7,6 @@ def registerSchool(request):
         form = SchoolCreationForm(request.POST)
         if form.is_valid() and form.check():
             form.save(request)
-            return redirect("index") #TODO
+            return redirect("index")
     context = {'form': form}
     return render(request, f'register.html', context)
