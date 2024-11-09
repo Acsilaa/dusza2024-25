@@ -2,7 +2,7 @@ from urllib.request import Request
 from django.shortcuts import render,redirect
 from school.models import School
 from team.models import Team
-from .forms import TeamCreationForm,TeamApprovalForm
+from .forms import TeamCreationForm,TeamApprovalForm,TeamMissingForm
 from django.contrib import messages
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -75,3 +75,31 @@ def approveTeam(request,id):
             return redirect("index")
     context = {'form': form}
     return render(request, f'principal/team_approve.html', context)
+def missingIndex(request):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Contestant":
+        return redirect('login')
+    team = Team.objects.get(user=request.user)
+    # if team already has a missing
+    if team.missing == "" or team.missing is None:
+        return redirect('index')
+    context = {'message': team.missing}
+    #TODO html
+    return render(request, f'organiser/team_missing.html', context)
+def missing(request,id):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    team = Team.objects.get(pk=id)
+    # if team already has a missing
+    if team.missing != "" or team.missing is not None:
+        return redirect('index')
+    form = TeamMissingForm()
+    if request.method == "POST":
+        form = TeamMissingForm(request.POST)
+        if form.is_valid():
+            form.save(request, id)
+            messages.success(request, 'Sikeresen elküldve!')
+            return redirect("index")
+    context = {'form': form}
+    return render(request, f'organiser/team_missing.html', context)

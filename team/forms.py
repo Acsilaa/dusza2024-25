@@ -4,12 +4,29 @@ from django.contrib.auth.forms import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login, logout
 from category.models import Category
+from django.forms import Form
 from language.models import Language
 from school.models import School
 from dusza_web.settings import UNIFIED_MAX_LENGTH,UNIFIED_MIN_LENGTH
-
 from .models import Team
 
+class TeamMissingForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(TeamMissingForm, self).__init__(*args, **kwargs)
+        # add custom error messages
+        for field in self.fields:
+            self.fields[field].error_messages.update({
+                'required': 'Ez a mező szükséges!',
+                'max_length': f"Meghaladja a karakterhatárt!",
+                'min_length': f"Nem haladja meg a karakterhatárt!",
+            })
+
+    missing = forms.CharField(label='Üzenet',max_length=UNIFIED_MAX_LENGTH,min_length=UNIFIED_MIN_LENGTH)
+
+    def save(self, request, team_id):
+        team = Team.objects.get(pk=team_id)
+        team.missing = self.cleaned_data['missing']
+        team.save()
 class TeamApprovalForm(forms.Form):
     def __init__(self,*args,**kwargs):
         super(TeamApprovalForm,self).__init__(*args,**kwargs)

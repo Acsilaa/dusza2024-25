@@ -37,4 +37,4 @@ def modifySchool(request):
             messages.success(request, 'Sikeresen módosítva!')
             return redirect("index")
     context = {'form': form}
-    return render(request, f'register.html', context)
+    return render(request, f'principal/edit.html', context)

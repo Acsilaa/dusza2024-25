@@ -36,11 +36,13 @@ urlpatterns = [
     path('logout/', user.logoutUser,name='logout'),
     #contestant
     path('team/register/', team.registerTeam,name='team.register'),
+    path('team/missing/', team.missingIndex,name='team.missingIndex'),
     path('team/edit/', team.modifyTeam,name='team.modify'),
     #principal
-    path('team/approve/<int:id>', team.approveTeam,name='team.approve'),
+    path('team/approve/<int:id>/', team.approveTeam,name='team.approve'),
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
+    path('team/missing/<int:id>/', team.missing,name='team.missing'),
     path('school/register', school.registerSchool, name='school.register'),
     path('category/add/', category.addCategory,name='category.add'),
     path('category/remove/', category.removeCategory,name='category.remove'),
@@ -56,7 +58,7 @@ urlpatterns = [
 """
     path('team/', school.registerSchool,name='team.index'),
     path('team/download', school.registerSchool,name='school.register'),
-    path('team/missing', school.registerSchool,name='school.register'),
+    
 
     path('school/', school.registerSchool,name='school.register'),
 
