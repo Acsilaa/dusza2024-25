@@ -1,31 +1,24 @@
 {% extends "layouts/main.html" %}
 {% block style %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'login.css' %}">
+<link rel="stylesheet" href="{% static 'team_register.css' %}">
 {% endblock %}
 {% block content %}
-  <form id="login" method="post">
-    <h2><b>Bejelentkezés</b></h2>
-    {% if formerror != None %}
-    {{formerror}}
-    {%endif%}
-    {% csrf_token %}
-    <table>
-
+<form id="register" method="POST">{% csrf_token %}
     {% for field in form %}
-      <tr class="fieldWrapper">
-          <td>{{field.label_tag}}</td>
-          <td>{{field}}</td>
+        <div class="fieldWrapper">
+            {{ field.label_tag }}
+            {{ field }}
             {%  for error in field.errors %}
                 <p class="error text-danger fw-bold mb-2 mt-1">{{ error }}</p>
             {% endfor %}
-      </tr>
+        </div>
     {% endfor %}
-    </table>
-    <button class="submitbtn" type="submit">Bejelentkezés</button>
-  </form>
+    <input class="submitbtn" type="submit" value="Mentés">
+</form>
 {% endblock %}
-<!-- {% block content1 %}
+
+{% block content1 %}
     <section class="middle">
       <div class="wave2 wave">
 
@@ -49,4 +42,4 @@
         </svg>
       </div>
     </section>
-{%endblock%} -->
+{%endblock%}
