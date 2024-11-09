@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
+{% endblock %}
+{% block nav_extended %}
+    <li>
+        <a class="nav-link" href="{% url 'team.index' %}">Jelentkezések megtekintése</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'school.index' %}">Iskolák megtekintése</a>
+    </li>
+{% endblock %}
+{% block content %}
+<p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
+{% for team in teams %}
+<div class="row justify-content-center">
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>Csapatnév</b>
+        <p>{{team.name}}</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>Iskola</b>
+        <p>{{team.school}}</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>1. csapattag</b>
+        <p><i>neve:</i> {{team.contestant1_name}}</p>
+        <p><i>évfolyama:</i> {{team.contestant1_grade}}. osztály</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>2. csapattag</b>
+        <p><i>neve:</i> {{team.contestant2_name}}</p>
+        <p><i>évfolyama:</i> {{team.contestant2_grade}}. osztály</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>3. csapattag</b>
+        <p><i>neve:</i>  {{team.contestant3_name}}</p>
+        <p><i>évfolyama:</i>  {{team.contestant3_grade}}</p>
+    </div>
+    <div class="card  col-lg-1 col-md-6 col-sm-12 ">
+        <b>Póttag</b>
+        <p><i>Neve: </i>{{team.contestant4_name}}</p>
+        <p><i>Évfolyama:</i> {{team.contestant4_grade}}. osztály</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12 ">
+        <b>Felkészítő tanárok</b>
+        <p>{{team.10}}</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>Versenyformátum</b>
+        <p><i>Nyelv:</i> {{team.language}}</p>
+        <p><i>Kategória:</i> {{team.category}}</p>
+    </div>
+    <div class="card col-lg-1 col-md-6 col-sm-12">
+        <b>Állapot</b>
+        <p>{% if team.approved and team.joined %}
+            szervezők által jóváhagyva
+        {% elif team.approved and not team.joined %}
+            iskola által jóváhagyva
+        {% else %}
+            regisztrált
+        {% endif %}</p>
+    </div>
+    
+    <div class="card col-lg-1 col-md6 col-sm-12">
+        <a class="text-decoration-none text-white" href="{% url 'team.more' id=team.id %}">Több
+        </a>
+    </div>
+</div>
+{%endfor%}
+{% endblock %}
+{% block content1 %}
+<section class="middle">
+      <div class="wave2 wave">
+
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+       
+</div>
+</section>
+{% endblock %}

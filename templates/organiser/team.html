@@ -3,72 +3,78 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
 {% endblock %}
-
-{% block missing %}
-    {% if hasMissing %}
-        <a class="nav-link text-danger"  href="{% url 'team.missingIndex' %}"><b>Hiánypótlás</b></a>
-    {% endif %}
+{% block nav_extended %}
+    <li>
+        <a class="nav-link" href="{% url 'team.index' %}">Jelentkezések megtekintése</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'school.index' %}">Iskolák megtekintése</a>
+    </li>
 {% endblock %}
 
 {% block content %}
-{% if not hasTeam %}
-<div class="cont">
-<!-- has no team yet -->
-    <h2>Még nincs csapatod. Jelentkeznél a versenyre?</h2>
-    {% if in_deadline %}
-    <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></i>
-    {% else %}
-    <p>Jelenleg nem tudsz jelentkezni. Várd meg a következő versenyt, ennek a jelentkezési határideje lejárt.</p>
-    {% endif %}
-</div>
-{% else %}
-<div class="row justify-content-center">
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+<div class="grid-container">
+    <div class="card">
         <b>Csapatnév</b>
         <p>{{team.0}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>Iskola</b>
         <p>{{team.1}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>1. csapattag</b>
         <p><i>neve:</i> {{team.2}}</p>
         <p><i>évfolyama:</i> {{team.3}}. osztály</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>2. csapattag</b>
         <p><i>neve:</i> {{team.4}}</p>
         <p><i>évfolyama:</i> {{team.5}}. osztály</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>3. csapattag</b>
         <p><i>neve:</i>  {{team.6}}</p>
         <p><i>évfolyama:</i>  {{team.7}}</p>
     </div>
-    <div class="card  col-lg-1 col-md-6 col-sm-12 ">
+    <div class="card">
         <b>Póttag</b>
         <p><i>Neve: </i>{{team.8}}</p>
         <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12 ">
+    <div class="card">
         <b>Felkészítő tanárok</b>
         <p>{{team.10}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>Versenyformátum</b>
         <p><i>Nyelv:</i> {{team.12}}</p>
         <p><i>Kategória:</i> {{team.11}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card">
         <b>Állapot</b>
         <p>{{state}}</p>
     </div>
 </div>
-
-    <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></i>
+    <div class="d-flex">
+        <p><a href="{% url 'team.approveJoin' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        <div>
+            <h1>Hiányos</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="fieldWrapper">
+                {{ field.label_tag }}
+                {{ field }}
+                {%  for error in field.errors %}
+                    <p class="error text-danger fw-bold mb-2 mt-1">{{ error }}</p>
+                {% endfor %}
+                </div>
+                {% endfor %}
+                <input class="submitbtn" type="submit" value="Elküldés">
+            </form>
+        </div>
     </div>
-{% endif %}
 
 
 {% endblock %}

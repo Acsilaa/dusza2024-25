@@ -4,43 +4,26 @@
 <link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
 {% endblock %}
 
-{% block content %}
-    <div class="cont">
-        <h1>Iskola adatai</h1>
-        <p>Neve : {{ name }}</p>
-        <p>Címe : {{ address }}</p>
-        <p>Kapcsolattartó neve : {{ contact_name }}</p>
-        <p>Kapcsolattartó email címe : {{ contact_email }}</p>
-        <button class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url 'school.modify' %}">Módosítás</a></button>
-    </div>
-{% endblock %}
-{% block content1 %}
-<section class="middle">
-      <div class="wave2 wave">
 
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            class="shape-fill"></path>
-        </svg>
-        
-    {% if hasTeam %}
-        <table>
+{% block content %}
+
+<div class="cont">
+    <h1>Iskola adatai</h1>
+    <p>Neve : {{ name }}</p>
+    <p>Címe : {{ address }}</p>
+    <p>Kapcsolattartó neve : {{ contact_name }}</p>
+    <p>Kapcsolattartó email címe : {{ contact_email }}</p>
+    <button class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url 'school.modify' %}">Módosítás</a></button>
+
+</div>
+   {% if hasTeam %}
+    <table>
             <tr>
                 <th>Csapatnév</th>
-                <th>1. csapattag neve</th>
-                <th>1. csapattag évfolyama</th>
-                <th>2. csapattag neve</th>
-                <th>2. csapattag évfolyama</th>
-                <th>3. csapattag neve</th>
-                <th>3. csapattag évfolyama</th>
-                <th>Póttag neve</th>
-                <th>Póttag évfolyama</th>
-                <th>Felkészítő tanárok</th>
+                <th>1 csapat tag</th>
                 <th>Kategória</th>
                 <th>Programnyelv</th>
-                <th>Jóváhagyva</th>
-                <th>Benevezve</th>
+                <th>Állapot</th>
             </tr>
             {% for team in teams %}
             <tr>
@@ -51,40 +34,57 @@
                 <td>{{ team.contestant2_grade }}</td>
                 <td>{{ team.contestant3_name }}</td>
                 <td>{{ team.contestant3_grade }}</td>
-                {% if team.contestant4_name !=  "" %}
-                    <td>{{ team.contestant4_name }}</td>
-                    <td>{{ team.contestant4_grade }}</td>
-                {% else %}
-                    <td>Nincs</td>
-                    <td>Nincs</td>
-                {% endif %}
+                <td>{{ team.contestant4_name }} Nincs</td>
+                <td>{{ team.contestant4_grade }} Nincs</td>
                 <td>{{ team.teachers }}</td>
                 <td>{{ team.category }}</td>
                 <td>{{ team.language }}</td>
-                {% if team.approved %}
-                    <td>✅</td>
+                {% if team.approved and team.joined %}
+                    <td>szervezők által jóváhagyva</td>
+                {% elif team.approved and not team.joined %}
+                    <td>iskola által jóváhagyva</td>
                 {% else %}
-                    <td>❌</td>
-                {% endif %}
-                {% if team.joined %}
-                    <td>✅</td>
-                {% else %}
-                    <td>❌</td>
+                    <td>regisztrált</td>
                 {% endif %}
                 {% if not team.approved %}
                     <td>
-                        <button class="btn btn-primary">
-                            <a class="text-decoration-none text-white" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
-                            </a>
-                        </button>
+                    <a class="text-decoration-none text-white btn btn-primary" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
+                    </a>
                     </td>
                 {% endif %}
             </tr>
             {% endfor %}
         </table>
-    {% else %}
-        <h2>Az iskolának még nincs csapata!</h2>
-    {% endif %}
-</div>
-</section>
+
+{% else %}
+    <h2>Az iskolának még nincs csapata!</h2>
+{% endif %}
+
 {% endblock %}
+
+
+{% block content1 %}
+    <section class="middle">
+      <div class="wave2 wave">
+
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+
+      </div>
+    </section>
+    {% endblock %}
+
+{% block content2 %}
+    <section class="lower">
+      <div class="wave3 wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+      </div>
+    </section>
+{%endblock%}
