@@ -27,7 +27,7 @@
     <label for="iClosed"></label>
     <button class="btn">Mentés</button>
 </form>
-<a href="{% url 'organiser.toggle_dl_close' %}"><button class="btn">
+<a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn" >
         {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
     </button></a>
 {% endblock %}
