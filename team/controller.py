@@ -4,7 +4,10 @@ from school.models import School
 from team.models import Team
 from .forms import TeamCreationForm,TeamApprovalForm,TeamMissingForm
 from django.contrib import messages
+from django.http import HttpResponse
+
 from django.core.files.uploadedfile import SimpleUploadedFile
+import csv
 
 def registerTeam(request):
     # check for login
@@ -134,15 +137,38 @@ def index(request):
     #TODO: limit
     context = {'teams': teams}
     return render(request, f'organiser/teams.html', context)
-def download(request,id):
+def download(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
-    team = Team.objects.get(pk=id)
-    if (team is None):
-        return redirect('index')
-    #TODO
-    return ""
+    teams = Team.objects.all()
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="csapatok.csv"'},
+    )
+
+    writer = csv.writer(response)
+    for team in teams:
+        if team.contestant4_name == "":
+            team.contestant4_name = "Nincs"
+            team.contestant4_grade = "Nincs"
+        writer.writerow([
+            team.name,
+            team.school,
+            team.contestant1_name,
+            team.contestant1_grade,
+            team.contestant2_name,
+            team.contestant2_grade,
+            team.contestant3_name,
+            team.contestant3_grade,
+            team.contestant4_name,
+            team.contestant4_grade,
+            team.teachers,
+            team.category,
+            team.language,
+        ])
+    return response
 def approveJoin(request,id):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":

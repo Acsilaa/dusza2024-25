@@ -44,7 +44,7 @@ urlpatterns = [
     #organiser
     path('team/', team.index,name='team.index'),
     path('team/more/<int:id>/', team.more,name='team.more'),
-    path('team/download/<int:id>/', team.download,name='team.download'),
+    path('team/download/', team.download,name='teams.download'),
     path('team/approveJoin/<int:id>/', team.approveJoin,name='team.approveJoin'),
 
     path('school/', school.index,name='school.index'),
