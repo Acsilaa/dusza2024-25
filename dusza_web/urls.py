@@ -42,11 +42,17 @@ urlpatterns = [
     path('team/approve/<int:id>/', team.approveTeam,name='team.approve'),
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
-    path('team/missing/<int:id>/', team.missing,name='team.missing'),
-    #path('team/', team.index,name='team.index'),
+    path('team/', team.index,name='team.index'),
+    path('team/more/<int:id>/', team.more,name='team.more'),
+    path('team/download/<int:id>/', team.download,name='team.download'),
+    path('team/approveJoin/<int:id>/', team.approveJoin,name='team.team.approveJoin'),
+
+    path('school/', school.index,name='school.index'),
     path('school/register', school.registerSchool, name='school.register'),
+
     path('category/add/', category.addCategory,name='category.add'),
     path('category/remove/', category.removeCategory,name='category.remove'),
+
     path('language/add/',language.addLanguage,name='language.add'),
     path('language/remove/',language.removeLanguage,name='language.remove'),
 
@@ -54,18 +60,6 @@ urlpatterns = [
     path('organiser/toggle_dl_close', contest.toggle_close, name='organiser.toggle_dl_close'),
 
 
+
     path('', controller.render_view,name='index'),
 ]
-"""
-    
-    path('team/download', school.registerSchool,name='school.register'),
-    
-
-    path('school/', school.registerSchool,name='school.register'),
-
-
-    path('contest/update/', lambda x: x,name='contest.update'),
-    path('contest/close/', lambda x: x,name='contest.close'),
-
-    
-"""
