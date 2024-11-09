@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def registerTeam(request):
     # check for login
-    if not request.user.username:
+    if not request.user.username or request.user.groups.all()[0] != "Contestant":
         return redirect('login')
     
     # if already has a team
