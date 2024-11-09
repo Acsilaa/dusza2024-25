@@ -17,20 +17,27 @@ class TeamApprovalForm(forms.Form):
         for field in self.fields:
             self.fields[field].error_messages.update({
                 'required': 'Ez a mező szükséges!',
-                'invalid': f"Meghaladta a maximális karakterhatárt ({UNIFIED_MAX_LENGTH})",
-                'missing': f"Nem haladta meg a minimális karakterhatárt ({UNIFIED_MIN_LENGTH})",
-                "empty":f"Minimum értéket nem haladta meg ({1})",
+                'invalid': f"Nem érvényes fájl!",
+                'missing': f"Adjon meg egy fájlt!",
+                "empty":f"A fájl üres!",
             })
-    file = forms.FileField(label='Aláírt jelentkezési lap')
+
+    file = forms.FileField(label='Aláírt jelentkezési lap', help_text='max. 128 megabytes')
     def check(self):
-        #TODO: check mimetype stb.
-        pass
+        mime = self.cleaned_data["file"].content_type.split("/")[1]
+        if mime != "pdf":
+            self.add_error("file","Nem pdf formátum!")
+            return False
+        if self.cleaned_data["file"].size/1024/1024 > 128:
+            self.add_error("file","A megadott fájl meghaladja a 128 megabyte-ot")
+            return False
+        return True
 
     def save(self, request,team_id):
         team = Team.objects.get(pk=team_id)
+        team.approval_file = request.FILES["file"]
         team.approved = True
         team.save()
-        #TODO approve record (a pdf file-hoz)
 class TeamCreationForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(TeamCreationForm, self).__init__(*args, **kwargs)

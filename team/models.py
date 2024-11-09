@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from language.models import Language
 from school.models import School
 from category.models import Category
+
+
+
 # Create your models here.
 class Team(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -20,6 +23,7 @@ class Team(models.Model):
     category = models.ForeignKey(to=Category ,on_delete=models.CASCADE)
     language = models.ForeignKey(to=Language, on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)
+    approval_file = models.FileField(upload_to='approval_files/', blank=True, null=True)
     joined = models.BooleanField(default=False)
 
     def __str__(self) -> str:
