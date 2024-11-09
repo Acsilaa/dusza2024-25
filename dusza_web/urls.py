@@ -22,6 +22,7 @@ from django.urls import path
 from User import controller as user
 from team import controller as team
 from school import controller as school
+from contest import controller as contest
 from django.contrib.auth.views import LoginView, LogoutView
 controller.initDB()
 
@@ -39,7 +40,7 @@ urlpatterns = [
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
     
-
+    path('organiser/changedl', contest.changedl, name='organiser.changedl'),
 
 
     path('', controller.render_view,name='index'),
