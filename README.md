@@ -30,3 +30,14 @@ A jelentkezéseket a navigációs sávból érjük el. Itt lehetőségünk van l
 
 ### Iskolai kapcsolattartóként való használat
 Bejelentkezés után az iskola adataival fogad minket a weblap. Igény esetén ezek módosíthatóak. Alább pedig az iskola neve alatt jelentkezett csapatokat láthatjuk. Mellettük egy gomb, Jóváhagyás címmel. Erre kattintva feltölthetünk egy pdf-et, ezzel jóváhagyva a csapat jelentkezését.
+
+
+# Adatbázis
+Szerencsére nem sok táblából áll az adatbázis. Próbáltuk minél tisztábban tartani a munkakörnyezetet. A táblák a következők: Team, Contest, Category, Language, School és a beépített User.
+A Category és a Language csak egy-egy name fieldet tartalmaznak, de hasznosak, mikor foreign kulcsokkal hivatkozunk rájuk.
+
+A Team tábla tartalmazza az adatokat a csapatokról, illetve azt, hogy az igazgató és a szervezők által jóvá lettek e hagyva (2 boolean formájában).
+
+A Contest tábla érdekes, mert mindig csak egy record van benne. Ez csak arra kell, hogy legyen hol eltárolni a jelentkezési határidőt, és hogy le lehessen zárni a jelentkezést.
+
+A School tábla tartalmazza az iskolákat és adataikat.
