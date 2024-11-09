@@ -10,6 +10,27 @@ from dusza_web.settings import UNIFIED_MAX_LENGTH,UNIFIED_MIN_LENGTH
 
 from .models import Team
 
+class TeamApprovalForm(forms.Form):
+    def __init__(self,*args,**kwargs):
+        super(TeamApprovalForm,self).__init__(*args,**kwargs)
+        # add custom error messages
+        for field in self.fields:
+            self.fields[field].error_messages.update({
+                'required': 'Ez a mező szükséges!',
+                'invalid': f"Meghaladta a maximális karakterhatárt ({UNIFIED_MAX_LENGTH})",
+                'missing': f"Nem haladta meg a minimális karakterhatárt ({UNIFIED_MIN_LENGTH})",
+                "empty":f"Minimum értéket nem haladta meg ({1})",
+            })
+    file = forms.FileField(label='Aláírt jelentkezési lap')
+    def check(self):
+        #TODO: check mimetype stb.
+        pass
+
+    def save(self, request,team_id):
+        team = Team.objects.get(pk=team_id)
+        team.approved = True
+        team.save()
+        #TODO approve record (a pdf file-hoz)
 class TeamCreationForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(TeamCreationForm, self).__init__(*args, **kwargs)

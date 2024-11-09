@@ -74,7 +74,7 @@
                 {% if not team.approved %}
                     <td>
                         <button class="btn btn-primary">
-                            <a class="text-decoration-none text-white" href="{% url 'team.approve' %}">Jóváhagyás
+                            <a class="text-decoration-none text-white" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
                             </a>
                         </button>
                     </td>
