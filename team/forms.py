@@ -21,13 +21,15 @@ class TeamApprovalForm(forms.Form):
                 'missing': f"Nem haladta meg a minimális karakterhatárt ({UNIFIED_MIN_LENGTH})",
                 "empty":f"Minimum értéket nem haladta meg ({1})",
             })
-    file = forms.FileField(label='Aláírt jelentkezési lap')
+    self.con
+    file = forms.FileField(label='Aláírt jelentkezési lap', help_text='max. 128 megabytes')
     def check(self):
-        #TODO: check mimetype stb.
+                                                                                                                                                                                                                                                                                                                                                                          
         pass
 
     def save(self, request,team_id):
         team = Team.objects.get(pk=team_id)
+        team.approval_file = request.FILES["file"]
         team.approved = True
         team.save()
         #TODO approve record (a pdf file-hoz)
