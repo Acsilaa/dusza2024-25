@@ -22,19 +22,47 @@ from django.urls import path
 from User import controller as user
 from team import controller as team
 from school import controller as school
+from contest import controller as contest
+from category import controller as category
+from language import controller as language
 from django.contrib.auth.views import LoginView, LogoutView
 controller.initDB()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user.registerUser,name='register'),
-    path('logout/', user.logoutUser,name='logout'),
     path('login/', user.loginUser,name='login'),
-    path('team/register', team.registerTeam,name='team.register'),
-    path('team/edit', team.modifyTeam,name='team.modify'),
-    path('team/edit', team.modifyTeam,name='team.approve'),
-    path('school/register', school.registerSchool,name='school.register'),
-    path('school/edit', school.modifySchool,name='school.modify'),
+    #logined
+    path('logout/', user.logoutUser,name='logout'),
+    #contestant
+    path('team/register/', team.registerTeam,name='team.register'),
+    path('team/edit/', team.modifyTeam,name='team.modify'),
+    #principal
+    path('team/approve/<int:id>', team.approveTeam,name='team.approve'),
+    path('school/edit/', school.modifySchool,name='school.modify'),
+    #organiser
+    path('school/register', school.registerSchool, name='school.register'),
+    path('category/add/', category.addCategory,name='category.add'),
+    path('category/remove/', category.removeCategory,name='category.remove'),
+    path('language/add/',language.addLanguage,name='language.add'),
+    path('language/remove/',language.removeLanguage,name='language.remove'),
+
+    path('organiser/change_dl', contest.change_dl, name='organiser.change_dl'),
+    path('organiser/toggle_dl_close', contest.toggle_close, name='organiser.toggle_dl_close'),
+
 
     path('', controller.render_view,name='index'),
 ]
+"""
+    path('team/', school.registerSchool,name='team.index'),
+    path('team/download', school.registerSchool,name='school.register'),
+    path('team/missing', school.registerSchool,name='school.register'),
+
+    path('school/', school.registerSchool,name='school.register'),
+
+
+    path('contest/update/', lambda x: x,name='contest.update'),
+    path('contest/close/', lambda x: x,name='contest.close'),
+
+    
+"""

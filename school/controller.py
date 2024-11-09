@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def registerSchool(request):
     # check for login
-    if not request.user.username:
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     form = SchoolCreationForm(request.GET)
     if request.method == "POST":
@@ -19,7 +19,7 @@ def registerSchool(request):
     return render(request, f'register.html', context)
 def modifySchool(request):
     # check for login
-    if not request.user.username:
+    if not request.user.username or request.user.groups.all()[0].name != "Principal":
         return redirect('login')
     school=School.objects.filter(user=request.user).first()
     form = SchoolCreationForm({
