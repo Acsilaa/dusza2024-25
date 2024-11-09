@@ -56,29 +56,39 @@ h1 {
     background-color: #E2E4F6;
 }
 
-.submitbtn {
+.btn {
+    font-weight: 500;
+    size: 1.1em;
     width: max(30%, 9em);
     min-width: 9em;
     padding: 10px;
     background-color: #86626E;
-    color: #fff;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     margin: 20px !important;
     font-size: 1em;
     padding: 10px;
+    color: white;
     box-shadow: 1px 1px 1px rgb(41, 41, 41);
     border: #ffffff;
+}
+.btn:hover{
+    color: #0E1116 !important;
+    background-color: white ;
+}
+
+.btn:hover>*{
+    color: #0E1116 !important
 }
 .messages{
     transition: ease-in-out 2s;
 }
-.btn {
+.submitbtn {
     width: max(30%, 9em);
     min-width: 9em;
     padding: 10px;
-    background-color: #86626E;
+    background-color: #DBAFC1;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -87,13 +97,19 @@ h1 {
     box-shadow: 1px 1px 1px rgb(41, 41, 41);
     border: #ffffff;
 }
+.submitbtn:hover{
+    color: #ffffff !important;
+    background-color: #86626E ;
+}
+
+.submitbtn:hover>*{
+    color: #ffffff !important
+}
 
 ul{
     list-style-type: none;
 
 }
-
-
 #udvozlet {
     margin: auto;
     margin-right: 0px;
