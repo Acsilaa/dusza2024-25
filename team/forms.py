@@ -49,11 +49,15 @@ class TeamCreationForm(forms.Form):
             self.add_error("contestant4_grade", "Póttag évfolyama vagy neve hiányzik")
             return False
         return True
+    def checkForModify(self):
+        if (self.cleaned_data['contestant4_name'] and self.cleaned_data['contestant4_grade'] is None) or (self.cleaned_data['contestant4_name'] is None and self.cleaned_data['contestant4_grade']):
+            self.add_error("contestant4_grade", "Póttag évfolyama vagy neve hiányzik")
+            return False
+        return True
     def name_clean(self):
         name = self.cleaned_data['name']
         return name
     def update(self,request):
-        self.m
         team = Team.objects.filter(user=request.user).update(
             name=self.cleaned_data['name'],
             contestant1_name=self.cleaned_data['contestant1_name'],

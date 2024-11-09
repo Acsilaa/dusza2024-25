@@ -1,7 +1,7 @@
 from .forms import CustomUserCreationForm, CustomUserLoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-
+from django.contrib import messages
 
 
 def registerUser(request):
@@ -10,6 +10,7 @@ def registerUser(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Sikeresen regisztrálva!')
             return redirect("index")
     context = {'form': form}
     return render(request, f'register.html', context)

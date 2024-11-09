@@ -31,6 +31,7 @@ urlpatterns = [
     path('logout/', user.logoutUser,name='logout'),
     path('login/', user.loginUser,name='login'),
     path('team/register', team.registerTeam,name='team.register'),
+    path('team/edit', team.modifyTeam,name='team.modify'),
     path('school/register', school.registerSchool,name='school.register'),
 
     path('', controller.render_view,name='index'),
