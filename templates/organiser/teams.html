@@ -40,12 +40,16 @@
     </div>
     <div class="card  col-lg-1 col-md-6 col-sm-12 ">
         <b>Póttag</b>
+        {% if team.contestant4_name == "" %}
+        <p>Nincs</p>
+        {% else %}
         <p><i>Neve: </i>{{team.contestant4_name}}</p>
         <p><i>Évfolyama:</i> {{team.contestant4_grade}}. osztály</p>
+        {% endif %}
     </div>
     <div class="card col-lg-1 col-md-6 col-sm-12 ">
         <b>Felkészítő tanárok</b>
-        <p>{{team.10}}</p>
+        <p>{{team.teachers}}</p>
     </div>
     <div class="card col-lg-1 col-md-6 col-sm-12">
         <b>Versenyformátum</b>
@@ -63,7 +67,7 @@
         {% endif %}</p>
     </div>
     
-    <div class="card col-lg-1 col-md6 col-sm-12">
+    <div class="card col-lg-1 col-md6 col-sm-12" style="height: min-content">
         <a class="text-decoration-none text-white" href="{% url 'team.more' id=team.id %}">Több
         </a>
     </div>
