@@ -95,6 +95,23 @@
 
     </div>
         {% endfor %}
+               <div class="pagination">
+    <span class="step-links">
+        {% if teams.has_previous %}
+            <button><a href="?page=1" class="text-decoration-none text-black">&laquo; first</a></button>
+            <button><a href="?page={{ teams.previous_page_number }}" class="text-decoration-none text-black">previous</a></button>
+        {% endif %}
+
+        <span class="current">
+            Page {{ teams.number }} of {{ teams.paginator.num_pages }}.
+        </span>
+
+        {% if teams.has_next %}
+            <button><a href="?page={{ teams.next_page_number }}" class="text-decoration-none text-dark">next</a></button>
+            <button><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none text-dark">last &raquo;</a></button>
+        {% endif %}
+    </span>
+</div>
     {% else %}
         <h2>Az iskolának még nincs csapata!</h2>
 {% endif %}

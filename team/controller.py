@@ -4,9 +4,10 @@ from school.models import School
 from team.models import Team
 from .forms import TeamCreationForm,TeamApprovalForm,TeamMissingForm
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator
-
+from dusza_web import settings
+import os
 from django.core.files.uploadedfile import SimpleUploadedFile
 import csv
 
@@ -129,13 +130,14 @@ def more(request,id):
                 messages.success(request, 'Sikeresen elküldve!')
                 return redirect("index")
     context["form"] = form
+    context["hasApprovalFile"] = team.approval_file not in ["",None]
     return render(request, f'organiser/team.html', context)
 def index(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     teams = Team.objects.all().order_by('name')
-    p = Paginator(teams, 1)
+    p = Paginator(teams, 15)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)
     context = {'teams': page_obj}
@@ -184,3 +186,20 @@ def approveJoin(request,id):
     messages.success(request,"Sikeresen jóváhagyva!")
     team.save()
     return redirect('team.index')
+def downloadApproval(request,id):
+    # check for login
+    if not request.user.username or request.user.groups.all()[0].name != "Organiser":
+        return redirect('login')
+    team = Team.objects.get(pk=id)
+    if (team is None):
+        return redirect('index')
+    print(settings.MEDIA_ROOT,team.approval_file.name)
+    file_path = os.path.join(settings.MEDIA_ROOT,team.approval_file.name)
+    print(file_path)
+    if os.path.exists(file_path):
+        print("asd")
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/pdf")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404

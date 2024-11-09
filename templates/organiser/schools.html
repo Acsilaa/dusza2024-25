@@ -34,7 +34,23 @@
 
 </div>
 {%endfor%}
+    <div class="pagination">
+    <span class="step-links">
+        {% if schools.has_previous %}
+            <button><a href="?page=1" class="text-decoration-none text-black">&laquo; first</a></button>
+            <button><a href="?page={{ schools.previous_page_number }}" class="text-decoration-none text-black">previous</a></button>
+        {% endif %}
 
+        <span class="current">
+            Page {{ schools.number }} of {{ schools.paginator.num_pages }}.
+        </span>
+
+        {% if schools.has_next %}
+            <button><a href="?page={{ schools.next_page_number }}" class="text-decoration-none text-dark">next</a></button>
+            <button><a href="?page={{ schools.paginator.num_pages }}" class="text-decoration-none text-dark">last &raquo;</a></button>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
 {% block content1 %}
 <section class="middle">
