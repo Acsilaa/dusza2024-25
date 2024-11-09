@@ -18,33 +18,69 @@
     {% endif %}
 </div>
 {% else %}
-<div class="cont1">
-    <!-- display team and data, then somehow give option to delete and edit -->
-    <table>
-        <tr>
-            <th>Csapatnév</th>
-            <th>Iskola</th>
-            <th>1. csapattag neve</th>
-            <th>1. csapattag évfolyama</th>
-            <th>2. csapattag neve</th>
-            <th>2. csapattag évfolyama</th>
-            <th>3. csapattag neve</th>
-            <th>3. csapattag évfolyama</th>
-            <th>Póttag neve</th>
-            <th>Póttag évfolyama</th>
-            <th>Felkészítő tanárok</th>
-            <th>Kategória</th>
-            <th>Programnyelv</th>
-            <th>Jóváhagyva</th>
-            <th>Benevezve</th>
-        </tr>
-        {% for data in team %}
-        <td>{{data}}</td> <!--not working-->
-        {% endfor %}
-    </table>
-    <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></a>
+<div class="grid-container">
+    <div class="card">Csapatnév</div>
+    <div class="card">Iskola</div>
+    <div class="card">1. csapattag neve</div>
+    <div class="card">1. csapattag évfolyama</div>
+    <div class="card">2. csapattag neve</div>
+    <div class="card">2. csapattag évfolyama</div>
+    <div class="card">3. csapattag neve</div>
+    <div class="card">3. csapattag évfolyama</div>
+    <div class="card">Póttag neve</div>
+    <div class="card">Póttag évfolyama</div>
+    <div class="card">Felkészítő tanárok</div>
+    <div class="card">Kategória</div>
+    <div class="card">Programnyelv</div>
+    <div class="card">Jóváhagyva</div>
+    <div class="card">Benevezve</div>
+
+    
+    {% for data in team %}
+    <div class="card" id="data">
+        {% if data == True%}
+        Igen
+        {% elif data == False%}
+        Nem
+        {%else%}
+        {{data}}
+        {%endif%}
+    </div>
+    
+    {% endfor %}
 </div>
+
+
+    <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></a>
+    </div>
 {% endif %}
 
 
 {% endblock %}
+
+
+{% block content1 %}
+    <section class="middle">
+      <div class="wave2 wave">
+
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+
+      </div>
+    </section>
+    {% endblock %}
+
+{% block content2 %}
+    <section class="lower">
+      <div class="wave3 wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"></path>
+        </svg>
+      </div>
+    </section>
+{%endblock%}
