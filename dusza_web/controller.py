@@ -49,23 +49,23 @@ def contestantPanel(request):
     if(team != None):
         team.id = None
         team.user = None
-    context['team'] = [
-        team.name,
-        team.school.name,
-        team.contestant1_name,
-        team.contestant1_grade,
-        team.contestant2_name,
-        team.contestant2_grade,
-        team.contestant3_name,
-        team.contestant3_grade,
-        team.contestant4_name,
-        team.contestant4_grade,
-        team.teachers,
-        team.category.name,
-        team.language.name,
-        team.approved,
-        team.joined
-    ]
+        context['team'] = [
+            team.name,
+            team.school.name,
+            team.contestant1_name,
+            team.contestant1_grade,
+            team.contestant2_name,
+            team.contestant2_grade,
+            team.contestant3_name,
+            team.contestant3_grade,
+            team.contestant4_name,
+            team.contestant4_grade,
+            team.teachers,
+            team.category.name,
+            team.language.name,
+            team.approved,
+            team.joined
+        ]
 
     return render(request, 'contestant/home.html', context)
 
