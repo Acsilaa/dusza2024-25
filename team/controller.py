@@ -84,6 +84,7 @@ def missingIndex(request):
     if team.missing == "" or team.missing is None:
         return redirect('index')
     context = {'message': team.missing}
+    #TODO html
     return render(request, f'organiser/team_missing.html', context)
 def missing(request,id):
     # check for login
