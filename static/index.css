@@ -1,0 +1,18 @@
+h2{
+    font-size: 27px;
+    color: gray;
+}
+section.middle, section.lower{
+    text-align: left;
+}
+a{
+    color: rgb(0, 255, 0);
+}
+section.middle h2, section.lower h2{
+    text-align: center;
+    margin-bottom: 2em;
+    color: white;
+}
+section.lower p{
+    color: rgb(255, 255, 255);
+}

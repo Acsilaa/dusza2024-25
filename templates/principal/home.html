@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="cont">
+<div class="cont mb-5">
     <h1>Iskola adatai</h1>
     <p>Neve : {{ name }}</p>
     <p>Címe : {{ address }}</p>
@@ -17,7 +17,8 @@
 
 </div>
     {% if hasTeam %}
-    <div class="row justify-content-center">
+    {% for team in teams %}
+    <div class="row justify-content-center mb-5">
         <div class="card col-lg-1 col-md-6 col-sm-12">
             <b>Csapatnév</b>
             <p>{{team.name}}</p>
@@ -33,51 +34,48 @@
         </div>
         <div class="card col-lg-1 col-md-6 col-sm-12">
             <b>2. csapattag</b>
-            <p><i>neve:</i> {{team.4}}</p>
-            <p><i>évfolyama:</i> {{team.5}}. osztály</p>
+            <p><i>neve:</i> {{team.contestant2_name}}</p>
+            <p><i>évfolyama:</i> {{team.contestant2_grade}}. osztály</p>
         </div>
         <div class="card col-lg-1 col-md-6 col-sm-12">
             <b>3. csapattag</b>
-            <p><i>neve:</i>  {{team.6}}</p>
-            <p><i>évfolyama:</i>  {{team.7}}</p>
+            <p><i>neve:</i>  {{team.contestant3_name}}</p>
+            <p><i>évfolyama:</i>  {{team.contestant3_grade}}</p>
         </div>
         <div class="card  col-lg-1 col-md-6 col-sm-12 ">
             <b>Póttag</b>
-            <p><i>Neve: </i>{{team.8}}</p>
-            <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
+            <p><i>Neve: </i>{{team.contestant4_name}}</p>
+            <p><i>Évfolyama:</i> {{team.contestant4_grade}}. osztály</p>
         </div>
         <div class="card col-lg-1 col-md-6 col-sm-12 ">
             <b>Felkészítő tanárok</b>
-            <p>{{team.10}}</p>
+            <p>{{team.teachers}}</p>
         </div>
         <div class="card col-lg-1 col-md-6 col-sm-12">
             <b>Versenyformátum</b>
-            <p><i>Nyelv:</i> {{team.12}}</p>
-            <p><i>Kategória:</i> {{team.11}}</p>
+            <p><i>Nyelv:</i> {{team.language}}</p>
+            <p><i>Kategória:</i> {{team.category}}</p>
         </div>
         <div class="card col-lg-1 col-md-6 col-sm-12">
             <b>Állapot</b>
-            <p>{{state}}</p>
-        </div>
-    </div>
-   
-            {% if team.approved and team.joined %}
-                <td>szervezők által jóváhagyva</td>
+            <p>{% if team.approved and team.joined %}
+                szervezők által jóváhagyva
             {% elif team.approved and not team.joined %}
-                    <td>iskola által jóváhagyva</td>
+                    iskola által jóváhagyva
                 {% else %}
-                    <td>regisztrált</td>
-                {% endif %}
-                {% if not team.approved %}
-                    <td>
-                    <a class="text-decoration-none text-white btn btn-primary" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
-                    </a>
-                    </td>
-                {% endif %}
-            </tr>
+                    regisztrált
+                {% endif %}</p>
+        </div>
 
-            <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></i>
-            </div>
+            {% if not team.approved %}
+                <div class="card col-lg-1 col-md-6 col-sm-12" style="height: min-content">
+                    <a class="text-decoration-none text-white" href="{% url 'team.approve' id=team.id %}">Jóváhagyás
+                    </a>
+                </div>
+                {% endif %}
+
+    </div>
+        {% endfor %}
     {% else %}
         <h2>Az iskolának még nincs csapata!</h2>
 {% endif %}
