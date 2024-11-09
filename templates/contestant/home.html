@@ -19,35 +19,66 @@
 </div>
 {% else %}
 <div class="grid-container">
-    <div class="card">Csapatnév</div>
-    <div class="card">Iskola</div>
-    <div class="card">1. csapattag neve</div>
-    <div class="card">1. csapattag évfolyama</div>
-    <div class="card">2. csapattag neve</div>
-    <div class="card">2. csapattag évfolyama</div>
-    <div class="card">3. csapattag neve</div>
-    <div class="card">3. csapattag évfolyama</div>
-    <div class="card">Póttag neve</div>
-    <div class="card">Póttag évfolyama</div>
-    <div class="card">Felkészítő tanárok</div>
-    <div class="card">Kategória</div>
-    <div class="card">Programnyelv</div>
-    <div class="card">Jóváhagyva</div>
-    <div class="card">Benevezve</div>
-
-    
-    {% for data in team %}
-    <div class="card" id="data">
-        {% if data == True%}
-        Igen
-        {% elif data == False%}
-        Nem
-        {%else%}
-        {{data}}
-        {%endif%}
+    <div class="card">
+        <b>Csapatnév</b>
+        <p>{{team.0}}</p>
     </div>
-    
-    {% endfor %}
+    <div class="card">
+        <b>Iskola</b>
+        <p>{{team.1}}</p>
+    </div>
+    <div class="card">
+        <b>1. csapattag neve</b>
+        <p>{{team.2}}</p>
+    </div>
+    <div class="card">
+        <b>1. csapattag évfolyama</b>
+        <p>{{team.3}}</p>
+    </div>
+    <div class="card">
+        <b>2. csapattag neve</b>
+        <p>{{team.4}}</p>
+    </div>
+    <div class="card">
+        <b>2. csapattag évfolyama</b>
+        <p>{{team.5}}</p>
+    </div>
+    <div class="card">
+        <b>3. csapattag neve</b>
+        <p>{{team.6}}</p>
+    </div>
+    <div class="card">
+        <b>3. csapattag évfolyama</b>
+        <p>{{team.7}}</p>
+    </div>
+    <div class="card">
+        <b>Póttag neve</b>
+        <p>{{team.8}}</p>
+    </div>
+    <div class="card">
+        <b>Póttag évfolyama</b>
+        <p>{{team.9}}</p>
+    </div>
+    <div class="card">
+        <b>Felkészítő tanárok</b>
+        <p>{{team.10}}</p>
+    </div>
+    <div class="card">
+        <b>Kategória</b>
+        <p>{{team.11}}</p>
+    </div>
+    <div class="card">
+        <b>Programnyelv</b>
+        <p>{{team.12}}</p>
+    </div>
+    <div class="card">
+        <b>Jóváhagyva</b>
+        <p>{% if team.12 %}Igen{%else%}Nem{%endif%}</p>
+    </div>
+    <div class="card">
+        <b>Benevezve</b>
+        <p>{% if team.13 %}Igen{%else%}Nem{%endif%}</p>
+    </div>
 </div>
 
 
