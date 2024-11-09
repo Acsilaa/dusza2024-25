@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import User
 from dusza_web.settings import UNIFIED_MAX_LENGTH,UNIFIED_MIN_LENGTH
 from .models import School
+from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
 
 class SchoolCreationForm(forms.Form):
@@ -69,6 +70,8 @@ class SchoolCreationForm(forms.Form):
             username=self.cleaned_data["username"],
             password=self.cleaned_data["password1"],
         )
+        my_group = Group.objects.filter(name__contains='Principal').first()
+        my_group.user_set.add(user)
         school = School.objects.create(
             name=self.cleaned_data['name'],
             address=self.cleaned_data['address'],
