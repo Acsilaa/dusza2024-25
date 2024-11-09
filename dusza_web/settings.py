@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0z8ed1fct0b_-v^=!#%x9o)21c+801tg(d=#@l)%9ov*a&r$=n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.59.213.13', 'localhost', 'ec2-52-59-213-13.eu-central-1.compute.amazonaws.com']
 UNIFIED_MIN_LENGTH = 4 #for passwords, names, usernames
 UNIFIED_MAX_LENGTH = 128 #for passwords, names, usernames
 
