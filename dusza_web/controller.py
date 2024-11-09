@@ -36,8 +36,9 @@ def initDB():
             Category.objects.create(name=i)
     if not Contest.objects.all().exists():
         Contest.objects.create(join_deadline="2025-11-11 11:11")
+
+
 def contestantPanel(request):
-    print("asdf")
     context = {}
     team = list(Team.objects.filter(user=request.user))
     context['hasTeam'] = Team.hasTeam(request.user)
@@ -49,7 +50,6 @@ def contestantPanel(request):
         team.user = None
     context['team'] = team
 
-    print(context['hasTeam'],context['in_deadline'])
     return render(request, 'contestant/home.html', context)
 
 
