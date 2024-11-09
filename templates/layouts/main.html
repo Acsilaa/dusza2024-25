@@ -52,6 +52,12 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'index' %}">Kezdőlap</a>
         </li>
+        <li>
+          <a class="nav-link" href="{% url 'login' %}">Bejelentkezés</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'register' %}">Regisztráció</a>
+        </li>
         {% if user.is_authenticated %}
         <li>
           <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
@@ -60,12 +66,7 @@
           {{user}}
         </li>
         {% else %}
-        <li>
-          <a class="nav-link" href="{% url 'login' %}">Bejelentkezés</a>
-        </li>
-        <li>
-          <a class="nav-link" href="{% url 'register' %}">Regisztráció</a>
-        </li>
+
 
         {% endif %}
     </div>

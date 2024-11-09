@@ -46,9 +46,6 @@ td{
 }
 
 
-
-
-
 section{
     box-sizing: border-box;
 }
@@ -59,31 +56,37 @@ section{
     text-align: center;
 }
 
-button{
+.btn{
     margin: auto;
     margin-top: 30px;
 }
 
 .grid-container {
     display: grid;
+    flex-wrap: wrap;
+    width: 60vw; 
     grid-template-columns: repeat(15, 1fr);
     gap: 1rem;
   }
-
+  
+  
   #data{
     background-color: #dbafc1;
-
+    
   }
   .card {
-    padding: 10px;
+    width: 130px;
+    
     border: 1px solid #ddd;
     border-radius: 4px;
     text-align: center;
     font-size: 1.1em;
     color: #ffffff;
     background-color: #886f77;
-    width: 110px;
-    height: 110px;
+    
+  }
+  .card b{
+    color: #0e1116;
   }
 
   
