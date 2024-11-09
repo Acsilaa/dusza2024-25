@@ -14,31 +14,31 @@
 {% block content %}
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
 {% for team in teams %}
-<div class="row justify-content-center">
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+<div class="row justify-content-center mb-5">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>Csapatnév</b>
         <p>{{team.name}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>Iskola</b>
         <p>{{team.school}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>1. csapattag</b>
         <p><i>neve:</i> {{team.contestant1_name}}</p>
         <p><i>évfolyama:</i> {{team.contestant1_grade}}. osztály</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>2. csapattag</b>
         <p><i>neve:</i> {{team.contestant2_name}}</p>
         <p><i>évfolyama:</i> {{team.contestant2_grade}}. osztály</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>3. csapattag</b>
         <p><i>neve:</i>  {{team.contestant3_name}}</p>
         <p><i>évfolyama:</i>  {{team.contestant3_grade}}</p>
     </div>
-    <div class="card  col-lg-1 col-md-6 col-sm-12 ">
+    <div class="card  col-lg-1 col-md-5 col-sm-12 ">
         <b>Póttag</b>
         {% if team.contestant4_name == "" %}
         <p>Nincs</p>
@@ -47,16 +47,16 @@
         <p><i>Évfolyama:</i> {{team.contestant4_grade}}. osztály</p>
         {% endif %}
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12 ">
+    <div class="card col-lg-1 col-md-5 col-sm-12 ">
         <b>Felkészítő tanárok</b>
         <p>{{team.teachers}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>Versenyformátum</b>
         <p><i>Nyelv:</i> {{team.language}}</p>
         <p><i>Kategória:</i> {{team.category}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>Állapot</b>
         <p>{% if team.approved and team.joined %}
             szervezők által jóváhagyva
@@ -67,7 +67,7 @@
         {% endif %}</p>
     </div>
     
-    <div class="card col-lg-1 col-md6 col-sm-12" style="height: min-content">
+    <div class="card col-lg-1 col-md-5 col-sm-12" style="height: min-content">
         <a class="text-decoration-none text-white" href="{% url 'team.more' id=team.id %}">Több
         </a>
     </div>
