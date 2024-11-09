@@ -52,7 +52,24 @@ class TeamCreationForm(forms.Form):
     def name_clean(self):
         name = self.cleaned_data['name']
         return name
-
+    def update(self,request):
+        self.m
+        team = Team.objects.filter(user=request.user).update(
+            name=self.cleaned_data['name'],
+            contestant1_name=self.cleaned_data['contestant1_name'],
+            contestant1_grade=self.cleaned_data['contestant1_grade'],
+            contestant2_name=self.cleaned_data['contestant2_name'],
+            contestant2_grade=self.cleaned_data['contestant2_grade'],
+            contestant3_name=self.cleaned_data['contestant3_name'],
+            contestant3_grade=self.cleaned_data['contestant3_grade'],
+            contestant4_name=self.cleaned_data['contestant4_name'],
+            contestant4_grade=self.cleaned_data['contestant4_grade'],
+            teachers=self.cleaned_data['teachers'],
+            school=self.cleaned_data['school'],
+            category=self.cleaned_data['category'],
+            language=self.cleaned_data['language'],
+        )
+        return team
     def save(self,request, commit=True):
         team = Team.objects.create(
             name=self.cleaned_data['name'],
@@ -70,5 +87,4 @@ class TeamCreationForm(forms.Form):
             category=self.cleaned_data['category'],
             language=self.cleaned_data['language'],
         )
-        print("asd")
         return team
