@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <ul class="messages position-fixed w-100 row h-100 justify-content-center z-3" style="z-index: 100" id="messages">
+    <ul class="messages position-fixed w-100 row justify-content-center z-3" style="z-index: 100" id="messages">
     {% if messages %}
         {% for message in messages %}
         <li style="height: fit-content;"  {% if message.tags %} class="rounded border-2 border-black col-lg-3 col-sm-12 bg-white text-black {{ message.tags }} " {% endif %}>

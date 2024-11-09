@@ -45,17 +45,18 @@ class SchoolCreationForm(forms.Form):
             if new and new.id != School.objects.filter(user=request.user).first().id:
                 self.add_error("address", "Ilyen iskola címmel már létezik iskola!")
                 return False
-        username = self.cleaned_data['username']
-        new = User.objects.filter(username=username).first()
-        if new:
-            self.add_error("username", "Ilyen felhasználó már létezik!")
-            return False
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
+        if "username" in self.fields:
+            username = self.cleaned_data['username']
+            new = User.objects.filter(username=username).first()
+            if new:
+                self.add_error("username", "Ilyen felhasználó már létezik!")
+                return False
+            password1 = self.cleaned_data['password1']
+            password2 = self.cleaned_data['password2']
 
-        if password1 and password2 and password1 != password2:
-            self.add_error("password2", "A két jelszó nem egyezik!")
-            return False
+            if password1 and password2 and password1 != password2:
+                self.add_error("password2", "A két jelszó nem egyezik!")
+                return False
         return True
     def update(self,request):
         school = School.objects.filter(user=request.user).update(
