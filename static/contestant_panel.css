@@ -63,25 +63,25 @@ section{
 
 .grid-container {
     justify-content: center;
-    
+    text-align: start;
     display: grid;
-    flex-wrap: wrap;
     width: 100%; 
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     gap: 1rem;
   }
-  
   
   #data{
     background-color: #dbafc1;
     
   }
   .card {
-    width: 130px;
-    
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    margin: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
-    text-align: center;
+    text-align: justify;
     font-size: 1.1em;
     color: #ffffff;
     background-color: #886f77;
@@ -89,17 +89,21 @@ section{
   }
   .card b{
     color: #0e1116;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
   
   @media (max-width: 1200px) {
     .grid-container {
-      grid-template-columns: repeat(9, 1fr); 
+      grid-template-columns: repeat(9, 1fr);
+      text-align: justify;
     }
   }
 
   @media (max-width: 768px) {
     .grid-container {
       grid-template-columns: repeat(1, 1fr);
+      text-align: center;
     }
   }

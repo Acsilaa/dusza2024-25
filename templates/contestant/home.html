@@ -12,7 +12,7 @@
 <!-- has no team yet -->
     <h2>Még nincs csapatod. Jelentkeznél a versenyre?</h2>
     {% if in_deadline %}
-    <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></a>
+    <a href="{% url 'team.register' %}"><button class="btn" type="submit">Jelentkezz!</button></i>
     {% else %}
     <p>Jelenleg nem tudsz jelentkezni. Várd meg a következő versenyt, ennek a jelentkezési határideje lejárt.</p>
     {% endif %}
@@ -27,27 +27,25 @@
         <b>Iskola</b>
         <p>{{team.1}}</p>
     </div>
-
-
     <div class="card">
         <b>1. csapattag</b>
-        <p>neve: {{team.2}}</p>
-        <p>évfolyama: {{team.3}}. osztály</p>
+        <p><i>neve:</i> {{team.2}}</p>
+        <p><i>évfolyama:</i> {{team.3}}. osztály</p>
     </div>
     <div class="card">
         <b>2. csapattag</b>
-        <p>neve: {{team.4}}</p>
-        <p>évfolyama: {{team.5}}. osztály</p>
+        <p><i>neve:</i> {{team.4}}</p>
+        <p><i>évfolyama:</i> {{team.5}}. osztály</p>
     </div>
     <div class="card">
         <b>3. csapattag</b>
-        <p>neve: {{team.6}}</p>
-        <p>évfolyama: {{team.7}}</p>
+        <p><i>neve:</i>  {{team.6}}</p>
+        <p><i>évfolyama:</i>  {{team.7}}</p>
     </div>
     <div class="card">
         <b>Póttag</b>
-        <p>neve: {{team.8}}</p>
-        <p>évfolyama: {{team.9}}. osztály</p>
+        <p><i>Neve: </i>{{team.8}}</p>
+        <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
     </div>
     <div class="card">
         <b>Felkészítő tanárok</b>
@@ -55,19 +53,16 @@
     </div>
     <div class="card">
         <b>Versenyformátum</b>
-        <p>Nyelv: {{team.12}}</p>
-        <p>Kategória: {{team.11}}</p>
+        <p><i>Nyelv:</i> {{team.12}}</p>
+        <p><i>Kategória:</i> {{team.11}}</p>
     </div>
     <div class="card">
-
         <b>Állapot</b>
         <p>{{state}}</p>
-
     </div>
 </div>
 
-
-    <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></a>
+    <a href="{% url 'team.modify' %}"><button class="btn">Adatok módosítása</button></i>
     </div>
 {% endif %}
 
