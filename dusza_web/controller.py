@@ -50,7 +50,7 @@ def contestantPanel(request):
     if(team != None):
         if  team.missing != "":
             context["hasMissing"]=True
-        elif team.missing is None:
+        elif team.missing is not None:
             context["hasMissing"] =True
         team.id = None
         team.user = None
