@@ -35,7 +35,7 @@ urlpatterns = [
     path('team/register/', team.registerTeam,name='team.register'),
     path('team/edit/', team.modifyTeam,name='team.modify'),
     #principal
-    path('team/approve/', team.modifyTeam,name='team.approve'),
+    path('team/approve/<int:id>', team.approveTeam,name='team.approve'),
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
     
@@ -45,7 +45,7 @@ urlpatterns = [
     path('', controller.render_view,name='index'),
 ]
 """
-path('team/', school.registerSchool,name='team.index'),
+    path('team/', school.registerSchool,name='team.index'),
     path('team/download', school.registerSchool,name='school.register'),
     path('team/missing', school.registerSchool,name='school.register'),
 
