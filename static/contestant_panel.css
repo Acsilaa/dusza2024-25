@@ -64,7 +64,7 @@ section{
 .grid-container {
     display: grid;
     flex-wrap: wrap;
-    width: 60vw; 
+    width: 100%; 
     grid-template-columns: repeat(15, 1fr);
     gap: 1rem;
   }
