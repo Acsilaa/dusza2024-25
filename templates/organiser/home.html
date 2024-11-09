@@ -10,8 +10,12 @@
 {% endblock %}
 {% block content %}
 <form action="{% url 'organiser.change_dl' %}" method="post" id="dlform">
+    {% csrf_token %}
+    {% if dl_form_error != None %}
+    <p>{{dl_form_error}}</p>
+    {% endif %}
     <label for="deadline">Jelentkezési határidő</label>
-    <input type="datetime-local" value="{{ deadline }}" id="deadline"><br>
+    <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
     <label for="iClosed"></label>
     <button class="btn">Mentés</button>
 </form>
@@ -34,17 +38,29 @@
 
     <div class="ajaxforms">
         <div class="languages ajaxform">
+            {% for lang in languages %}     
+            <div class="ajaxitem">
+                <span>{{lang}}</span>
+                <button class="delete">Törlés</button>
+            </div>
+            {%endfor%}
             <div class="adder">
                 <input type="text">
-                <button class="add">Mentés</button>
+                <button class="add">Hozzáadás</button>
             </div>
         </div>
 
 
         <div class="categories ajaxform">
+            {% for category in categories %}
+            <div class="ajaxitem">
+                <span>{{category}}</span>
+                <button class="delete">Törlés</button>
+            </div>
+            {%endfor%}
             <div class="adder">
                 <input type="text">
-                <button class="add">Mentés</button>
+                <button class="add">Hozzáadás</button>
             </div>
 
         </div>

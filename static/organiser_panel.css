@@ -11,6 +11,8 @@
 
 .ajaxform{
     border: 1px solid black;
+    height: 20em;
+    overflow-y: scroll;
 }
 .adder{
     display: flex;
@@ -25,4 +27,11 @@
     width: 100%;
     box-sizing: border-box;
     height: 2em;
+}
+.ajaxitem{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
