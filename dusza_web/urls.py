@@ -43,7 +43,7 @@ urlpatterns = [
     path('school/edit/', school.modifySchool,name='school.modify'),
     #organiser
     path('team/missing/<int:id>/', team.missing,name='team.missing'),
-    path('team/', team.index,name='team.index'),
+    #path('team/', team.index,name='team.index'),
     path('school/register', school.registerSchool, name='school.register'),
     path('category/add/', category.addCategory,name='category.add'),
     path('category/remove/', category.removeCategory,name='category.remove'),
