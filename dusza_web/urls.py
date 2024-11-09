@@ -34,7 +34,7 @@ urlpatterns = [
     path('team/edit', team.modifyTeam,name='team.modify'),
     path('team/edit', team.modifyTeam,name='team.approve'),
     path('school/register', school.registerSchool,name='school.register'),
-    path('school/register', school.registerSchool,name='school.modify'),
+    path('school/edit', school.modifySchool,name='school.modify'),
 
     path('', controller.render_view,name='index'),
 ]
