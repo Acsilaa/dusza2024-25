@@ -154,14 +154,6 @@ main *:not(.wave){
 }
 
 
-.wave2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
 
 .wave2 svg {
     position: relative;
@@ -172,15 +164,6 @@ main *:not(.wave){
 
 .wave2 .shape-fill {
     fill: #E2E4F6;
-}
-
-.wave3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
 }
 
 .wave3 svg{
@@ -211,5 +194,5 @@ main *:not(.wave){
 }
 
 .wave4 .shape-fill {
-    fill: #86626E;
+    fill: #E2E4F6;
 }
