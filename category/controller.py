@@ -14,7 +14,7 @@ def addCategory(request):
     if request.method == "POST" and request.POST.get("category") is not None:
         if request.POST.get("category")!="":
             Category.objects.create(name=request.POST.get("category"))
-            return JsonResponse({"result": "success"})
+            return JsonResponse({"result": "success", 'cat': request.POST.get("category")})
     return JsonResponse({"result":"failed"})
 
 def removeCategory(request):
@@ -23,6 +23,6 @@ def removeCategory(request):
         return redirect('login')
     if request.method == "POST" and request.POST.get("category") is not None:
         if request.POST.get("category")!="":
-            Category.objects.get(name=request.POST.get("category")).delete()
+            Category.objects.filter(name=request.POST.get("category")).first().delete()
             return JsonResponse({"result": "success"})
     return JsonResponse({"result": "failed"})

@@ -12,7 +12,7 @@ function getCookie(name) {
     }
     return cookieValue;
   }
-class Category
+class Language
 {
     name;
     htmlObject;
@@ -27,17 +27,17 @@ class Category
                     <span>${this.name}</span>
                     <button class="delete">Törlés</button>
                 </div>`;
-        this.htmlObject = $(obj).appendTo($(".categories.ajaxform"));
+        this.htmlObject = $(obj).appendTo($(".languages.ajaxform"));
     }
     registerEventListeners(){
         let obj = this.htmlObject
         $($(obj).children("button")[0]).click(() => { //törlés
             let ajaxdata = {
-                'category': this.name,
+                'language': this.name,
             }
             $.ajax({
                 type: "post",
-                url: "/category/remove/",
+                url: "/language/remove/",
                 data: ajaxdata,
                 dataType: "json",
                 headers: {
@@ -53,21 +53,23 @@ class Category
         })
     }
 }
-categories = []
-cats.forEach(c => {
-    categories.push(new Category(c))
+languages = []
+langs.forEach(c => {
+    languages.push(new Language(c))
 });
 
-$(".categories.ajaxform .adder .add").click(function(){
-    let val = $(".categories.ajaxform .adder input").val()
+$(".languages.ajaxform .adder .add").click(function(){
+    let val = $(".languages.ajaxform .adder input").val()
     let ajaxdata = {
-        "category": val
+        "language": val
     }
-    if(val.trim() == "")
+    
+    if(val.trim() == ""){
         return
+    }
     $.ajax({
         type: "post",
-        url: "/category/add/",
+        url: "/language/add/",
         data: ajaxdata,
         dataType: "json",
         headers: {
@@ -75,9 +77,10 @@ $(".categories.ajaxform .adder .add").click(function(){
             "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
         },
         success: function (response) {
+            console.log(response)
             if (response['result'] == "success"){
-                categories.push(new Category(response['cat']))
-                $(".categories.ajaxform .adder input").val("")
+                languages.push(new Language(response['lang']))
+                $(".languages.ajaxform .adder input").val("")
             }
         }
     });
