@@ -26,6 +26,7 @@ class Team(models.Model):
     approval_file = models.FileField(upload_to='approval_files/', blank=True, null=True)
     missing=models.CharField(max_length=UNIFIED_MAX_LENGTH, blank=True, null=True)
     joined = models.BooleanField(default=False)
+    date_modified=models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return self.user.username

@@ -137,7 +137,13 @@ def index(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
-    teams = Team.objects.all().order_by('name')
+    teams = Team.objects.all().order_by("date_modified")
+
+    #filter
+    request.GET.get("category")
+    request.GET.get("language")
+    request.GET.get("contestant4")
+    request.GET.get("state")
 
     p = Paginator(teams, 1)
     page_number = request.GET.get("page")
