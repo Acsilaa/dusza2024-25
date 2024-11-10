@@ -1,5 +1,7 @@
 messages_El = document.getElementById('messages');
 
+
+
 document.addEventListener('DOMContentLoaded', function(){
     if(messages_El.innerHTML.indexOf("<li") === -1){
         messages_El.remove();

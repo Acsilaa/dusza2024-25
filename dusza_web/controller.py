@@ -129,11 +129,11 @@ def newContest(request):
     Team.objects.all().delete()
     contest = Contest.objects.first()
     contest.joining_closed = False
-    year=date.today().year
-    month=date.today().month+2
+    year=date.now().year
+    month=date.now().month+2
     if month>12:
         year+=1
         month=month-12
-    contest.join_deadline = f"{year}-{month}-{date.today().day} 23:59"
+    contest.join_deadline = f"{year}-{month}-{date.now().day} 23:59"
     contest.save()
     return redirect("index")
