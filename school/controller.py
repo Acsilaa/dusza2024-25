@@ -42,7 +42,7 @@ def index(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
-    schools = School.objects.all()
+    schools = School.objects.all().order_by("name")
     p = Paginator(schools, 15)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)

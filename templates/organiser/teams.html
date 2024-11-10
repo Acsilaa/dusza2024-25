@@ -14,7 +14,25 @@
 {% block content %}
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
 {% for team in teams %}
+<div class="filter"  style="height: min-content; width: 275px">
+    <!-- <a class="text-decoration-none" href="{% url 'team.more' id=team.id %}">->
+    </a> -->
+    <div>
+        <h1>Szűrés</h1>
+        <ul>
+            <li > <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Kategória</a>
+                <div class="collapse fs-6" id="collapseExample">
+                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
+                  </div>
+            </li>
+            <li data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >Nyelv</li>
+            <li data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Állapot</li>
+            <li data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Póttag</li>
+        </ul>
+    </div>
+</div>
 <div class="row justify-content-center mb-5">
+
     <div class="card col-lg-1 col-md-5 col-sm-12">
         <b>Csapatnév</b>
         <p>{{team.name}}</p>
@@ -67,7 +85,7 @@
         {% endif %}</p>
     </div>
     
-    <div class="card col-lg-1 col-md-5 col-sm-12" style="height: min-content">
+    <div class="morebtn col-lg-1 col-md-5 col-sm-12 " style="height: min-content">
         <a class="text-decoration-none text-white" href="{% url 'team.more' id=team.id %}">Több
         </a>
     </div>

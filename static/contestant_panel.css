@@ -37,6 +37,41 @@ td{
     border: 5px solid #e2e4f6;
 }
 
+.filter{
+  background-color: #ffffff;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+  border-radius: 25px;
+  transition: ease-in-out 2s;
+  font-size: 2em;
+  position: fixed;
+  top: 50%;
+    left: -50vw;
+  transform: translateY(-50%);
+  z-index: 1000000 !important;
+}
+.filter a{
+  color: #886f77;
+}
+
+.morebtn{
+  background-color: #dbafc1;
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  transition: 0.1s;
+  margin: 10px;
+}
+
+.morebtn:hover{
+  background-color: #886f77;
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  transform: scale(1.1);
+  border: 5px solid #dbafc1;
+}
+
 #main{
     background-color: #886f77;
     margin: 10px;
@@ -91,7 +126,7 @@ section{
   }
   .card {
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
     border-radius: 25px 4px 25px 4px;
     text-align: justify;
     font-size: 1.1em;
