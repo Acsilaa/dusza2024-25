@@ -1,5 +1,5 @@
 messages_El = document.getElementById('messages');
-
+filter_
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -11,3 +11,4 @@ document.addEventListener('DOMContentLoaded', function(){
         messages_El.remove();
     },3000)
 })
+
