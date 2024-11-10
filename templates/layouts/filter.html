@@ -1,0 +1,61 @@
+<div class="filter" style="height: min-content; width: 75px">
+    <div class="ful">
+        <button class="arrow" onclick="showFilter()">
+        </button>
+    </div>
+
+    <div id="filterDiv">
+        <h1>Szűrés</h1>
+        <ul>
+            <li>
+                <a data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false"
+                    aria-controls="collapseCategory">Kategória</a>
+                <div class="collapse fs-6" id="collapseCategory">
+                    {% for category_i in category %}
+                    <input class="check_category" type="checkbox" id="{{ category_i }}" name="{{ category_i }}" checked>
+                    <label for="{{ category_i }}">{{ category_i }}</label><br>
+                    {% endfor %}
+                </div>
+            </li>
+            <li>
+                <a data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false"
+                    aria-controls="collapseLanguage">Nyelv</a>
+                <div class="collapse fs-6" id="collapseLanguage">
+                    <div class="collapse fs-6" id="collapseLanguage">
+                        {% for language_i in language %}
+                        <input type="checkbox" id="{{ language_i }}" class="check_language" name="{{ language_i }}" checked>
+                        <label for="{{ language_i }}">{{ language_i }}</label><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false"
+                    aria-controls="collapseStatus">Állapot</a>
+                <div class="collapse fs-6" id="collapseStatus">
+                    <input class="check_r" type="checkbox" id="registrated" name="" checked>
+                    <label for="registrated">Regisztrált</label><br>
+                    <input class="check_i" type="checkbox" id="isk" name="" checked>
+                    <label for="isk">Iskola álltal jóváhagyva</label><br>
+                    <input class="check_s" type="checkbox" id="szerv" name="" checked>
+                    <label for="szerv">Szervező álltal jóváhagyva</label><br>
+                </div>
+            </li>
+            <li>
+                <a data-bs-toggle="collapse" href="#collapseSpare" role="button" aria-expanded="false"
+                    aria-controls="collapseSpare">Póttag</a>
+                <div class="collapse fs-6" id="collapseSpare">
+
+                    <input class="check_p_c" type="checkbox" id="tartalmazza" name="" onclick="toggleCheckbox()">
+                    <label for="tartalmazza">Tartalmazza</label><br>
+
+                    <input class="check_p" type="checkbox" id="all" name="" checked onclick="toggleCheckbox()">
+                    <label for="all">Összes</label><br>
+                </div>
+            </li>
+            <li>
+                <button class="searchbtn" onclick="search()">Keresés</button>
+            </li>
+        </ul>
+    </div>
+</div>
