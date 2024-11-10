@@ -13,6 +13,7 @@
 - versenyzo1 (jelszó: contestant1)
 - versenyzo2 (jelszó: contestant2)
 - versenyzo3 (jelszó: contestant3)
+- versenyzo4 (jelszó: contestant4)
 
 # A webapplikáció használata
 A főoldalt az ip címen érjük el.
