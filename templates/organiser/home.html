@@ -7,7 +7,8 @@
 <script src="{% static 'organiser/languages.js' %}" defer></script>
 <script src="{% static 'organiser/categories.js' %}" defer></script>
 <script src="{% static 'organiser/deadline.js' %}" defer></script>
-<script src="{% static 'organiser/pie.js' %}" defer></script>
+<script src="{% static 'organiser/pie1.js' %}" defer></script>
+<script src="{% static 'organiser/pie2.js' %}" defer></script>
 {% endblock %}
 {% block nav_extended %}
     <li>
@@ -84,7 +85,8 @@
         {%endfor%}
 
         datas = {{stat_langs|safe}}
-        console.log(datas)
+        datas2 = {{stat_cats|safe}}
+
     </script>
 </section>
 <section class="lower">
@@ -107,6 +109,26 @@
             <div class ="col-sm-6">
                 <div class="lista">
                     <ul class="datas">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <h3>Nincsenek még csapatok!</h3>
+    {% endif %}
+    {% if teamsExist %}
+    <h3>Kategóriák</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="pite2">
+                </div>
+            </div>
+            <div class ="col-sm-6">
+                <div class="lista">
+                    <ul class="datas2">
 
                     </ul>
                 </div>

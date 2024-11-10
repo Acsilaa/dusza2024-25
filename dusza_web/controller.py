@@ -102,12 +102,19 @@ def organiserPanel(request):
         "stats": stats,
     }
     context['stat_langs'] = {}
+    context['stat_cats'] = {}
 
     for t in list(Team.objects.all()):
         try:
             context['stat_langs'][t.language.name] += 1
         except:
             context['stat_langs'][t.language.name] = 1
+
+    for t in list(Team.objects.all()):
+        try:
+            context['stat_cats'][t.category.name] += 1
+        except:
+            context['stat_cats'][t.category.name] = 1
 
     try:
         context['dl_form_error'] = request.session['dl_form_error']

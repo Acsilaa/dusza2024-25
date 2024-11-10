@@ -1,13 +1,13 @@
-const lga = document.getElementsByClassName("lga");
-const chart = document.getElementById("pite");
-// datas
+const lga2 = document.getElementsByClassName("lga2");
+const chart2 = document.getElementById("pite");
+// datas2
 total = 0
-Object.entries(datas).forEach(([key, value]) => {
+Object.entries(datas2).forEach(([key, value]) => {
     total += value*1
 })
 layout = ""
 prev_end = 0
-let colors =[]
+colors =[]
 function inarray(arr, e){
     for(i = 0; i < arr.length; i++){
         if(e == arr[i])
@@ -32,7 +32,7 @@ _colors = [
     "34435E",
     "60E1E0"
 ];
-Object.entries(datas).forEach(([key, value]) => {
+Object.entries(datas2).forEach(([key, value]) => {
     index = Math.floor(Math.random() * _colors.length)
     console.log(index)
     cc = _colors[it]
@@ -41,15 +41,13 @@ Object.entries(datas).forEach(([key, value]) => {
     layout += `#${cc} ${prev_end}% ${prev_end + curr_end}%, `
                         
     colors.push(cc)
-    $('ul.datas').append(`<li class="lga">${key}</li>`)
+    $('ul.datas2').append(`<li class="lga2">${key}</li>`)
     prev_end += curr_end
     it++
 })
 layout = layout.substring(0, layout.length - 2);
-$("#pite").css('background', `conic-gradient(${layout})`)
-console.log(colors)
+$("#pite2").css('background', `conic-gradient(${layout})`)
 for(i = 0; i < colors.length; i++){
-    $(lga[i]).css('color',  `#${colors[i]}`)
+    $(lga2[i]).css('color',  `#${colors[i]}`)
     
 }
-
