@@ -55,3 +55,48 @@ A Team tábla tartalmazza az adatokat a csapatokról, illetve azt, hogy az igazg
 A Contest tábla érdekes, mert mindig csak egy record van benne. Ez csak arra kell, hogy legyen hol eltárolni a jelentkezési határidőt, és hogy le lehessen zárni a jelentkezést.
 
 A School tábla tartalmazza az iskolákat és adataikat.
+```
+├── School
+│   ├── user (Foreign Key)
+│   ├── name (Char)
+│   ├── address (Char)
+│   ├── contact_name (Char)
+│   └── contact_email (Char)
+├── Team
+│   ├── user (Foreign Key)
+│   ├── name (Char)
+│   ├── school (Foreign Key)
+│   ├── contestant1_name (Char)
+│   ├── contestant1_grade (Decimal)
+│   ├── contestant2_name (Char)
+│   ├── contestant2_grade (Decimal)
+│   ├── contestant3_name (Char)
+│   ├── contestant3_grade (Decimal)
+│   ├── contestant4_name (Char)
+│   ├── contestant4_grade (Decimal)
+│   ├── teachers (Text)
+│   ├── category (Foreign Key)
+│   ├── language (Foreign Key)
+│   ├── approved (Boolean)
+│   ├── approval_file (Char)
+│   ├── missing (Char)
+│   ├── joined (Boolean)
+│   └── date_modified (Datetime)
+├── User
+│   ├── password (Char)
+│   ├── last_logined (Datetime)
+│   ├── is_superuser (Boolean)
+│   ├── username (Char)
+│   ├── is_staff (Boolean)
+│   ├── is_active (Boolean)
+│   └── date_joined (Datetime)
+├── Contest
+│   ├── join_deadline (Datetime)
+│   └── joining_closed (Boolean)
+├── Category
+│   └── name (Char)
+├── Language
+│   └── name (Char)
+└── Groups
+    └── name (Char)
+```
