@@ -109,10 +109,6 @@ def organiserPanel(request):
         except:
             context['stat_langs'][t.language.name] = 1
 
-
-
-
-
     try:
         context['dl_form_error'] = request.session['dl_form_error']
     except:
