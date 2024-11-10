@@ -74,7 +74,7 @@
 {% for team in teams %}
 <div class="row justify-content-center mb-5">
 
-    <div class="card col-lg-3 col-md-5 col-sm-12">
+    <div class="card col-lg-4 col-md-6 col-sm-12">
         <b>Alap információ</b>
         <i>Csapatnév:</i>
         <p>{{team.name}}</p>
@@ -92,7 +92,7 @@
         <p class="missing">Hiány jelezve</p>
         {% endif %}
     </div>
-    <div class="card col-lg-3 col-md-5 col-sm-12 ">
+    <div class="card col-lg-3 col-md-6 col-sm-12 ">
         <b>Csapattagok</b>
         <p><i>{{team.contestant1_name}}</i> <br>({{team.contestant1_grade}}. osztály)</p>
         <p><i>{{team.contestant2_name}}</i> <br>({{team.contestant2_grade}}. osztály)</p>
@@ -103,16 +103,16 @@
         <p>{{team.contestant4_name}} <br>({{team.contestant4_grade}}. osztály)</p>
         {% endif %}
     </div>
-    <div class="card col-lg-2 col-md-5 col-sm-12 ">
+    <div class="card col-lg-2 col-md-6 col-sm-12 ">
         <b>Felkészítő tanárok</b>
         <p>{{team.teachers}}</p>
     </div>
-    <div class="card col-lg-2 col-md-5 col-sm-12">
+    <div class="card col-lg-2 col-md-6 col-sm-12">
         <b>Versenyformátum</b>
         <p>{{team.category}} - {{team.language}}</p>
     </div>
-
-    <a class="text-decoration-none text-white morebtn col-lg-5 col-md-5 col-sm-12 block" href="{% url 'team.more' id=team.id %}">Több</a>
+    
+    <a class="text-decoration-none text-white morebtn d-block" href="{% url 'team.more' id=team.id %}">Több</a>
 </div>
 {%endfor%}
 <div class="pagination">
