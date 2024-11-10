@@ -53,8 +53,9 @@ function search(){
     //contestant4
     if(!contestant4.checked){
         filters.push("?contestant4=Nincs")
+        filters[filters.length-1]+="&"
     }
-    filters[filters.length-1]+="&"
+
     //categories
     for(let i = 0; i < categories.length; i++){
         if(categories[i].checked && filters.findIndex(function(item){
