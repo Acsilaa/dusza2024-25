@@ -49,23 +49,21 @@ li {
   font-size: 1em;
   position: fixed;
   top: 50%;
-  left: 0;
+  left: -300px;
   transform: translateY(-50%);
   z-index: 1000000 !important;
-}
-.filter:has(> .start-0){
-    width: 275px !important;
-}
-.start-0{
-
+  width: 300px !important;
 }
 .ful {
   background-color: #886f77;
   padding: 20px;
   border-radius: 0px 25px 25px 0px;
   width: 70px;
+  transform: translateX(300px);
 }
-
+#filterDiv.start-0{
+  transform: translateX(100%);
+}
 .arrow {
   width: 30px;
   height: 30px;
@@ -90,7 +88,7 @@ li {
 #filterDiv {
   transition: ease-in-out .5s;
   text-align: center;
-  left: -100%;
+  left: 0;
   overflow: hidden;
   position: relative;
   background-color: #ffffff;
