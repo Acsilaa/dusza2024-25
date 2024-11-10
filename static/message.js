@@ -34,12 +34,13 @@ function initFilters(){
         filter_El.classList.add('start-0');
         filter_El.style.transition = 'none';
         filterToggle.classList.remove("left")
+        filterToggle.classList.add("right")
         setTimeout(()=>{
             filter_El.style.transition = 'ease-in-out .5s';
         },100)
 
     }else{
-        filterToggle.classList.add("right")
+        filterToggle.classList.add("left")
         return
     }
     state_r.checked=false
@@ -57,7 +58,15 @@ function initFilters(){
             state_s.checked=true
         }
     }
-
+    contestant4.checked=false
+    contestant4_contains.checked=false
+    if(params.contestant4){
+        if(params.contestant4 === "Van"){
+            contestant4_contains.checked=true
+        }
+    }else{
+        contestant4.checked=true
+    }
 
     for(let i=0;i<categories.length;i++){
         categories[i].checked = false;
