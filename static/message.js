@@ -27,6 +27,14 @@ function showFilter(){
         filterToggle.classList.add("right")
     }
 }
+function contestant4(){
+    const contestant4=document.getElementsByClassName('check_p')[0];
+    const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
+    if(contestant4.checked){
+        
+    }
+}
+
 function search(){
     const categories=document.getElementsByClassName('check_category');
     const languages=document.getElementsByClassName('check_language');
@@ -34,6 +42,7 @@ function search(){
     const state_i=document.getElementsByClassName('check_i')[0];
     const state_s=document.getElementsByClassName('check_s')[0];
     const contestant4=document.getElementsByClassName('check_p')[0];
+    const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
 
     let filters = []
     //states
@@ -52,16 +61,22 @@ function search(){
     filters[0]+="&"
     //contestant4
     if(!contestant4.checked){
-        filters.push("?contestant4=Nincs")
-        filters[filters.length-1]+="&"
+        if(contestant4_contains.checked){
+            filters.push("?contestant4=Van")
+            filters[filters.length-1]+="&"
+        }else{
+            filters.push("?contestant4=Nincs")
+            filters[filters.length-1]+="&"
+        }
+
     }
 
     //categories
     for(let i = 0; i < categories.length; i++){
         if(categories[i].checked && filters.findIndex(function(item){
-    return item.indexOf("?category=")!==-1;
+    return item.indexOf("category=")!==-1;
 }) === -1){
-            filters.push("?category=")
+            filters.push("category=")
         }
     }
     for(let i = 0; i < categories.length; i++){
@@ -73,9 +88,9 @@ function search(){
     //languages
     for(let i = 0; i < languages.length; i++){
         if(languages[i].checked && filters.findIndex(function(item){
-    return item.indexOf("?language=")!==-1;
+    return item.indexOf("language=")!==-1;
 }) === -1){
-            filters.push("?language=")
+            filters.push("language=")
         }
     }
     for(let i = 0; i < languages.length; i++){
@@ -84,7 +99,7 @@ function search(){
         }
     }
     filters[filters.length-1]+="&"
-    console.log(window.location.href = location.protocol + '//' + location.host + location.pathname+filters)
+    window.location.href = location.protocol + '//' + location.host + location.pathname+filters.join("")
 
 
 }

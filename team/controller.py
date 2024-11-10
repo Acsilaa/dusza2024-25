@@ -120,21 +120,17 @@ def more(request,id):
     context["hasApprovalFile"] = team.approval_file not in ["",None]
     return render(request, f'organiser/team.html', context)
 def filter(request,models):
-    request.GET.get("category")
-    if request.GET.get("category") and Category.objects.filter(name__contains=request.GET.get("category").split(";")[0:-1]):
-        models = models.filter(category__contains=request.GET.get("category").split(";")[0:-1])
-    if request.GET.get("language") and Language.objects.filter(name__contains=request.GET.get("language").split(";")[0:-1]):
-        models = models.filter(language__contains=request.GET.get("language").split(";")[0:-1])
+    if request.GET.get("category") and Category.objects.filter(name__in=request.GET.get("category").split(";")[0:-1]):
+        models = models.filter(category__in=Category.objects.filter(name__in=request.GET.get("category").split(";")[0:-1]))
+    if request.GET.get("language") and Language.objects.filter(name__in=request.GET.get("language").split(";")[0:-1]):
+        models = models.filter(language__in=Language.objects.filter(name__in=request.GET.get("language").split(";")[0:-1]))
     if request.GET.get("contestant4") == "Nincs":
         models = models.exclude(contestant4_grade__isnull=True)
-    print(request.GET.get("state"))
     state_r="regisztralt"
     state_i="iskola altal jovahagyva"
     state_s="szervezok altal jovahagyva"
     if request.GET.get("state"):
         states = request.GET.get("state").split(";")[0:-1]
-        print([state_i,state_s])
-        print(all(ele in [state_i,state_s] for ele in states))
         if all(i in [state_r] for i in states):
             models = models.filter(Q(approved=False) & Q(joined=False))
         elif all(i in [state_i] for i in states):

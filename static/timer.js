@@ -18,7 +18,6 @@ function timer(){
     hours.innerText = Hours
     minutes.innerText = Minutes
     sec.innerText = Seconds
-    console.log(days, hours, minutes, sec)
     if (distance < 0){
         days.innerText = "00"
         hours.innerText = "00"
