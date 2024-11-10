@@ -26,9 +26,9 @@
     <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
     <label for="iClosed"></label>
     <button class="btn text-white">Mentés</button>
-    <a href="{% url 'organiser.toggle_dl_close' %}" style="width: min-content"><button class="btn text-white" >
+    <a href="{% url 'organiser.toggle_dl_close' %}" class="btn text-white" style="width: min-content">
         {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
-    </button></a>
+    </a>
 </form>
 <a class="text-decoration-none btn" href="{% url 'newContest' %}">Új verseny</a>
     <p class="text-danger">Törli a meglévő versenyző csapatokat és megnyitja a versenyt a mához 2 hónapi határidővel</p>
