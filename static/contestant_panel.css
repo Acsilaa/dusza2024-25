@@ -36,7 +36,9 @@ td{
     padding-bottom: 10px;
     border: 5px solid #e2e4f6;
 }
-
+li{
+  text-align: start;
+}
 .filter{
   background-color: #ffffff;
   text-align: center;
