@@ -69,7 +69,7 @@ register = template.Library()
 @register.simple_tag
 def getContestDl(*args, **kwargs):
     contest = Contest.objects.first()
-    return contest.join_deadline
+    return contest.join_deadline if not contest.joining_closed else "closed"
 
 
 def organiserPanel(request):

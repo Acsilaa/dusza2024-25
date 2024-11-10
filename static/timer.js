@@ -6,9 +6,15 @@ const sec = document.getElementById("seconds")
 
 
 function timer(){
-    
     const currentDate = new Date().getTime()
-    const distance = targetDate - currentDate
+    let distance
+    if(targetDate.toString() != "Invalid Date"){
+        distance = targetDate - currentDate
+    }else{
+        // display data of no.
+        $("li.deadline *").remove();
+        return
+    }
 
     const Days = Math.floor(distance / 1000 / 60 / 60 / 24)
     const Hours = Math.floor(distance / 1000 / 60 / 60) % 24
@@ -24,6 +30,7 @@ function timer(){
         hours.innerText = "00"
         minutes.innerText = "00"
         sec.innerText = "00"
+        targetDate = "closed"
     }
 }
 
