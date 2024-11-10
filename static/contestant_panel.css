@@ -28,7 +28,9 @@ th{
     padding-bottom: 10px;
     border: 5px solid #e2e4f6;
 }
-
+i{
+  text-decoration: underline;
+}
 td{
     justify-content: center;
     font-weight: bold;

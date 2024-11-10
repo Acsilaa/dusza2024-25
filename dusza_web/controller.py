@@ -52,21 +52,7 @@ def contestantPanel(request):
             context["hasMissing"]=True
         team.id = None
         team.user = None
-        context['team'] = [
-            team.name,
-            team.school.name,
-            team.contestant1_name,
-            team.contestant1_grade,
-            team.contestant2_name,
-            team.contestant2_grade,
-            team.contestant3_name,
-            team.contestant3_grade,
-            team.contestant4_name,
-            team.contestant4_grade,
-            team.teachers,
-            team.category.name,
-            team.language.name,
-        ]
+        context['team'] = team
         context["state"] = "Regisztrált"
         if(team.approved):
             context["state"] = "Iskola által jóváhagyva"
