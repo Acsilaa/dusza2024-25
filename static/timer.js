@@ -6,6 +6,7 @@ const sec = document.getElementById("seconds")
 
 
 function timer(){
+    
     const currentDate = new Date().getTime()
     const distance = targetDate - currentDate
 
