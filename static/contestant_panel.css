@@ -43,9 +43,9 @@ li{
   background-color: #ffffff;
   text-align: center;
   padding: 0px 10px 0px 10px;
-  border-radius: 25px;
+  border-radius: 0px 25px 25px 0px;
   transition: ease-in-out 2s;
-  font-size: 2em;
+  font-size: 1em;
   position: fixed;
   top: 50%;
     left: -50vw;
@@ -54,6 +54,7 @@ li{
 }
 .filter a{
   color: #886f77;
+  text-decoration: none;
 }
 
 .morebtn{
