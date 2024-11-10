@@ -1,6 +1,6 @@
 ## A StillNincsenCsapatnév nevű csapat munkája
 
-## Előr elétrehozott felhasználók
+## Előre létrehozott felhasználók
 ### szervezők:
 - szervezo1 (jelszó: organiser1)
 - szervezo2 (jelszó: organiser2)
