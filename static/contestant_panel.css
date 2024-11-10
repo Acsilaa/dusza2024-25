@@ -78,9 +78,9 @@ li{
 
 
 #filterDiv{
- transition: ease-in-out 2s;
+ transition: ease-in-out .5s;
   text-align: center;
-    left: -50vw;
+    left: -100%;
     position: relative;
     background-color: #ffffff;
     border-radius: 0px 40px 40px 0px;
@@ -97,6 +97,7 @@ li{
   border-radius: 25px;
   transition: 0.1s;
   margin: 10px;
+  box-sizing: border-box;
 }
 
 .morebtn:hover{
@@ -104,8 +105,8 @@ li{
   padding: 10px;
   text-align: center;
   border-radius: 25px;
-  transform: scale(1.1);
   border: 5px solid #dbafc1;
+  box-sizing: border-box;
 }
 
 #main{

@@ -13,14 +13,12 @@
 {% endblock %}
 {% block content %}
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
-{% for team in teams %}
 <div class="filter"  style="height: min-content; width: 275px">
     <div class="ful">
-        <button class="arrow"  onclick="showFilter()">
+        <button class="arrow"  onclick="showFilter()"></button>
     </div>
-
-    </button>
     <div id="filterDiv">
+{% for team in teams %}
         <h1>Szűrés</h1>
         <ul>
             <li>
