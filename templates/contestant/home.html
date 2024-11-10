@@ -23,51 +23,39 @@
 </div>
 {% else %}
 <div class="row justify-content-center">
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>Csapatnév</b>
-        <br>
-        <p>{{team.0}}</p>
-    </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>Iskola</b>
-        <p>{{team.1}}</p>
-    </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>1. csapattag</b>
-        <p><i>neve:</i> {{team.2}}</p>
-        <p><i>évfolyama:</i> {{team.3}}. osztály</p>
-    </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>2. csapattag</b>
-        <p><i>neve:</i> {{team.4}}</p>
-        <p><i>évfolyama:</i> {{team.5}}. osztály</p>
-    </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>3. csapattag</b>
-        <p><i>neve:</i>  {{team.6}}</p>
-        <p><i>évfolyama:</i>  {{team.7}}</p>
-    </div>
-    <div class="card  col-lg-1 col-md-6 col-sm-12 ">
-        <b>Póttag</b>
-        {% if team.8 == "" %}
-        <p>Nincs</p>
+    <div class="card col-lg-3 col-md-5 col-sm-12">
+        <b>Alap információ</b>
+        <i>Csapatnév:</i>
+        <p>{{team.name}}</p>
+        <i>Iskola:</i>
+        <p>{{team.school}}</p>
+        <i>Állapot</i>
+        <p>{% if team.approved and team.joined %}
+            szervezők által jóváhagyva
+        {% elif team.approved and not team.joined %}
+            iskola által jóváhagyva
         {% else %}
-        <p><i>Neve: </i>{{team.8}}</p>
-        <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
+            regisztrált
+        {% endif %}</p>
+    </div>
+    <div class="card col-lg-3 col-md-5 col-sm-12 ">
+        <b>Csapattagok</b>
+        <p><i>{{team.contestant1_name}}</i> <br>({{team.contestant1_grade}}. osztály)</p>
+        <p><i>{{team.contestant2_name}}</i> <br>({{team.contestant2_grade}}. osztály)</p>
+        <p><i>{{team.contestant3_name}}</i> <br>({{team.contestant3_grade}}. osztály)</p>
+        {% if team.contestant4_name == "" %}
+        {% else %}
+        <i>Póttag:</i>
+        <p>{{team.contestant4_name}} <br>({{team.contestant4_grade}}. osztály)</p>
         {% endif %}
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12 ">
+    <div class="card col-lg-2 col-md-5 col-sm-12 ">
         <b>Felkészítő tanárok</b>
-        <p>{{team.10}}</p>
+        <p>{{team.teachers}}</p>
     </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
+    <div class="card col-lg-2 col-md-5 col-sm-12">
         <b>Versenyformátum</b>
-        <p><i>Nyelv:</i> {{team.12}}</p>
-        <p><i>Kategória:</i> {{team.11}}</p>
-    </div>
-    <div class="card col-lg-1 col-md-6 col-sm-12">
-        <b>Állapot</b>
-        <p>{{state}}</p>
+        <p>{{team.category.name}} - {{team.language.name}}</p>
     </div>
 </div>
 
