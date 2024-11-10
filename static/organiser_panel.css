@@ -80,3 +80,20 @@ button{
 .adder{
     margin-bottom: 10px;
 }
+.panel1{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.panel1 form button.btn{
+    margin: 0 !important;
+}
+@media only screen and (max-width: 1250px){
+    .panel1{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}

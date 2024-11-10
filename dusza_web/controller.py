@@ -88,6 +88,10 @@ def getContestDl(*args, **kwargs):
 def organiserPanel(request):
     deadline = Contest.objects.first().join_deadline
     isClosed = Contest.objects.first().joining_closed
+    stats = {
+        "awaiting_organiser_approval": len(Contest.getTeamsAwaitingOrganiserApproval()),
+        "approved_teams": len(Contest.getTeamsFullyApproved()),
+    }
     d = deadline
     d = str(deadline)
     year = d[0:4]
@@ -108,6 +112,7 @@ def organiserPanel(request):
         'categories': cats,
         "deadline": dl,
         "is_closed": isClosed,
+        "stats": stats,
     }
     try:
         context['dl_form_error'] = request.session['dl_form_error']
