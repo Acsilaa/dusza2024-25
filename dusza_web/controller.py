@@ -115,6 +115,7 @@ def organiserPanel(request):
         context['dl_form_error'] = None
     context["TeamsFullyApproved"] = Contest.getTeamsFullyApproved()
     context["TeamsAwaitingOrganiserApproval"] = Contest.getTeamsAwaitingOrganiserApproval()
+    context["teamsExist"] = Team.objects.all().exists()
     return render(request, 'organiser/home.html', context)
 
 
