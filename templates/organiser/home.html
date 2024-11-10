@@ -97,14 +97,24 @@
     </div>
     <h1 class="">Statisztikák</h1>
     <h3>Használt nyelvek</h3>
-    <div id="pite">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="pite">
+                </div>
+            </div>
+            <div class ="col-sm-6">
+                <div class="lista">
+                    <ul class="datas">
+                        {% for i in languages%}
+                        <li class="lga">
+                            {{i}}
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <ul class="datas">
-        {% for i in languages%}
-        <li id="lga">
-            {{i}}
-        </li>
-        {%endfor%}
-    </ul>
 </section>
 {% endblock %}

@@ -127,16 +127,12 @@ section.middle{
 
 #pite {
     margin-top: 100px;
-    width: 800px;
-    height: 800px;
+    width: 500px;
+    height: 500px;
     box-shadow: 10px 10px black;
     border-radius: 50%;
-    background: conic-gradient(
-      #4caf50 0% 25%,
-      #2196f3 25% 50%,  
-      #ff9800 50% 75%,
-      #f44336 75% 100%
-    );
+    padding: 300px;
+
 }
 
 .lower h1{
@@ -144,7 +140,14 @@ section.middle{
     margin:10px 0px 50px 0px;
 }
 .datas{
-
     margin-top: 30px;
     font-weight: 700;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista{
+    
+    padding: 300px;
+    
 }
