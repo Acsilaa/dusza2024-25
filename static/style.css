@@ -10,11 +10,29 @@ h4{
 }
 .timebox{
     display: flex;
-    gap: 1.2rem;
-
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
     margin-top: 15px;
+    margin-top: 0;
 }
-
+.timebox > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.timebox p, .timebox h4  {
+    margin: 0;
+}
+.timebox h4{
+    width: 2em;
+    text-align: right;
+}
+.deadline{
+    justify-self: end;
+    margin-right: 1em;
+    margin-left: auto;
+}
 body {
     color: #0E1116;
     background-repeat: no-repeat;
