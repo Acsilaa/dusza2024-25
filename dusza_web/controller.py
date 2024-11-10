@@ -129,7 +129,7 @@ def organiserPanel(request):
 def principalPanel(request):
     context = {}
     school = School.objects.filter(user=request.user).first()
-    teams = list(Team.objects.filter(school=school).order_by("-date_modified"))
+    teams = Team.objects.filter(school=school).order_by("-date_modified")
     context["category"] = Category.objects.all()
     context["language"] = Language.objects.all()
     teams=filter(request,teams)
