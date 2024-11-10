@@ -167,9 +167,6 @@ section {
     overflow: hidden;
     line-height: 0;
 }
-main *:not(.wave){
-    z-index: 1;
-}
 
 .wave svg {
     position: relative;
