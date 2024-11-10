@@ -116,7 +116,8 @@ def organiserPanel(request):
         context['dl_form_error'] = request.session['dl_form_error']
     except:
         context['dl_form_error'] = None
-
+    context["TeamsFullyApproved"] = Contest.getTeamsFullyApproved()
+    context["TeamsAwaitingOrganiserApproval"] = Contest.getTeamsAwaitingOrganiserApproval()
     return render(request, 'organiser/home.html', context)
 
 
