@@ -55,7 +55,12 @@ li {
   transform: translateY(-50%);
   z-index: 1000000 !important;
 }
+.filter:has(> .start-0){
+    width: 275px !important;
+}
+.start-0{
 
+}
 .ful {
   background-color: #886f77;
   padding: 20px;
@@ -88,6 +93,7 @@ li {
   transition: ease-in-out .5s;
   text-align: center;
   left: -100%;
+  overflow: hidden;
   position: relative;
   background-color: #ffffff;
   border-radius: 0px 40px 40px 0px;

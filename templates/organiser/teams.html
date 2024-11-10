@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
-<div class="filter" style="height: min-content; width: 275px">
+<div class="filter" style="height: min-content; width: 75px">
     <div class="ful">
         <button class="arrow" onclick="showFilter()">
         </button>
@@ -61,10 +61,10 @@
                     aria-controls="collapseSpare">Póttag</a>
                 <div class="collapse fs-6" id="collapseSpare">
 
-                    <input class="check_p" type="checkbox" id="tartalmazza" name="" onclick="toggleCheckbox()">
+                    <input class="check_p_c" type="checkbox" id="tartalmazza" name="" onclick="toggleCheckbox()">
                     <label for="tartalmazza">Tartalmazza</label><br>
                     
-                    <input class="check_p" type="checkbox" id="all" name="" onclick="toggleCheckbox()">
+                    <input class="check_p" type="checkbox" id="all" name="" checked onclick="toggleCheckbox()">
                     <label for="all">Összes</label><br>
                 </div>
             </li>
@@ -122,19 +122,19 @@
 <div class="pagination">
     <span class="step-links">
         {% if teams.has_previous %}
-        <button class="pagebtn"><a href="?page=1" class="text-decoration-none">&laquo; first</a></button>
+        <button class="pagebtn"><a href="?page=1" class="text-decoration-none">&laquo; Első</a></button>
         <button class="pagebtn"><a href="?page={{ teams.previous_page_number }}"
-                class="text-decoration-none">previous</a></button>
+                class="text-decoration-none">Előző</a></button>
         {% endif %}
 
         <span class="current">
-            Page {{ teams.number }} of {{ teams.paginator.num_pages }}.
+            Oldal {{ teams.number }} / {{ teams.paginator.num_pages }}.
         </span>
 
         {% if teams.has_next %}
         <button class="pagebtn"><a href="?page={{ teams.next_page_number }}"
-                class="text-decoration-none">next</a></button>
-        <button class="pagebtn"><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none">last
+                class="text-decoration-none">Következő</a></button>
+        <button class="pagebtn"><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none">Utolsó
                 &raquo;</a></button>
         {% endif %}
     </span>
