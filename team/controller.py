@@ -127,6 +127,7 @@ def filter(request,models):
         models = models.filter(language__contains=request.GET.get("language").split(";")[0:-1])
     if request.GET.get("contestant4") == "Nincs":
         models = models.exclude(contestant4_grade__isnull=True)
+    print(request.GET.get("state"))
     state_r="regisztralt"
     state_i="iskola altal jovahagyva"
     state_s="szervezok altal jovahagyva"

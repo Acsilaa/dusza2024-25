@@ -49,37 +49,41 @@ function search(){
     if(state_s.checked){
         filters[0] += "szervezok altal jovahagyva;"
     }
+    filters[0]+="&"
     //contestant4
     if(!contestant4.checked){
         filters.push("?contestant4=Nincs")
     }
+    filters[filters.length-1]+="&"
     //categories
-    for(let i = 0; i < categories.children.length; i++){
-        if(categories.children[i].checked && filters.findIndex(function(item){
+    for(let i = 0; i < categories.length; i++){
+        if(categories[i].checked && filters.findIndex(function(item){
     return item.indexOf("?category=")!==-1;
 }) === -1){
             filters.push("?category=")
         }
     }
-    for(let i = 0; i < categories.children.length; i++){
-        if(categories.children[i].checked){
-            filters[filters.length-1]+=categories.children[i].getAttribute("name")+";";
+    for(let i = 0; i < categories.length; i++){
+        if(categories[i].checked){
+            filters[filters.length-1]+=categories[i].getAttribute("name")+";";
         }
     }
+    filters[filters.length-1]+="&"
     //languages
-    for(let i = 0; i < languages.children.length; i++){
-        if(languages.children[i].checked && filters.findIndex(function(item){
+    for(let i = 0; i < languages.length; i++){
+        if(languages[i].checked && filters.findIndex(function(item){
     return item.indexOf("?language=")!==-1;
 }) === -1){
             filters.push("?language=")
         }
     }
-    for(let i = 0; i < languages.children.length; i++){
-        if(languages.children[i].checked){
-            filters[filters.length-1]+=languages.children[i].getAttribute("name")+";";
+    for(let i = 0; i < languages.length; i++){
+        if(languages[i].checked){
+            filters[filters.length-1]+=languages[i].getAttribute("name")+";";
         }
     }
-    window.location.href = window.location.href+filters
+    filters[filters.length-1]+="&"
+    window.location.href = location.protocol + '//' + location.host + location.pathname+filters
 
 }
 
