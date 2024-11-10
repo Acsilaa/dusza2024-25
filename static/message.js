@@ -4,6 +4,7 @@ const filter_El = document.getElementById('filterDiv');
 const filterToggle = document.getElementsByClassName("arrow")[0];
 
 document.addEventListener('DOMContentLoaded', function(){
+    
     filterToggle.classList.add("right")
     if(messages_El.innerHTML.indexOf("<li") === -1){
         messages_El.remove();
@@ -104,3 +105,11 @@ function search(){
 
 }
 
+function toggleCheckbox() {
+    const contains = document.getElementById("tartalmazza");
+    const all = document.getElementById("all");
+    if (all.checked) {
+        contains.checked = false;
+    }
+
+}
