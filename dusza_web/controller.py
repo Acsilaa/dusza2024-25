@@ -79,8 +79,8 @@ def organiserPanel(request):
         "awaiting_organiser_approval": len(Contest.getTeamsAwaitingOrganiserApproval()),
         "approved_teams": len(Contest.getTeamsFullyApproved()),
     }
-    d = deadline
-    d = str(deadline)
+
+    d = str(timezone.localtime(deadline))
     year = d[0:4]
     month =d[5:7]
     day = d[8:10]
