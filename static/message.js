@@ -74,9 +74,9 @@ function search(){
     //categories
     for(let i = 0; i < categories.length; i++){
         if(categories[i].checked && filters.findIndex(function(item){
-    return item.indexOf("?category=")!==-1;
+    return item.indexOf("category=")!==-1;
 }) === -1){
-            filters.push("?category=")
+            filters.push("category=")
         }
     }
     for(let i = 0; i < categories.length; i++){
@@ -88,9 +88,9 @@ function search(){
     //languages
     for(let i = 0; i < languages.length; i++){
         if(languages[i].checked && filters.findIndex(function(item){
-    return item.indexOf("?language=")!==-1;
+    return item.indexOf("language=")!==-1;
 }) === -1){
-            filters.push("?language=")
+            filters.push("language=")
         }
     }
     for(let i = 0; i < languages.length; i++){
@@ -99,7 +99,7 @@ function search(){
         }
     }
     filters[filters.length-1]+="&"
-    console.log(window.location.href = location.protocol + '//' + location.host + location.pathname+filters)
+    window.location.href = location.protocol + '//' + location.host + location.pathname+filters.join("")
 
 
 }

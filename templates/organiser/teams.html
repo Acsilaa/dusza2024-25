@@ -27,8 +27,8 @@
                     aria-controls="collapseCategory">Kategória</a>
                 <div class="collapse fs-6" id="collapseCategory">
                     {% for category_i in category %}
-                    <input class="check_category" type="checkbox" id="prog" name="{{ category_i }}" checked>
-                    <label for="prog">{{ category_i }}</label><br>
+                    <input class="check_category" type="checkbox" id="{{ category_i }}" name="{{ category_i }}" checked>
+                    <label for="{{ category_i }}">{{ category_i }}</label><br>
                     {% endfor %}
                 </div>
             </li>
@@ -38,8 +38,8 @@
                 <div class="collapse fs-6" id="collapseLanguage">
                     <div class="collapse fs-6" id="collapseLanguage">
                         {% for language_i in language %}
-                        <input type="checkbox" id="python" class="check_language" name="{{ language_i }}" checked>
-                        <label for="python">{{ language_i }}</label><br>
+                        <input type="checkbox" id="{{ language_i }}" class="check_language" name="{{ language_i }}" checked>
+                        <label for="{{ language_i }}">{{ language_i }}</label><br>
                         {% endfor %}
                     </div>
                 </div>
