@@ -60,6 +60,19 @@
         <li>
           <a class="nav-link" href="{% url 'register' %}">Regisztráció</a>
         </li>
+        <li>
+          <div class="timebox">
+            <h4 id="days">00</h4>
+            <p>nap</p>
+            <h4 id="hours">00</h4>
+            <p>óra</p>
+            <h4 id="minutes">00</h4>
+            <p>perc</p>
+            <h4 id="seconds">00</h4>
+            <p>másodperc</p>
+            
+          </div>
+        </li>
         {%endif%}
 
         {% block nav_extended %}
@@ -117,6 +130,7 @@
     </section>
 
   </main>
+  <script src="{% static 'timer.js' %}"></script>
 </body>
 
 </html>
