@@ -4,17 +4,88 @@ const filter_El = document.getElementById('filterDiv');
 const filterToggle = document.getElementsByClassName("arrow")[0];
 
 document.addEventListener('DOMContentLoaded', function(){
-    
-    filterToggle.classList.add("right")
+    const categories=document.getElementsByClassName('check_category');
+    if(categories) {
+        initFilters()
+    }
     if(messages_El.innerHTML.indexOf("<li") === -1){
         messages_El.remove();
     }
     setTimeout(function(){
         messages_El.style.opacity = '0';
         messages_El.remove();
+
     },3000)
 
+
 })
+function initFilters(){
+    const categories=document.getElementsByClassName('check_category');
+    const languages=document.getElementsByClassName('check_language');
+    const state_r=document.getElementsByClassName('check_r')[0];
+    const state_i=document.getElementsByClassName('check_i')[0];
+    const state_s=document.getElementsByClassName('check_s')[0];
+    const contestant4=document.getElementsByClassName('check_p')[0];
+    const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    if(params.category ||params.language ||params.contestant4 ||params.state){
+        filter_El.classList.add('start-0');
+        filter_El.style.transition = 'none';
+        filterToggle.classList.remove("left")
+        setTimeout(()=>{
+            filter_El.style.transition = 'ease-in-out .5s';
+        },100)
+
+    }else{
+        filterToggle.classList.add("right")
+        return
+    }
+    state_r.checked=false
+    state_i.checked=false
+    state_s.checked=false
+    if(params.state){
+        let state_params = params.state.split(";").slice(0,params.state.split(";").length-1)
+        if(state_params.indexOf("regisztralt") !== -1){
+            state_r.checked=true
+        }
+        if(state_params.indexOf("iskola altal jovahagyva") !== -1){
+            state_i.checked=true
+        }
+        if(state_params.indexOf("szervezok altal jovahagyva") !== -1){
+            state_s.checked=true
+        }
+    }
+
+
+    for(let i=0;i<categories.length;i++){
+        categories[i].checked = false;
+    }
+    if(params.category){
+        let categories_params=params.category.split(";").slice(0,params.category.split(";").length-1)
+        for (let i =0;i<categories_params.length;i++){
+            for(let j = 0;j<categories.length;j++){
+                if(categories[j].getAttribute("name")===categories_params[i]){
+                    categories[j].checked=true;
+                }
+            }
+        }
+    }
+    for(let i=0;i<languages.length;i++){
+        languages[i].checked = false;
+    }
+    if(params.language){
+        let languages_params=params.language.split(";").slice(0,params.language.split(";").length-1)
+        for (let i =0;i<languages_params.length;i++){
+            for(let j = 0;j<languages.length;j++){
+                if(languages[j].getAttribute("name")===languages_params[i]){
+                    languages[j].checked=true;
+                }
+            }
+        }
+    }
+}
 function showFilter(){
     if(filter_El.classList.contains('start-0')){
         filter_El.classList.remove('start-0');
@@ -73,13 +144,7 @@ function search(){
     }
 
     //categories
-    for(let i = 0; i < categories.length; i++){
-        if(categories[i].checked && filters.findIndex(function(item){
-    return item.indexOf("category=")!==-1;
-}) === -1){
-            filters.push("category=")
-        }
-    }
+    filters.push("category=")
     for(let i = 0; i < categories.length; i++){
         if(categories[i].checked){
             filters[filters.length-1]+=categories[i].getAttribute("name")+";";
@@ -87,13 +152,7 @@ function search(){
     }
     filters[filters.length-1]+="&"
     //languages
-    for(let i = 0; i < languages.length; i++){
-        if(languages[i].checked && filters.findIndex(function(item){
-    return item.indexOf("language=")!==-1;
-}) === -1){
-            filters.push("language=")
-        }
-    }
+    filters.push("language=")
     for(let i = 0; i < languages.length; i++){
         if(languages[i].checked){
             filters[filters.length-1]+=languages[i].getAttribute("name")+";";
