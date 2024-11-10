@@ -156,7 +156,7 @@ def index(request):
     context["language"] = Language.objects.all()
     teams = filter(request, teams)
 
-    p = Paginator(teams, 1)
+    p = Paginator(teams, 15)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)
     context['teams']= page_obj
