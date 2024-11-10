@@ -18,10 +18,6 @@
 {% endblock %}
 {% block content %}
 <div class="panel1">
-    <ul class="stats">
-        <li>Jelenleg szervezői jóváhagyásra váró csapatok száma: {{stats.awaiting_organiser_approval}}</li>
-        <li>Jóváhagyott csapatok száma: {{stats.approved_teams}}</li>
-    </ul>
     <form action="{% url 'organiser.change_dl' %}" method="post" id="dlform">
         {% csrf_token %}
         {% if dl_form_error != None %}
