@@ -7,6 +7,7 @@ from contest.models import Contest
 from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
 from django.utils import timezone as date
+from django import template
 
 def render_view(request):
 
@@ -72,6 +73,15 @@ def contestantPanel(request):
             context["state"] = "Szervezők által jóváhagyva"
     return render(request, 'contestant/home.html', context)
 
+
+
+register = template.Library()
+
+
+@register.simple_tag
+def getContestDl(*args, **kwargs):
+    contest = Contest.objects.first()
+    return contest.join_deadline
 
 
 def organiserPanel(request):
