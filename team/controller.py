@@ -208,6 +208,7 @@ def approveJoin(request,id,is_approve):
         return redirect('index')
     if is_approve == "approve":
         team.joined = True
+        team.missing = None
         print("sf")
         messages.success(request,"Sikeresen jóváhagyva!")
     elif is_approve == "disapprove":
