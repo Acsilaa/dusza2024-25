@@ -27,8 +27,7 @@
   {% endblock %}
     {% load controller %}
     <script>
-
-        let targetDate=new Date(" {% getContestDl %}").getTime()
+        let targetDate=new Date(" {% getContestDl %}")
     </script>
   <script src="{% static 'message.js' %}" defer></script>
 </head>
