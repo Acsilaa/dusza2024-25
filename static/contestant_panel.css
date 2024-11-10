@@ -12,11 +12,9 @@
   padding: 2em;
   box-sizing: border-box;
 }
-
 h2 {
   margin-bottom: 1em;
 }
-
 .table {
   width: max(30em, 90%);
 
