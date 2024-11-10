@@ -115,7 +115,8 @@ def more(request,id):
         team.teachers,
         team.category.name,
         team.language.name,
-        team.id
+        team.id,
+        team.joined
     ]
     context["state"] = "Regisztrált"
     if (team.approved):
@@ -136,12 +137,20 @@ def index(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
-    teams = Team.objects.all().order_by('name')
-    p = Paginator(teams, 15)
+    teams = Team.objects.all().order_by("date_modified")
+
+    #filter
+    request.GET.get("category")
+    request.GET.get("language")
+    request.GET.get("contestant4")
+    request.GET.get("state")
+
+    p = Paginator(teams, 1)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)
     context = {'teams': page_obj}
     return render(request, f'organiser/teams.html', context)
+
 def download(request):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
@@ -175,15 +184,20 @@ def download(request):
         ])
 
     return response
-def approveJoin(request,id):
+def approveJoin(request,id,is_approve):
     # check for login
     if not request.user.username or request.user.groups.all()[0].name != "Organiser":
         return redirect('login')
     team = Team.objects.get(pk=id)
     if (team is None):
         return redirect('index')
-    team.joined = True
-    messages.success(request,"Sikeresen jóváhagyva!")
+    if is_approve == "approve":
+        team.joined = True
+        print("sf")
+        messages.success(request,"Sikeresen jóváhagyva!")
+    elif is_approve == "disapprove":
+        team.joined = False
+        messages.success(request, "Sikeresen visszavonva!")
     team.save()
     return redirect('team.index')
 def downloadApproval(request,id):

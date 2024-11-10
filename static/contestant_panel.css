@@ -40,10 +40,27 @@ td{
 #main{
     background-color: #886f77;
     margin: 10px;
-    color: #e2e4f6;
+    color: #f6e2e2;
 }
 
+.pagebtn a{
+  color: #886f77;
+}
+.pagebtn:hover a{
+  color: #ffffff;
+}
 
+.pagebtn{
+  border: 2px solid  #886f77;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.pagebtn:hover{
+  background-color:  #886f77;
+  border-radius: 5px;
+  color: #ffffff;
+}
 section{
     box-sizing: border-box;
 }

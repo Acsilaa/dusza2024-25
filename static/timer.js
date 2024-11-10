@@ -5,8 +5,6 @@ const minutes = document.getElementById("minutes")
 const sec = document.getElementById("seconds")
 
 
-const targetDate = new Date("November 10 2024 20:00:00").getTime()
-
 function timer(){
     const currentDate = new Date().getTime()
     const distance = targetDate - currentDate

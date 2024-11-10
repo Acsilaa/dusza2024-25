@@ -76,8 +76,8 @@
     <div class="pagination">
     <span class="step-links">
         {% if teams.has_previous %}
-            <button><a href="?page=1" class="text-decoration-none text-black">&laquo; first</a></button>
-            <button><a href="?page={{ teams.previous_page_number }}" class="text-decoration-none text-black">previous</a></button>
+            <button class="pagebtn"><a href="?page=1" class="text-decoration-none">&laquo; first</a></button>
+            <button class="pagebtn"><a href="?page={{ teams.previous_page_number }}" class="text-decoration-none">previous</a></button>
         {% endif %}
 
         <span class="current">
@@ -85,8 +85,8 @@
         </span>
 
         {% if teams.has_next %}
-            <button><a href="?page={{ teams.next_page_number }}" class="text-decoration-none text-dark">next</a></button>
-            <button><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none text-dark">last &raquo;</a></button>
+            <button class="pagebtn"><a href="?page={{ teams.next_page_number }}" class="text-decoration-none">next</a></button>
+            <button class="pagebtn"><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none">last &raquo;</a></button>
         {% endif %}
     </span>
 </div>

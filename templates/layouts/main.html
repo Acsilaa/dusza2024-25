@@ -27,6 +27,11 @@
   {% endblock %}
   {% block script %}
   {% endblock %}
+    {% load controller %}
+    <script>
+
+        let targetDate=new Date(" {% getContestDl %}").getTime()
+    </script>
   <script src="{% static 'message.js' %}" defer></script>
 </head>
 
@@ -60,7 +65,10 @@
         <li>
           <a class="nav-link" href="{% url 'register' %}">Regisztráció</a>
         </li>
-        <li>
+        {%endif%}
+        {% block nav_extended %}
+        {% endblock %}
+      <li>
           <div class="timebox">
             <h4 id="days">00</h4>
             <p>nap</p>
@@ -70,13 +78,9 @@
             <p>perc</p>
             <h4 id="seconds">00</h4>
             <p>másodperc</p>
-            
+
           </div>
         </li>
-        {%endif%}
-
-        {% block nav_extended %}
-        {% endblock %}
       {% if user.is_authenticated %}
         <li class="user_name d-flex">
         {% block missing %}

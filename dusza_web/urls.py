@@ -48,7 +48,7 @@ urlpatterns = [
     path('team/more/<int:id>/', team.more,name='team.more'),
     path('team/download/', team.download,name='teams.download'),
     path('team/downloadApproval/<int:id>/', team.downloadApproval,name='team.downloadApproval'),
-    path('team/approveJoin/<int:id>/', team.approveJoin,name='team.approveJoin'),
+    path('team/approveJoin/<int:id>/<str:is_approve>', team.approveJoin,name='team.approveJoin'),
 
     path('school/', school.index,name='school.index'),
     path('school/register', school.registerSchool, name='school.register'),
