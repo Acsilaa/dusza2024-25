@@ -4,26 +4,27 @@
 <link rel="stylesheet" href="{% static 'contestant_panel.css' %}">
 {% endblock %}
 {% block nav_extended %}
-    <li>
-        <a class="nav-link" href="{% url 'team.index' %}">Jelentkezések megtekintése</a>
-    </li>
-    <li>
-        <a class="nav-link" href="{% url 'school.index' %}">Iskolák megtekintése</a>
-    </li>
+<li>
+    <a class="nav-link" href="{% url 'team.index' %}">Jelentkezések megtekintése</a>
+</li>
+<li>
+    <a class="nav-link" href="{% url 'school.index' %}">Iskolák megtekintése</a>
+</li>
 {% endblock %}
 {% block content %}
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
-<div class="filter"  style="height: min-content; width: 275px">
+<div class="filter" style="height: min-content; width: 275px">
     <div class="ful">
-        <button class="arrow"  onclick="showFilter()">
-            </button>
+        <button class="arrow" onclick="showFilter()">
+        </button>
     </div>
 
     <div id="filterDiv">
         <h1>Szűrés</h1>
         <ul>
             <li>
-                <a data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">Kategória</a>
+                <a data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false"
+                    aria-controls="collapseCategory">Kategória</a>
                 <div class="collapse fs-6" id="collapseCategory">
                     {% for category_i in category %}
                     <input class="check_category" type="checkbox" id="prog" name="{{ category_i }}" checked>
@@ -32,7 +33,8 @@
                 </div>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false" aria-controls="collapseLanguage">Nyelv</a>
+                <a data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false"
+                    aria-controls="collapseLanguage">Nyelv</a>
                 <div class="collapse fs-6" id="collapseLanguage">
                     <div class="collapse fs-6" id="collapseLanguage">
                         {% for language_i in language %}
@@ -43,19 +45,20 @@
                 </div>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false" aria-controls="collapseStatus">Állapot</a>
+                <a data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false"
+                    aria-controls="collapseStatus">Állapot</a>
                 <div class="collapse fs-6" id="collapseStatus">
-                    <input class="check_r"type="checkbox" id="registrated" name="" checked>
+                    <input class="check_r" type="checkbox" id="registrated" name="" checked>
                     <label for="registrated">Regisztrált</label><br>
-                    <input class="check_i"type="checkbox" id="isk" name="vehicle3" checked>
+                    <input class="check_i" type="checkbox" id="isk" name="vehicle3" checked>
                     <label for="isk">Iskola álltal jóváhagyva</label><br>
-                    <input class="check_s"type="checkbox" id="szerv" name="vehicle3" checked>
+                    <input class="check_s" type="checkbox" id="szerv" name="vehicle3" checked>
                     <label for="szerv">Szervező álltal jóváhagyva</label><br>
                 </div>
             </li>
             <li>
 
-                <input class="check_p"type="checkbox" id="pot" name="vehicle3" checked>
+                <input class="check_p" type="checkbox" id="pot" name="vehicle3" checked>
                 <label for="pot">Póttag</label><br>
 
             </li>
@@ -75,13 +78,16 @@
         <i>Iskola:</i>
         <p>{{team.school}}</p>
         <i>Állapot</i>
-        <p>{% if team.approved and team.joined %}
+        <p>{% if team.joined %}
             szervezők által jóváhagyva
-        {% elif team.approved and not team.joined %}
+            {% elif team.approved %}
             iskola által jóváhagyva
-        {% else %}
+            {% else %}
             regisztrált
-        {% endif %}</p>
+            {% endif %}</p>
+        {% if team.missing != Null %}
+        <p class="missing">Hiány jelezve</p>
+        {% endif %}
     </div>
     <div class="card col-lg-3 col-md-5 col-sm-12 ">
         <b>Csapattagok</b>
@@ -102,18 +108,18 @@
         <b>Versenyformátum</b>
         <p>{{team.category}} - {{team.language}}</p>
     </div>
-    
-    <div class="morebtn col-lg-5 col-md-5 col-sm-12 block" style="height: min-content">
-        <a class="text-decoration-none text-white" href="{% url 'team.more' id=team.id %}">Több
-        </a>
-    </div>
+
+    <a class="text-decoration-none text-white morebtn col-lg-5 col-md-5 col-sm-12 block" href="{% url 'team.more' id=team.id %}">
+            Több
+    </a>
 </div>
 {%endfor%}
-    <div class="pagination">
+<div class="pagination">
     <span class="step-links">
         {% if teams.has_previous %}
-            <button class="pagebtn"><a href="?page=1" class="text-decoration-none">&laquo; first</a></button>
-            <button class="pagebtn"><a href="?page={{ teams.previous_page_number }}" class="text-decoration-none">previous</a></button>
+        <button class="pagebtn"><a href="?page=1" class="text-decoration-none">&laquo; first</a></button>
+        <button class="pagebtn"><a href="?page={{ teams.previous_page_number }}"
+                class="text-decoration-none">previous</a></button>
         {% endif %}
 
         <span class="current">
@@ -121,22 +127,24 @@
         </span>
 
         {% if teams.has_next %}
-            <button class="pagebtn"><a href="?page={{ teams.next_page_number }}" class="text-decoration-none">next</a></button>
-            <button class="pagebtn"><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none">last &raquo;</a></button>
+        <button class="pagebtn"><a href="?page={{ teams.next_page_number }}"
+                class="text-decoration-none">next</a></button>
+        <button class="pagebtn"><a href="?page={{ teams.paginator.num_pages }}" class="text-decoration-none">last
+                &raquo;</a></button>
         {% endif %}
     </span>
 </div>
 {% endblock %}
 {% block content1 %}
 <section class="middle">
-      <div class="wave2 wave">
+    <div class="wave2 wave">
 
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            class="shape-fill"></path>
+            <path
+                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                class="shape-fill"></path>
         </svg>
-       
-</div>
+
+    </div>
 </section>
 {% endblock %}

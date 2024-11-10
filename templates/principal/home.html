@@ -45,9 +45,9 @@
             <i>Iskola:</i>
             <p>{{team.school}}</p>
             <i>Állapot</i>
-            <p>{% if team.approved and team.joined %}
+            <p>{% if team.joined %}
                 szervezők által jóváhagyva
-            {% elif team.approved and not team.joined %}
+            {% elif team.approved %}
                 iskola által jóváhagyva
             {% else %}
                 regisztrált

@@ -84,7 +84,8 @@ function search(){
         }
     }
     filters[filters.length-1]+="&"
-    window.location.href = location.protocol + '//' + location.host + location.pathname+filters
+    console.log(window.location.href = location.protocol + '//' + location.host + location.pathname+filters)
+
 
 }
 

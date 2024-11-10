@@ -13,61 +13,56 @@
 {% endblock %}
 
 {% block content %}
-<div class="grid-container">
-    <div class="card">
-        <b>Csapatnév</b>
-        <p>{{team.0}}</p>
-    </div>
-    <div class="card">
-        <b>Iskola</b>
-        <p>{{team.1}}</p>
-    </div>
-    <div class="card">
-        <b>1. csapattag</b>
-        <p><i>neve:</i> {{team.2}}</p>
-        <p><i>évfolyama:</i> {{team.3}}. osztály</p>
-    </div>
-    <div class="card">
-        <b>2. csapattag</b>
-        <p><i>neve:</i> {{team.4}}</p>
-        <p><i>évfolyama:</i> {{team.5}}. osztály</p>
-    </div>
-    <div class="card">
-        <b>3. csapattag</b>
-        <p><i>neve:</i>  {{team.6}}</p>
-        <p><i>évfolyama:</i>  {{team.7}}</p>
-    </div>
-    <div class="card">
-        <b>Póttag</b>
-        {% if team.contestant4_name == "" %}
-        <p>Nincs</p>
+<div class="row justify-content-center mb-5">
+
+    <div class="card col-lg-3 col-md-5 col-sm-12">
+        <b>Alap információ</b>
+        <i>Csapatnév:</i>
+        <p>{{team.name}}</p>
+        <i>Iskola:</i>
+        <p>{{team.school}}</p>
+        <i>Állapot</i>
+        <p>{% if team.joined %}
+            szervezők által jóváhagyva
+        {% elif team.approved %}
+            iskola által jóváhagyva
         {% else %}
-        <p><i>Neve: </i>{{team.8}}</p>
-        <p><i>Évfolyama:</i> {{team.9}}. osztály</p>
+            regisztrált
+        {% endif %}</p>
+        {% if team.missing != Null %}
+        <p class="missing">Hiány jelezve</p>
         {% endif %}
     </div>
-    <div class="card">
+    <div class="card col-lg-3 col-md-5 col-sm-12 ">
+        <b>Csapattagok</b>
+        <p><i>{{team.contestant1_name}}</i> <br>({{team.contestant1_grade}}. osztály)</p>
+        <p><i>{{team.contestant2_name}}</i> <br>({{team.contestant2_grade}}. osztály)</p>
+        <p><i>{{team.contestant3_name}}</i> <br>({{team.contestant3_grade}}. osztály)</p>
+        {% if team.contestant4_name == "" %}
+        {% else %}
+        <i>Póttag:</i>
+        <p>{{team.contestant4_name}} <br>({{team.contestant4_grade}}. osztály)</p>
+        {% endif %}
+    </div>
+    <div class="card col-lg-2 col-md-5 col-sm-12 ">
         <b>Felkészítő tanárok</b>
-        <p>{{team.10}}</p>
+        <p>{{team.teachers}}</p>
     </div>
-    <div class="card">
+    <div class="card col-lg-2 col-md-5 col-sm-12">
         <b>Versenyformátum</b>
-        <p><i>Nyelv:</i> {{team.12}}</p>
-        <p><i>Kategória:</i> {{team.11}}</p>
-    </div>
-    <div class="card">
-        <b>Állapot</b>
-        <p>{{state}}</p>
+        <p>{{team.category}} - {{team.language}}</p>
     </div>
 </div>
     <div class="d-flex">
-        {% if team.14 %}
-        <p><a href="{% url 'team.approveJoin' id=team.13 is_approve='disapprove' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás visszavonása</a></p>
+        {% if team.joined %}
+        <p><a href="{% url 'team.approveJoin' id=team.id is_approve='disapprove' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás visszavonása</a></p>
+        {% elif team.approved %}
+        <p><a href="{% url 'team.approveJoin' id=team.id is_approve='approve' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
         {% else %}
-        <p><a href="{% url 'team.approveJoin' id=team.13 is_approve='approve' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        <p>Az iskola még nem hagyta jóvá a regisztrációt.</p>
         {% endif %}
         {% if hasApprovalFile  %}
-         <p><a href="{% url 'team.downloadApproval' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Jelentkezési lap letöltése</a></p>
+         <p><a href="{% url 'team.downloadApproval' id=team.id %}" class="text-decoration-none text-white btn btn-primary">Jelentkezési lap letöltése</a></p>
         {% endif %}
         <div>
             <h1>Hiányos</h1>

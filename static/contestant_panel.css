@@ -127,7 +127,10 @@ li{
   margin: 10px;
   box-sizing: border-box;
 }
-
+.missing{
+  font-weight: 800;
+  color: red;
+}
 .morebtn:hover{
   background-color: #886f77;
   padding: 10px;
