@@ -142,7 +142,7 @@ li {
 
 .missing {
   font-weight: 800;
-  color: red;
+  color: darkred;
 }
 
 .morebtn:hover {

@@ -96,9 +96,15 @@
       </svg>
     </div>
     <h1 class="">Statisztikák</h1>
-    <h2>Használt nyelvek</h2>
+    <h3>Használt nyelvek</h3>
     <div id="pite">
     </div>
-    <h2></h2>
-  </section>
+    <ul class="datas">
+        {% for i in languages%}
+        <li id="lga">
+            {{i}}
+        </li>
+        {%endfor%}
+    </ul>
+</section>
 {% endblock %}
