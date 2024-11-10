@@ -1,5 +1,5 @@
 const messages_El = document.getElementById('messages');
-const filter_El = document.getElementsByClassName('filter')[0];
+const filter_El = document.getElementById('filterDiv');
 const hasFilter = filter_El != null;
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function(){
         messages_El.style.opacity = '0';
         messages_El.remove();
     },3000)
-    filter_El.classList.add('start-0');
 
 })
 function showFilter(){
