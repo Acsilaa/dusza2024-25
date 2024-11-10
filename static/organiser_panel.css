@@ -131,10 +131,20 @@ section.middle{
     height: 800px;
     box-shadow: 10px 10px black;
     border-radius: 50%;
-    /* background: conic-gradient(
+    background: conic-gradient(
       #4caf50 0% 25%,
       #2196f3 25% 50%,  
       #ff9800 50% 75%,
       #f44336 75% 100%
-    ); */
-  }
+    );
+}
+
+.lower h1{
+    color: #ffffff;
+    margin:10px 0px 50px 0px;
+}
+.datas{
+
+    margin-top: 30px;
+    font-weight: 700;
+}
