@@ -90,12 +90,40 @@ li{
   text-decoration: none;
 }
 
+
+.searchbtn {
+  width: max(30%, 9em);
+  min-width: 9em;
+  padding: 10px;
+  background-color: #DBAFC1;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px;
+  box-shadow: 1px 1px 1px rgb(41, 41, 41);
+  border: #ffffff;
+  color: #ffffff;
+  transition: 0.2s;
+}
+.searchbtn:hover{
+  color: #0e1116 !important;
+  background-color: #e2e4f6 ;
+  transform: scale(1.1);
+}
+
+.searchbtn:hover>*{
+  color: #0e1116 !important
+}
+
 .morebtn{
   background-color: #dbafc1;
   padding: 10px;
+  width: 100px;
   text-align: center;
   border-radius: 25px;
   transition: 0.1s;
+  box-shadow: 1px 1px 1px rgb(41, 41, 41);
   margin: 10px;
   box-sizing: border-box;
 }
@@ -105,7 +133,7 @@ li{
   padding: 10px;
   text-align: center;
   border-radius: 25px;
-  border: 5px solid #dbafc1;
+
   box-sizing: border-box;
 }
 
