@@ -15,8 +15,10 @@
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
 <div class="filter"  style="height: min-content; width: 275px">
     <div class="ful">
-        <button class="arrow"  onclick="showFilter()"></button>
+        <button class="arrow"  onclick="showFilter()">
+            </button>
     </div>
+
     <div id="filterDiv">
 {% for team in teams %}
         <h1>Szűrés</h1>
@@ -24,26 +26,20 @@
             <li>
                 <a data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">Kategória</a>
                 <div class="collapse fs-6" id="collapseCategory">
-                    <input class="check_category" type="checkbox" id="prog" name="asztalialkalmazas" checked>
-                    <label for="prog">Asztali alkalmazás</label><br>
-                    <input class="check_category"type="checkbox" id="mobile" name="vehicle3" checked>
-                    <label for="mobile">Mobilt</label><br>
-                    <input class="check_category"type="checkbox" id="web" name="vehicle3" checked>
-                    <label for="web">Web</label><br>
+                    {% for category_i in category %}
+                    <input class="check_category" type="checkbox" id="prog" name="{{ category_i }}" checked>
+                    <label for="prog">{{ category_i }}</label><br>
+                    {% endfor %}
                 </div>
             </li>
             <li>
                 <a data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false" aria-controls="collapseLanguage">Nyelv</a>
                 <div class="collapse fs-6" id="collapseLanguage">
                     <div class="collapse fs-6" id="collapseLanguage">
-                        <input type="checkbox" id="python" name="vehicle3" checked>
-                        <label for="python">Python</label><br>
-                        <input type="checkbox" id="js" name="vehicle3" checked>
-                        <label for="js">JavaScript</label><br>
-                        <input type="checkbox" id="C#" name="vehicle3" checked>
-                        <label for="C#">C#</label><br>
-                        <input type="checkbox" id="python" name="vehicle3" checked>
-                        <label for="python">Python</label><br>
+                        {% for language_i in language %}
+                        <input type="checkbox" id="python" class="check_language" name="{{ language_i }}" checked>
+                        <label for="python">{{ language_i }}</label><br>
+                        {% endfor %}
                     </div>
                 </div>
             </li>
@@ -64,9 +60,13 @@
                 <label for="pot">Póttag</label><br>
 
             </li>
+            <li>
+                <button onclick="search()">Keresés</button>
+            </li>
         </ul>
     </div>
 </div>
+{% for team in teams %}
 <div class="row justify-content-center mb-5">
 
     <div class="card col-lg-3 col-md-5 col-sm-12">
