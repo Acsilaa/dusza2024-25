@@ -101,6 +101,18 @@ def organiserPanel(request):
         "is_closed": isClosed,
         "stats": stats,
     }
+    context['stat_langs'] = {}
+
+    for t in list(Team.objects.all()):
+        try:
+            context['stat_langs'][t.language.name] += 1
+        except:
+            context['stat_langs'][t.language.name] = 1
+
+
+
+
+
     try:
         context['dl_form_error'] = request.session['dl_form_error']
     except:
