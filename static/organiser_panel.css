@@ -95,11 +95,32 @@ button{
     align-items: center;
     justify-content: space-between;
 }
+
+.ajaxform-parent{
+    width: min(20em, 90vw);
+}
+.container{
+    margin: 0;
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+section.middle{
+    padding-left: 0;
+    padding-right: 0;
+}
 @media only screen and (max-width: 1250px){
     .panel1{
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
+    }
+    
+}
+@media only screen and (max-width: 800px){
+    .container{
+        flex-direction: column;
     }
 }
