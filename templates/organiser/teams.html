@@ -15,7 +15,10 @@
 <p><a href="{% url 'teams.download' %}" class="text-decoration-none text-white btn btn-primary">Letöltés</a></p>
 {% for team in teams %}
 <div class="filter"  style="height: min-content; width: 275px">
-    <button class="text-decoration-none "  onclick="showFilter()">->
+    <div class="ful">
+        <button class="arrow"  onclick="showFilter()">
+    </div>
+
     </button>
     <div id="filterDiv">
         <h1>Szűrés</h1>
@@ -23,11 +26,11 @@
             <li>
                 <a data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">Kategória</a>
                 <div class="collapse fs-6" id="collapseCategory">
-                    <input type="checkbox" id="prog" name="vehicle3" checked>
+                    <input class="check_category" type="checkbox" id="prog" name="vehicle3" checked>
                     <label for="prog">Asztali alkalmazás</label><br>
-                    <input type="checkbox" id="mobile" name="vehicle3" checked>
+                    <input class="check_category"type="checkbox" id="mobile" name="vehicle3" checked>
                     <label for="mobile">Mobilt</label><br>
-                    <input type="checkbox" id="web" name="vehicle3" checked>
+                    <input class="check_category"type="checkbox" id="web" name="vehicle3" checked>
                     <label for="web">Web</label><br>
                 </div>
             </li>
@@ -49,20 +52,19 @@
             <li>
                 <a data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false" aria-controls="collapseStatus">Állapot</a>
                 <div class="collapse fs-6" id="collapseStatus">
-                    <input type="checkbox" id="registrated" name="vehicle3" checked>
+                    <input class="check_r"type="checkbox" id="registrated" name="" checked>
                     <label for="registrated">Regisztrált</label><br>
-                    <input type="checkbox" id="isk" name="vehicle3" checked>
+                    <input class="check_i"type="checkbox" id="isk" name="vehicle3" checked>
                     <label for="isk">Iskola álltal jóváhagyva</label><br>
-                    <input type="checkbox" id="szerv" name="vehicle3" checked>
+                    <input class="check_s"type="checkbox" id="szerv" name="vehicle3" checked>
                     <label for="szerv">Szervező álltal jóváhagyva</label><br>
                 </div>
             </li>
             <li>
-                <a data-bs-toggle="collapse" href="#collapseSubstitute" role="button" aria-expanded="false" aria-controls="collapseSubstitute">Póttag</a>
-                <div class="collapse fs-6" id="collapseSubstitute">
-                    <input type="checkbox" id="pot" name="vehicle3" checked>
-                    <label for="pot">Van</label><br>
-                </div>
+
+                <input class="check_p"type="checkbox" id="pot" name="vehicle3" checked>
+                <label for="pot">Póttag</label><br>
+
             </li>
         </ul>
     </div>
