@@ -22,9 +22,9 @@
         <i>Iskola:</i>
         <p>{{team.school}}</p>
         <i>Állapot</i>
-        <p>{% if team.approved and team.joined %}
+        <p>{% if team.joined %}
             szervezők által jóváhagyva
-        {% elif team.approved and not team.joined %}
+        {% elif team.approved %}
             iskola által jóváhagyva
         {% else %}
             regisztrált
@@ -54,7 +54,7 @@
     </div>
 </div>
     <div class="d-flex">
-        {% if team.approved %}
+        {% if team.joined %}
         <p><a href="{% url 'team.approveJoin' id=team.id is_approve='disapprove' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás visszavonása</a></p>
         {% else %}
         <p><a href="{% url 'team.approveJoin' id=team.id is_approve='approve' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
