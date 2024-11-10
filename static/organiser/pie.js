@@ -17,8 +17,6 @@ Object.entries(datas).forEach(([key, value]) => {
     prev_end = curr_end
 })
 layout = layout.substring(0, layout.length - 2);
-console.log(chart)
-$(chart).css('background', `conic-gradient(
-      ${layout}
-    );`)
-    console.log(layout)
+$(function(){
+    $("#pite").css('background', `conic-gradient(${layout})`)
+})
