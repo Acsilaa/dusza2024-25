@@ -7,7 +7,7 @@ class Contest(models.Model):
     joining_closed = models.BooleanField(default=False)
     # TODO statistics are not efficient with big data. currently will be done as functions
 
-    def isOpen(self) -> bool:
+    def isOpen() -> bool:
         c = Contest.objects.first()
         closed = c.joining_closed
         deadline = c.join_deadline
@@ -22,9 +22,9 @@ class Contest(models.Model):
         now = datetime.datetime.now()
         return not closed and now < deadline
     
-    def getTeamsFullyApproved(self):
+    def getTeamsFullyApproved():
         return list(Team.objects.filter(joined=True).all())
 
-    def getTeamsAwaitingOrganiserApproval(self):
+    def getTeamsAwaitingOrganiserApproval():
         return list(Team.objects.filter(approved=True).all())
         
