@@ -17,19 +17,25 @@
     </li>
 {% endblock %}
 {% block content %}
-<form action="{% url 'organiser.change_dl' %}" method="post" id="dlform">
-    {% csrf_token %}
-    {% if dl_form_error != None %}
-    <p>{{dl_form_error}}</p>
-    {% endif %}
-    <label for="deadline">Jelentkezési határidő</label>
-    <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
-    <label for="iClosed"></label>
-    <button class="btn text-white">Mentés</button>
-    <a href="{% url 'organiser.toggle_dl_close' %}" class="btn text-white" style="width: min-content">
-        {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
-    </a>
-</form>
+<div class="panel1">
+    <ul class="stats">
+        <li>Jelenleg szervezői jóváhagyásra váró csapatok száma: {{stats.awaiting_organiser_approval}}</li>
+        <li>Jóváhagyott csapatok száma: {{stats.approved_teams}}</li>
+    </ul>
+    <form action="{% url 'organiser.change_dl' %}" method="post" id="dlform">
+        {% csrf_token %}
+        {% if dl_form_error != None %}
+        <p>{{dl_form_error}}</p>
+        {% endif %}
+        <label for="deadline">Jelentkezési határidő</label>
+        <input type="datetime-local" value="{{ deadline }}" id="deadline" name="deadline"><br>
+        <label for="iClosed"></label>
+        <button class="btn text-white">Mentés</button>
+        <a href="{% url 'organiser.toggle_dl_close' %}" class="btn text-white" style="width: min-content">
+            {% if not is_closed %} Jelentkezés Lezárása {% else %} Jelentkezés megnyitása {% endif %}
+        </a>
+    </form>
+</div>
 <a class="text-decoration-none btn" href="{% url 'newContest' %}">Új verseny</a>
     <p class="text-danger">Törli a meglévő versenyző csapatokat és megnyitja a versenyt a mához 2 hónapi határidővel</p>
 {% endblock %}
