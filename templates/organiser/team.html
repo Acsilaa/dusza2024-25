@@ -61,7 +61,11 @@
     </div>
 </div>
     <div class="d-flex">
-        <p><a href="{% url 'team.approveJoin' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        {% if team.14 %}
+        <p><a href="{% url 'team.approveJoin' id=team.13 is_approve='disapprove' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás visszavonása</a></p>
+        {% else %}
+        <p><a href="{% url 'team.approveJoin' id=team.13 is_approve='approve' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        {% endif %}
         {% if hasApprovalFile  %}
          <p><a href="{% url 'team.downloadApproval' id=team.13 %}" class="text-decoration-none text-white btn btn-primary">Jelentkezési lap letöltése</a></p>
         {% endif %}
