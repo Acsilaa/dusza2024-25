@@ -27,6 +27,14 @@ function showFilter(){
         filterToggle.classList.add("right")
     }
 }
+function contestant4(){
+    const contestant4=document.getElementsByClassName('check_p')[0];
+    const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
+    if(contestant4.checked){
+        
+    }
+}
+
 function search(){
     const categories=document.getElementsByClassName('check_category');
     const languages=document.getElementsByClassName('check_language');
@@ -34,6 +42,7 @@ function search(){
     const state_i=document.getElementsByClassName('check_i')[0];
     const state_s=document.getElementsByClassName('check_s')[0];
     const contestant4=document.getElementsByClassName('check_p')[0];
+    const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
 
     let filters = []
     //states
@@ -52,8 +61,14 @@ function search(){
     filters[0]+="&"
     //contestant4
     if(!contestant4.checked){
-        filters.push("?contestant4=Nincs")
-        filters[filters.length-1]+="&"
+        if(contestant4_contains.checked){
+            filters.push("?contestant4=Van")
+            filters[filters.length-1]+="&"
+        }else{
+            filters.push("?contestant4=Nincs")
+            filters[filters.length-1]+="&"
+        }
+
     }
 
     //categories
