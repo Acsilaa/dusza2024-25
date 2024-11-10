@@ -17,14 +17,18 @@ Object.entries(datas).forEach(([key, value]) => {
     colors.push(cc)
 
     curr_end = Math.floor(value/total * 100)
-    layout += `#${cc} ${prev_end}% ${curr_end}%, `
-    prev_end = curr_end
+    console.log(curr_end)
+    layout += `#${cc} ${prev_end}% ${prev_end + curr_end}%, `
+                        
+                        
+    $('ul.datas').append(`<li class="lga">${key}</li>`)
+    prev_end += curr_end
 })
 layout = layout.substring(0, layout.length - 2);
-
+console.log(layout)
 $("#pite").css('background', `conic-gradient(${layout})`)
-console.log(datas,"asd")
-for(i = 0; i < datas.length; i++){
+console.log(colors)
+for(i = 0; i < colors.length; i++){
     $(lga[i]).css('color',  `#${colors[i]}`)
     
 }
