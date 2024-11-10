@@ -61,6 +61,7 @@ class TeamApprovalForm(forms.Form):
         team = Team.objects.get(pk=team_id)
         team.approval_file = request.FILES["file"]
         team.approved = True
+        team.missing = None
         team.save()
 class TeamCreationForm(forms.Form):
     def __init__(self, *args, **kwargs):

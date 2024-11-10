@@ -79,8 +79,6 @@ def approveTeam(request,id):
         if form.is_valid() and form.check():
             form.save(request,id)
             messages.success(request, 'Sikeresen jóváhagyva!')
-            team.missing = None
-            team.save()
             return redirect("index")
     context = {'form': form}
     return render(request, f'principal/team_approve.html', context)
