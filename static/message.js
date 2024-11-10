@@ -5,7 +5,7 @@ const filterToggle = document.getElementsByClassName("arrow")[0];
 
 document.addEventListener('DOMContentLoaded', function(){
     const categories=document.getElementsByClassName('check_category');
-    if(categories) {
+    if(categories.length > 0) {
         initFilters()
     }
     if(messages_El.innerHTML.indexOf("<li") === -1){

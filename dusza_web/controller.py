@@ -6,9 +6,10 @@ from team.models import Team
 from contest.models import Contest
 from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
-from django.utils import timezone as date
+from django.utils import timezone
 from django import template
 from team.controller import filter
+from datetime import timedelta
 
 def render_view(request):
 
@@ -148,11 +149,13 @@ def newContest(request):
     Team.objects.all().delete()
     contest = Contest.objects.first()
     contest.joining_closed = False
-    year=date.now().year
-    month=date.now().month+2
+    date = timezone.now() + timedelta(hours=24)
+    year=date.year
+    print(year, date, timezone.now(), timedelta(hours=24))
+    month=date.month+2
     if month>12:
         year+=1
         month=month-12
-    contest.join_deadline = f"{year}-{month}-{date.now().day} 23:59"
+    contest.join_deadline = f"{year}-{month}-{date.day} 23:59"
     contest.save()
     return redirect("index")
