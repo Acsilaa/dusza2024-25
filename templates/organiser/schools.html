@@ -16,6 +16,7 @@
     <a href="{% url 'school.register' %}" style="justify-self: end;width: max-content;margin-right: 11rem!important" class=" text-decoration-none text-white btn btn-primary">Új iskola regisztrálása</a>
     <h1>Regisztrált iskolák</h1>
     </div>
+<div class="ms-5 w-100"><p class="ms-5 ps-5">Összesen: {{ schools|length }}</p></div>
 {% for school in schools %}
 <div class="row justify-content-center mb-5 w-100">
     <div class="card col-lg-3 col-md-5 col-sm-12">
