@@ -8,6 +8,7 @@ from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
 from django.utils import timezone as date
 from django import template
+from team.controller import filter
 
 def render_view(request):
 
@@ -119,7 +120,11 @@ def organiserPanel(request):
 def principalPanel(request):
     context = {}
     school = School.objects.filter(user=request.user).first()
-    teams = list(Team.objects.filter(school=school))
+    teams = list(Team.objects.filter(school=school).order_by("-date_modified"))
+    context["category"] = Category.objects.all()
+    context["language"] = Language.objects.all()
+    teams=filter(request,teams)
+
     p = Paginator(teams, 15)
     page_number = request.GET.get("page")
     page_obj = p.get_page(page_number)
