@@ -238,11 +238,11 @@ section {
     fill: #86626E;
 }
 
-.middle{
+.middle wave{
     position: relative;
     z-index: -1;
 }
-.lower{
+.lower wave{
     position: relative;
     z-index: -1;
 }
