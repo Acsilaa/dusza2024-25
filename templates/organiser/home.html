@@ -7,6 +7,7 @@
 <script src="{% static 'organiser/languages.js' %}" defer></script>
 <script src="{% static 'organiser/categories.js' %}" defer></script>
 <script src="{% static 'organiser/deadline.js' %}" defer></script>
+<script src="{% static 'pite.js'%}"></script>
 {% endblock %}
 {% block nav_extended %}
     <li>
@@ -91,6 +92,10 @@
           class="shape-fill"></path>
       </svg>
     </div>
-    <h1>Statisztikák</h1>
+    <h1 class="">Statisztikák</h1>
+    <h2>Használt nyelvek</h2>
+    <div class="pite">
+    </div>
+    <h2></h2>
   </section>
 {% endblock %}

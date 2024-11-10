@@ -124,3 +124,17 @@ section.middle{
         flex-direction: column;
     }
 }
+
+.pite {
+    margin-top: 100px;
+    width: 800px;
+    height: 800px;
+    box-shadow: 10px 10px black;
+    border-radius: 50%;
+    background: conic-gradient(
+      #4caf50 0% 25%,
+      #2196f3 25% 50%,  
+      #ff9800 50% 75%,
+      #f44336 75% 100% 
+    );
+  }
