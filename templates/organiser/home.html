@@ -7,7 +7,7 @@
 <script src="{% static 'organiser/languages.js' %}" defer></script>
 <script src="{% static 'organiser/categories.js' %}" defer></script>
 <script src="{% static 'organiser/deadline.js' %}" defer></script>
-<script src="{% static 'organiser/pite.js'%}"></script>
+<script src="{% static 'organiser/pie.js' %}" defer></script>
 {% endblock %}
 {% block nav_extended %}
     <li>
@@ -83,10 +83,7 @@
             cats.push("{{c}}")
         {%endfor%}
 
-        datas = []
-        {% for data in stat_langs %}
-            datas.push({"{{data.0}}":"{{data.1}}")
-        {% endfor %}
+        datas = {{stat_langs|safe}}
         console.log(datas)
     </script>
 </section>
@@ -100,7 +97,7 @@
     </div>
     <h1 class="">Statisztikák</h1>
     <h2>Használt nyelvek</h2>
-    <div class="pite">
+    <div id="pite">
     </div>
     <h2></h2>
   </section>
