@@ -56,8 +56,10 @@
     <div class="d-flex">
         {% if team.joined %}
         <p><a href="{% url 'team.approveJoin' id=team.id is_approve='disapprove' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás visszavonása</a></p>
-        {% else %}
+        {% elif team.approved %}
         <p><a href="{% url 'team.approveJoin' id=team.id is_approve='approve' %}" class="text-decoration-none text-white btn btn-primary">Jóváhagyás</a></p>
+        {% else %}
+        <p>Az iskola még nem hagyta jóvá a regisztrációt.</p>
         {% endif %}
         {% if hasApprovalFile  %}
          <p><a href="{% url 'team.downloadApproval' id=team.id %}" class="text-decoration-none text-white btn btn-primary">Jelentkezési lap letöltése</a></p>

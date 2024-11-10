@@ -206,7 +206,7 @@ def approveJoin(request,id,is_approve):
     team = Team.objects.get(pk=id)
     if (team is None):
         return redirect('index')
-    if is_approve == "approve":
+    if is_approve == "approve" and team.approved:
         team.joined = True
         team.missing = None
         print("sf")
