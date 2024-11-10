@@ -120,24 +120,30 @@ def more(request,id):
     context["hasApprovalFile"] = team.approval_file not in ["",None]
     return render(request, f'organiser/team.html', context)
 def filter(request,models):
-
     request.GET.get("category")
-    if request.GET.get("category") and Category.objects.filter(name__contains=request.GET.get("category").split(";")):
-        models = models.filter(category__contains=request.GET.get("category").split(";"))
-    if request.GET.get("language") and Language.objects.filter(name__contains=request.GET.get("language").split(";")):
-        models = models.filter(language__contains=request.GET.get("language").split(";"))
+    if request.GET.get("category") and Category.objects.filter(name__contains=request.GET.get("category").split(";")[0:-1]):
+        models = models.filter(category__contains=request.GET.get("category").split(";")[0:-1])
+    if request.GET.get("language") and Language.objects.filter(name__contains=request.GET.get("language").split(";")[0:-1]):
+        models = models.filter(language__contains=request.GET.get("language").split(";")[0:-1])
     if request.GET.get("contestant4") == "Nincs":
         models = models.exclude(contestant4_grade__isnull=True)
+    state_r="regisztralt"
+    state_i="iskola altal jovahagyva"
+    state_s="szervezok altal jovahagyva"
     if request.GET.get("state"):
-        match request.GET.get("state").split(";"):
-            case ["regisztralt"]:
+        match request.GET.get("state").split(";")[0:-1]:
+            case [state_r]:
                 models = models.filter(Q(approved=False) & Q(joined=False))
-            case ["iskola altal jovahagyva"]:
+            case [state_i]:
                 models = models.filter(Q(approved=True) & Q(joined=False))
-            case ["szervezok altal jovahagyva"]:
+            case [state_s]:
                 models = models.filter(Q(approved=True) & Q(joined=True))
-            case ["szervezok altal jovahagyva"]:
-                models = models.filter(Q(approved=True) & Q(joined=True))
+            case [state_r,state_i]:
+                models = models.filter(joined=False)
+            case [state_i,state_s]:
+                models = models.filter(approved=True)
+            case [state_r,state_s]:
+                models = models.filter(Q(approved=False) | Q(joined=True))
     return models
 
 def index(request):
