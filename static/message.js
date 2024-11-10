@@ -143,10 +143,10 @@ function search(){
     //contestant4
     if(!contestant4.checked){
         if(contestant4_contains.checked){
-            filters.push("?contestant4=Van")
+            filters.push("contestant4=Van")
             filters[filters.length-1]+="&"
         }else{
-            filters.push("?contestant4=Nincs")
+            filters.push("contestant4=Nincs")
             filters[filters.length-1]+="&"
         }
 

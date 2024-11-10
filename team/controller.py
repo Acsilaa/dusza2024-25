@@ -122,10 +122,11 @@ def more(request,id):
 def filter(request,models):
     if request.GET.get("category") and Category.objects.filter(name__in=request.GET.get("category").split(";")[0:-1]):
         models = models.filter(category__in=Category.objects.filter(name__in=request.GET.get("category").split(";")[0:-1]))
-
     if request.GET.get("language") and Language.objects.filter(name__in=request.GET.get("language").split(";")[0:-1]):
         models = models.filter(language__in=Language.objects.filter(name__in=request.GET.get("language").split(";")[0:-1]))
     if request.GET.get("contestant4") == "Nincs":
+        models = models.filter(contestant4_grade__isnull=True)
+    elif request.GET.get("contestant1") == "Van":
         models = models.exclude(contestant4_grade__isnull=True)
     state_r="regisztralt"
     state_i="iskola altal jovahagyva"
