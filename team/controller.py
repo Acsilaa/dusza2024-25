@@ -132,19 +132,21 @@ def filter(request,models):
     state_i="iskola altal jovahagyva"
     state_s="szervezok altal jovahagyva"
     if request.GET.get("state"):
-        match request.GET.get("state").split(";")[0:-1]:
-            case [state_r]:
-                models = models.filter(Q(approved=False) & Q(joined=False))
-            case [state_i]:
-                models = models.filter(Q(approved=True) & Q(joined=False))
-            case [state_s]:
-                models = models.filter(Q(approved=True) & Q(joined=True))
-            case [state_r,state_i]:
-                models = models.filter(joined=False)
-            case [state_i,state_s]:
-                models = models.filter(approved=True)
-            case [state_r,state_s]:
-                models = models.filter(Q(approved=False) | Q(joined=True))
+        states = request.GET.get("state").split(";")[0:-1]
+        print([state_i,state_s])
+        print(all(ele in [state_i,state_s] for ele in states))
+        if all(i in [state_r] for i in states):
+            models = models.filter(Q(approved=False) & Q(joined=False))
+        elif all(i in [state_i] for i in states):
+            models = models.filter(Q(approved=True) & Q(joined=False))
+        elif all(i in [state_s] for i in states):
+            models = models.filter(Q(approved=True) & Q(joined=True))
+        elif all(i in [state_r,state_i] for i in states):
+            models = models.filter(joined=False)
+        elif all(i in [state_i,state_s] for i in states):
+            models = models.filter(approved=True)
+        elif all(i in [state_r,state_s] for i in states):
+            models = models.filter(Q(approved=False) | Q(joined=True))
     return models
 
 def index(request):
