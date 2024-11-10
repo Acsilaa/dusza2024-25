@@ -19,6 +19,9 @@ from re import template
 from . import controller
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+
 from User import controller as user
 from team import controller as team
 from school import controller as school
@@ -63,4 +66,4 @@ urlpatterns = [
 
 
     path('', controller.render_view,name='index'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
