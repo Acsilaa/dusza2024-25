@@ -125,10 +125,10 @@ function search(){
     const contestant4=document.getElementsByClassName('check_p')[0];
     const contestant4_contains=document.getElementsByClassName('check_p_c')[0];
 
-    let filters = []
+    let filters = ["?"]
     //states
-    if(state_r.checked||state_i.checked||state_s.checked){
-        filters.push("?state=")
+    if(state_r.checked || state_i.checked || state_s.checked){
+        filters[0] +="state="
     }
     if(state_r.checked){
         filters[0] += "regisztralt;"
