@@ -221,11 +221,8 @@ def downloadApproval(request,id):
     team = Team.objects.get(pk=id)
     if (team is None):
         return redirect('index')
-    print(settings.MEDIA_ROOT,team.approval_file.name)
     file_path = os.path.join(settings.MEDIA_ROOT,team.approval_file.name)
-    print(file_path)
     if os.path.exists(file_path):
-        print("asd")
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/pdf")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)

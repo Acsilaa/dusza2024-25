@@ -5,7 +5,6 @@ from team.models import Team
 class Contest(models.Model):
     join_deadline = models.DateTimeField()
     joining_closed = models.BooleanField(default=False)
-    # TODO statistics are not efficient with big data. currently will be done as functions
 
     def isOpen() -> bool:
         c = Contest.objects.first()
