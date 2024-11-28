@@ -35,6 +35,7 @@ urlpatterns = [
     path('register/', user.registerUser,name='register'),
     path('login/', user.loginUser,name='login'),
     #logined
+    path('', controller.render_view,name='index'),
     path('logout/', user.logoutUser,name='logout'),
     #contestant
     path('team/register/', team.registerTeam,name='team.register'),
@@ -65,5 +66,4 @@ urlpatterns = [
     path('newContest/', controller.newContest, name='newContest'),
 
 
-    path('', controller.render_view,name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
